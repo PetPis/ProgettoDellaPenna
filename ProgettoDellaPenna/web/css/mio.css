@@ -24,3 +24,31 @@
 .sfondoGrigio{
     background: #E0E0E0;
 }
+
+footer{
+    color: #000;
+    width: 100%;
+    padding-top: 50px;
+    text-align: center;
+    font-size: 13px;
+    
+}
+
+#nav-footer{
+    background: #E0E0E0;
+    
+}
+#nav-footer ul {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0 20px;
+}
+
+#nav-footer ul li a {
+    color: #000;
+}
+
+.img{
+    height: 400px;
+    width: 90%;
+}
