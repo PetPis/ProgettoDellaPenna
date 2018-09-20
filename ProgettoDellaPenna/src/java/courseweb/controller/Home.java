@@ -8,10 +8,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- *
- * @author IngegneriaDelWeb
- */
+
 public class Home extends BaseController {
 
     private void action_error(HttpServletRequest request, HttpServletResponse response) {

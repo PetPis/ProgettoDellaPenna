@@ -5,20 +5,10 @@
  */
 package courseweb.model.interfacce;
 
-
-
 import courseweb.controller.data.DataLayer;
-import courseweb.controller.data.DataLayerException;
-//import all classes
-import java.io.InputStream;
-import java.sql.SQLException;
-import java.util.List;
-/**
- *
- * @author Toni & Tony
- */
+
+
 public interface IgwDataLayer extends DataLayer {
-    
+
     //initialize all interfaces ( queries)
-  
 }
