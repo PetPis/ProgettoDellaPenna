@@ -60,7 +60,7 @@ public class TemplateServlet extends HttpServlet {
         //impostiamo il tipo di output: in questo modo freemarker abiliterà il necessario escaping
         //set the output format, so that freemarker will enable the correspondoing escaping
         cfg.setOutputFormat(HTMLOutputFormat.INSTANCE);
-        Template t = cfg.getTemplate("esempio.ftl.html");
+        Template t = cfg.getTemplate("homepage.ftl.html");
         try {
             //...e lo compiliamo insieme ai dati
             //...and compile it with the data
