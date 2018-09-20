@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
+    <context-param>
+        <param-name>view.outline_template</param-name>
+        <param-value>outline.ftl.html</param-value>
+    </context-param>
 
-<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
-	 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	 xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
-	 version="3.1">
- <servlet>
-        <servlet-name>TemplateServlet</servlet-name>
-        <servlet-class>courseweb.controller.TemplateServlet</servlet-class>
+    <servlet>
+        <servlet-name>Home</servlet-name>
+        <servlet-class>courseweb.controller.Home</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>TemplateServlet</servlet-name>
-        <url-pattern>/TemplateServlet</url-pattern>
+        <servlet-name>Home</servlet-name>
+        <url-pattern>/Home</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
@@ -18,6 +19,12 @@
         </session-timeout>
     </session-config>
     <welcome-file-list>
-        <welcome-file>TemplateServlet</welcome-file>
+        <welcome-file>Home</welcome-file>
     </welcome-file-list>
+    <resource-ref>
+        <res-ref-name>jdbc/igw</res-ref-name>
+        <res-type>javax.sql.DataSource</res-type>
+        <res-auth>Container</res-auth>
+        <res-sharing-scope>Shareable</res-sharing-scope>
+    </resource-ref>
 </web-app>

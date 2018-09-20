@@ -1,2 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Context path="/ProgettoDellaPenna"/>
+<Context path="/ProgettoDellaPenna">
+<!-- Copiare il driver nella directory CATALINA_HOME/lib --> 
+<!-- Se lo si mette in WEB-INF/lib non sarà visibile al common class loader usato per il pooling --> 
+<!-- in tal caso non si potrà usare il pooler di Tomcat, ma uno esterno da aggiungere all'applicazione --> 
+<Resource 
+    name="jdbc/igw"  
+    type="javax.sql.DataSource" 
+    auth="Container" 
+    driverClassName="com.mysql.jdbc.Driver" 
+    url="jdbc:mysql://localhost:3306/igw" 
+    username="website" 
+    password="webpass" 
+    maxActive="10" 
+    maxIdle="5" 
+    maxWait="10000" 
+/> 
+
+</Context>
