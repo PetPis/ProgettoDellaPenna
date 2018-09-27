@@ -62,3 +62,10 @@ a#logo {
   width: 35px;
   height: 23px;
 }
+.main-div {
+  background: #ffffff none repeat scroll 0 0;
+  border-radius: 2px;
+  margin: 10px auto 30px;
+  max-width: 38%;
+  padding: 50px 70px 70px 71px;
+}

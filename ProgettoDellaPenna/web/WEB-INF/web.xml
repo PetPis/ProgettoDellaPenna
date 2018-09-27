@@ -4,7 +4,16 @@
         <param-name>view.outline_template</param-name>
         <param-value>outline.ftl.html</param-value>
     </context-param>
-
+    
+    <servlet>
+        <servlet-name>Login</servlet-name>
+        <servlet-class>courseweb.controller.Login</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Login</servlet-name>
+        <url-pattern>/Login</url-pattern>
+    </servlet-mapping>
+    
     <servlet>
         <servlet-name>Home</servlet-name>
         <servlet-class>courseweb.controller.Home</servlet-class>
