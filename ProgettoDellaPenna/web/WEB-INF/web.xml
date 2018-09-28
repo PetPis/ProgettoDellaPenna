@@ -5,6 +5,27 @@
         <param-value>outline.ftl.html</param-value>
     </context-param>
     
+      
+    <servlet>
+        <servlet-name>ListaDocenti</servlet-name>
+        <servlet-class>courseweb.controller.ListaDocenti</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ListaDocenti</servlet-name>
+        <url-pattern>/ListaDocenti</url-pattern>
+    </servlet-mapping>
+    
+    
+    <servlet>
+        <servlet-name>ListaCorsi</servlet-name>
+        <servlet-class>courseweb.controller.ListaCorsi</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ListaCorsi</servlet-name>
+        <url-pattern>/ListaCorsi</url-pattern>
+    </servlet-mapping>
+    
+    
     <servlet>
         <servlet-name>Login</servlet-name>
         <servlet-class>courseweb.controller.Login</servlet-class>
