@@ -7,6 +7,7 @@ import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 
 public class Home extends BaseController {
@@ -19,10 +20,20 @@ public class Home extends BaseController {
         }
     }
 
-    private void action_default(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException, TemplateManagerException {
+    private void action_default(HttpServletRequest request, HttpServletResponse response, String lingua) throws IOException, ServletException, TemplateManagerException {
         TemplateResult res = new TemplateResult(getServletContext());
+        
         request.setAttribute("page_title", "Home");
-        res.activate("homepage.ftl.html", request, response);
+        request.setAttribute("change","y");
+            request.setAttribute("servlet","Home?");
+        if(lingua.equals("it")||lingua.equals("")){
+                request.setAttribute("lingua","it");
+                res.activate("homepage.ftl.html", request, response); 
+            }
+            else{
+                request.setAttribute("lingua","en");
+                res.activate("homepage_en.ftl.html", request, response);
+            }   
     }
 
     
@@ -30,6 +41,7 @@ public class Home extends BaseController {
     @Override
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException {
+        String lin;
             //boolean b=false;
         try {
             /*Enumeration list=request.getParameterNames();
@@ -42,11 +54,11 @@ public class Home extends BaseController {
                 lin=request.getParameter("lin");
             lin="it";
             */
-            /*if(request.getParameter("lin")==null)
+            if(request.getParameter("lin")==null)
                 lin="it";
             else
-                lin=request.getParameter("lin");*/
-            action_default(request, response);
+                lin=request.getParameter("lin");
+            action_default(request, response,lin);
 
         } catch (IOException | TemplateManagerException ex) {
             request.setAttribute("exception", ex);
