@@ -7,9 +7,8 @@ import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-public class Home extends BaseController {
+public class Backoffice extends BaseController {
 
     private void action_error(HttpServletRequest request, HttpServletResponse response) {
         if (request.getAttribute("exception") != null) {
@@ -21,26 +20,16 @@ public class Home extends BaseController {
 
     private void action_default(HttpServletRequest request, HttpServletResponse response, String lingua) throws IOException, ServletException, TemplateManagerException {
         TemplateResult res = new TemplateResult(getServletContext());
-
-        request.setAttribute("page_title", "Home");
-        HttpSession session = request.getSession(false);
-        if (session != null && request.isRequestedSessionIdValid()) {
-            String a = (String) session.getAttribute("username");
-            request.setAttribute("nome", a);
-            boolean doc = (boolean) session.getAttribute("docente");
-            if (doc == true) {
-                int id = (int) session.getAttribute("docenteid");
-                request.setAttribute("docente", id);
-            }
-        }
+        request.setAttribute("servlet", "Corsi?");
         request.setAttribute("change", "y");
-        request.setAttribute("servlet", "Home?");
         if (lingua.equals("it") || lingua.equals("")) {
             request.setAttribute("lingua", "it");
-            res.activate("homepage.ftl.html", request, response);
+            request.setAttribute("page_title", "Corsi");
+            res.activate("corsi.ftl.html", request, response);
         } else {
             request.setAttribute("lingua", "en");
-            res.activate("homepage_en.ftl.html", request, response);
+            request.setAttribute("page_title", "Courses");
+            res.activate("corsi_en.ftl.html", request, response);
         }
     }
 
@@ -48,18 +37,7 @@ public class Home extends BaseController {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException {
         String lin;
-        //boolean b=false;
         try {
-            /*Enumeration list=request.getParameterNames();
-            while(list.hasMoreElements())
-                if(list.nextElement().toString().equals("lin")){
-                    b=true;
-                    break;
-                }
-            if(b)
-                lin=request.getParameter("lin");
-            lin="it";
-             */
             if (request.getParameter("lin") == null) {
                 lin = "it";
             } else {

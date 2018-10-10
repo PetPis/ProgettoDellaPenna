@@ -5,6 +5,22 @@
         <param-value>outline.ftl.html</param-value>
     </context-param>
     <servlet>
+        <servlet-name>Backoffice</servlet-name>
+        <servlet-class>courseweb.controller.Backoffice</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Backoffice</servlet-name>
+        <url-pattern>/Backoffice</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>BackofficeD</servlet-name>
+        <servlet-class>courseweb.controller.BackofficeD</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>BackofficeD</servlet-name>
+        <url-pattern>/BackofficeD</url-pattern>
+    </servlet-mapping>
+    <servlet>
         <servlet-name>Docenti</servlet-name>
         <servlet-class>courseweb.controller.Docenti</servlet-class>
     </servlet>
