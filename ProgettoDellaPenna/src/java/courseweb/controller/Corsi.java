@@ -8,8 +8,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
-public class ListaDocenti extends BaseController {
+public class Corsi extends BaseController {
 
     private void action_error(HttpServletRequest request, HttpServletResponse response) {
         if (request.getAttribute("exception") != null) {
@@ -19,34 +18,32 @@ public class ListaDocenti extends BaseController {
         }
     }
 
-    private void action_default(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException, TemplateManagerException {
+    private void action_default(HttpServletRequest request, HttpServletResponse response, String lingua) throws IOException, ServletException, TemplateManagerException {
         TemplateResult res = new TemplateResult(getServletContext());
-        request.setAttribute("page_title", "Lista Docenti");
-        res.activate("docenti.ftl.html", request, response);
+        request.setAttribute("servlet", "Corsi?");
+        request.setAttribute("change", "y");
+        if (lingua.equals("it") || lingua.equals("")) {
+            request.setAttribute("lingua", "it");
+            request.setAttribute("page_title", "Corsi");
+            res.activate("corsi.ftl.html", request, response);
+        } else {
+            request.setAttribute("lingua", "en");
+            request.setAttribute("page_title", "Courses");
+            res.activate("corsi_en.ftl.html", request, response);
+        }
     }
 
-    
-    
     @Override
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException {
-            //boolean b=false;
+        String lin;
         try {
-            /*Enumeration list=request.getParameterNames();
-            while(list.hasMoreElements())
-                if(list.nextElement().toString().equals("lin")){
-                    b=true;
-                    break;
-                }
-            if(b)
-                lin=request.getParameter("lin");
-            lin="it";
-            */
-            /*if(request.getParameter("lin")==null)
-                lin="it";
-            else
-                lin=request.getParameter("lin");*/
-            action_default(request, response);
+            if (request.getParameter("lin") == null) {
+                lin = "it";
+            } else {
+                lin = request.getParameter("lin");
+            }
+            action_default(request, response, lin);
 
         } catch (IOException | TemplateManagerException ex) {
             request.setAttribute("exception", ex);

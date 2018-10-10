@@ -4,28 +4,22 @@
         <param-name>view.outline_template</param-name>
         <param-value>outline.ftl.html</param-value>
     </context-param>
-    
-      
     <servlet>
-        <servlet-name>ListaDocenti</servlet-name>
-        <servlet-class>courseweb.controller.ListaDocenti</servlet-class>
+        <servlet-name>Docenti</servlet-name>
+        <servlet-class>courseweb.controller.Docenti</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>ListaDocenti</servlet-name>
-        <url-pattern>/ListaDocenti</url-pattern>
+        <servlet-name>Docenti</servlet-name>
+        <url-pattern>/Docenti</url-pattern>
     </servlet-mapping>
-    
-    
     <servlet>
-        <servlet-name>ListaCorsi</servlet-name>
-        <servlet-class>courseweb.controller.ListaCorsi</servlet-class>
+        <servlet-name>Corsi</servlet-name>
+        <servlet-class>courseweb.controller.Corsi</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>ListaCorsi</servlet-name>
-        <url-pattern>/ListaCorsi</url-pattern>
+        <servlet-name>Corsi</servlet-name>
+        <url-pattern>/Corsi</url-pattern>
     </servlet-mapping>
-    
-    
     <servlet>
         <servlet-name>Login</servlet-name>
         <servlet-class>courseweb.controller.Login</servlet-class>
@@ -34,7 +28,6 @@
         <servlet-name>Login</servlet-name>
         <url-pattern>/Login</url-pattern>
     </servlet-mapping>
-    
     <servlet>
         <servlet-name>Home</servlet-name>
         <servlet-class>courseweb.controller.Home</servlet-class>
