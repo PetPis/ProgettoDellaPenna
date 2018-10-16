@@ -112,4 +112,20 @@ public class UtenteImpl implements Utente{
         this.dirty = dirty;
     }
 
+    @Override
+    public void copyFrom(Utente utente) {
+        
+        id = utente.getID();
+        username = utente.getUsername();
+        password = utente.getPassword();
+        
+        try{
+           gruppo = utente.getGruppo();
+           docente = utente.getDocente();
+        }   
+        catch (DataLayerException ex) {
+            Logger.getLogger(DocenteImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        this.dirty = true;
+    }
 }

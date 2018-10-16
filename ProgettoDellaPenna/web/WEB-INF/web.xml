@@ -37,6 +37,14 @@
         <url-pattern>/Corsi</url-pattern>
     </servlet-mapping>
     <servlet>
+        <servlet-name>Logout</servlet-name>
+        <servlet-class>courseweb.controller.Logout</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Logout</servlet-name>
+        <url-pattern>/Logout</url-pattern>
+    </servlet-mapping>
+    <servlet>
         <servlet-name>Login</servlet-name>
         <servlet-class>courseweb.controller.Login</servlet-class>
     </servlet>

@@ -33,6 +33,8 @@ public interface Utente {
     boolean isDirty();
     
     void setDirty(boolean dirty);
+
+    public void copyFrom(Utente utente);
     
     
 }

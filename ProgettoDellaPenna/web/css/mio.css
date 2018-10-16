@@ -31,12 +31,12 @@ footer{
     padding-top: 50px;
     text-align: center;
     font-size: 13px;
-    
+
 }
 
 #nav-footer{
     background: #f3f3f3;
-    
+
 }
 #nav-footer ul {
     list-style: none;
@@ -59,13 +59,18 @@ a#logo {
 }
 
 #flag {
-  width: 35px;
-  height: 23px;
+    width: 35px;
+    height: 23px;
 }
 .main-div {
-  background: #ffffff none repeat scroll 0 0;
-  border-radius: 2px;
-  margin: 10px auto 30px;
-  max-width: 38%;
-  padding: 50px 70px 70px 71px;
+    background: #ffffff none repeat scroll 0 0;
+    border-radius: 2px;
+    margin: 10px auto 30px;
+    max-width: 38%;
+    padding: 50px 70px 70px 71px;
+}
+
+ul.nav li a, ul.nav li a:visited {
+    color: black !important;
+
 }
