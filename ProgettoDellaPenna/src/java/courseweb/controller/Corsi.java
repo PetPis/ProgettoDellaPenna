@@ -7,6 +7,7 @@ import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 public class Corsi extends BaseController {
 
@@ -20,6 +21,18 @@ public class Corsi extends BaseController {
 
     private void action_default(HttpServletRequest request, HttpServletResponse response, String lingua) throws IOException, ServletException, TemplateManagerException {
         TemplateResult res = new TemplateResult(getServletContext());
+        
+        HttpSession session = request.getSession(false);
+        if (session != null && request.isRequestedSessionIdValid()) {
+            String a = (String) session.getAttribute("username");
+            request.setAttribute("nome", a);
+            boolean doc = (boolean) session.getAttribute("docente");
+            if (doc == true) {
+                int id = (int) session.getAttribute("docenteid");
+                request.setAttribute("docente", id);
+            }
+        }
+        
         request.setAttribute("servlet", "Corsi?");
         request.setAttribute("change", "y");
         if (lingua.equals("it") || lingua.equals("")) {
