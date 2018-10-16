@@ -1,16 +1,46 @@
-<!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<html>
-    <head>
-        <title>TODO supply a title</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    </head>
-    <body>
-        <div>TODO write content</div>
-    </body>
-</html>
+<section id="sub-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10 col-md-offset-1 text-center">
+                <h1>Insegnanti</h1>
+                <p class="lead boxed ">Esplora i nostri magnifici insegnanti</p>
+                <p class="lead">
+
+                </p>
+            </div>
+        </div><!-- End row -->
+    </div><!-- End container -->
+    <div class="divider_top"></div>
+</section><!-- End sub-header -->
+
+<section id="main_content">	
+    <div class="container">
+
+        <ol class="breadcrumb">
+            <li><a href="Home?lin=it">Home</a></li>
+            <li class="active">Lista Docenti</li>
+        </ol>
+
+
+        <div id="table" class="row">
+            <div class="col-md-6 col-sm-6">
+                <div class="box_style_3">
+                    <p><img id="img-docente" src="img/FilippoMignosi.jpg" alt="Teacher" class="img-doc"></p>
+                    <h4 class="p-title">Filippo Mignosi ${docente.cognome} <br> <small>${docente.specializzazione}</small></h4>
+                    <p></p>
+                    <ul class="social_team">
+                                    <li><a href="#"><img id="facebook" src="img/Facebook-icona.png"/></a></li>
+                                    <li><a href="#"><img id="twitter" src="img/twitter-icona.png"/></a></li>
+                                    <li><a href="#"><img id="twitter" src="img/twitter-icona.png"/></a></li>
+                                    
+                    </ul>    
+                    <br>
+                 <a href="dettaglidocente?k=${docente.IDDocente}&lin=it" class="button_medium_outline">Profilo</a>           
+                               
+                    
+                    
+                    
+                </div>
+            </div><!-- End row -->    
+        </div><!-- End container -->
+</section><!-- End main_content-->
