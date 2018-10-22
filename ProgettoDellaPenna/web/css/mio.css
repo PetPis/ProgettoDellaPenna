@@ -86,7 +86,7 @@ ul.nav li a, ul.nav li a:visited {
     text-shadow: 0 1px 1px rgba(0, 0, 0, .4);
     width: 100%;
     height: 100%;
-    background: url(../img/sfondo_listaCorsi.jpg);
+    background: url(../img/sfondo_docenti.jpg);
 }
 .box_style_1 {
     padding: 15px 25px 5px;
@@ -177,7 +177,7 @@ ul.submenu-col li a:hover {
     text-align: center;
     background: #fff;
     padding: 30px 30px 10px;
-    border: 2px solid #d3edd6
+    border: 2px solid #c4c4c4;
 }
 
 #img-docente {
@@ -211,12 +211,8 @@ ul.social_team li {
     line-height: 30px;
 }
 
-#facebook {
+#social {
     
-    width: 100%;
-    height: 100%;
-}
-#twitter {
     width: 100%;
     height: 100%;
 }
@@ -225,8 +221,8 @@ ul.social_team li {
 a.button_profile {
     background: 0 0;
     border-radius: 4px;
-    border: 1px solid #61d86f;
-    color: #4aa855;
+    border: 1px solid #cfd1cf;
+    color: #b2b2b2;
     padding: 5px 10px;
     text-decoration: none;
     display: inline-block;
@@ -241,8 +237,8 @@ a.button_profile {
 
 .button_profile,
 a.button_profile:hover {
-    box-shadow: 0 5px 10px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
-    background-color: #4CAF50;
+    box-shadow: 0 8px 15px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+    background-color: #c4c4c4;
     color: white;
 }
 
