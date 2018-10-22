@@ -12,8 +12,11 @@ import courseweb.controller.data.DataLayerException;
 import courseweb.model.classi.CorsoImpl;
 import courseweb.model.interfacce.CDL;
 import courseweb.model.interfacce.Corso;
+import courseweb.model.interfacce.Descrizione_en;
+import courseweb.model.interfacce.Descrizione_it;
 import courseweb.model.interfacce.Docente;
-
+import courseweb.model.interfacce.Dublino_en;
+import courseweb.model.interfacce.Dublino_it;
 import courseweb.model.interfacce.Gruppo;
 import courseweb.model.interfacce.Libro;
 import courseweb.model.interfacce.Log;
@@ -23,10 +26,7 @@ import courseweb.model.interfacce.Utente;
 import java.io.InputStream;
 import java.sql.SQLException;
 import java.util.List;
-/**
- *
- * @author Toni & Tony
- */
+
 public interface IgwDataLayer extends DataLayer {
     
     CDL createCDL();
@@ -36,6 +36,14 @@ public interface IgwDataLayer extends DataLayer {
     Docente createDocente();
     
     //Docenti_Corso createDocenti_Corso();
+    
+    Descrizione_it createDescrizione_it();
+    
+    Descrizione_en createDescrizione_en();
+    
+    Dublino_it createDublino_it();
+
+    Dublino_en createDublino_en();
 
     Materiale createMateriale();
     
@@ -66,6 +74,16 @@ public interface IgwDataLayer extends DataLayer {
     List<Corso> getCorso() throws DataLayerException;
 
     Docente getDocente(int IDDocente) throws DataLayerException;
+    
+    //Docenti_Corso getDocenti_Corso(int Corso, int Docente) throws DataLayerException;
+    
+    Descrizione_it getDescrizione_it(Corso corso) throws DataLayerException;
+    
+    Descrizione_en getDescrizione_en(Corso corso) throws DataLayerException;
+    
+    Dublino_it getDublino_it(Corso corso) throws DataLayerException;
+    
+    Dublino_en getDublino_en(Corso corso) throws DataLayerException;
     
     Materiale getMateriale(int IDMateriale) throws DataLayerException;
     
@@ -140,6 +158,14 @@ public interface IgwDataLayer extends DataLayer {
     public List<Corso> getAnniPrecedenti(Corso corso) throws DataLayerException;
 
     public List<Log> getLog()throws DataLayerException;
+    
+    public void storeDescrizione_it(Descrizione_it descrizione) throws DataLayerException;
+    
+    public void storeDescrizione_en(Descrizione_en descrizione) throws DataLayerException;
+    
+    public void storeDublino_it(Dublino_it dublino) throws DataLayerException;
+    
+    public void storeDublino_en(Dublino_en dublino) throws DataLayerException;
 
     public void storeMateriale(Materiale materiale) throws DataLayerException;
 

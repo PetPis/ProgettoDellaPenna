@@ -8,10 +8,7 @@ package courseweb.model.interfacce;
 import courseweb.controller.data.DataLayerException;
 import java.util.List;
 
-/**
- *
- * @author Tony & Tony
- */
+
 public interface Materiale {
     
     void setID(int id);

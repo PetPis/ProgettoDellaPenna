@@ -12,10 +12,7 @@ import courseweb.model.interfacce.Materiale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/**
- *
- * @author Toni & Tony
- */
+
 public class MaterialeImpl implements Materiale{
     
     private int id;

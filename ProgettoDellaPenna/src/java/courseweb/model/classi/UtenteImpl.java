@@ -12,6 +12,7 @@ import courseweb.model.interfacce.Utente;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+
 public class UtenteImpl implements Utente{
     
     private int id;
@@ -71,6 +72,13 @@ public class UtenteImpl implements Utente{
     }
     
     @Override
+    public Gruppo getGruppo() throws DataLayerException{
+        if(gruppo==null&&id_gruppo>=0)
+            gruppo=ownerdatalayer.getGruppo(id_gruppo);
+        return this.gruppo;
+    }
+
+    @Override
     public void setGruppo(Gruppo gruppo){
         this.gruppo=gruppo;
         this.dirty=true;
@@ -93,23 +101,10 @@ public class UtenteImpl implements Utente{
         this.docente=docente;
         this.dirty=true;
     }
-    
-    @Override
-    public Gruppo getGruppo() throws DataLayerException{
-        if(gruppo==null&&id_gruppo>=0)
-            gruppo=ownerdatalayer.getGruppo(id_gruppo);
-        return this.gruppo;
-    }
-    
+
     @Override
     public boolean isDirty() {
         return dirty;
-    }   
-
-
-    @Override
-    public void setDirty(boolean dirty) {
-        this.dirty = dirty;
     }
 
     @Override
@@ -128,4 +123,12 @@ public class UtenteImpl implements Utente{
         }
         this.dirty = true;
     }
+    
+
+
+    @Override
+    public void setDirty(boolean dirty) {
+        this.dirty = dirty;
+    }
+
 }

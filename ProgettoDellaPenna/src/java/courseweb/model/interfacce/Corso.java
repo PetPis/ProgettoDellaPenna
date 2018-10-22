@@ -8,10 +8,7 @@ package courseweb.model.interfacce;
 import courseweb.controller.data.DataLayerException;
 import java.time.Year;
 import java.util.List;
-/**
- *
- * @author Toni & Tony
- */
+
 
 public interface Corso {
     
@@ -84,6 +81,22 @@ public interface Corso {
     void setDocenti(List<Docente> docenti);
     
     void addDocente(Docente docente);
+    
+    Descrizione_it getDescrizione_it() throws DataLayerException;
+    
+    void setDescrizione_it(Descrizione_it descrizione);
+    
+    Descrizione_en getDescrizione_en() throws DataLayerException;
+    
+    void setDescrizione_en(Descrizione_en descrizione);
+    
+    Dublino_it getDublino_it() throws DataLayerException;
+    
+    void setDublino_it(Dublino_it dublino);
+    
+    Dublino_en getDublino_en() throws DataLayerException;
+    
+    void setDublino_en(Dublino_en dublino);
     
     List<Libro> getLibri() throws DataLayerException;
     

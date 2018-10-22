@@ -13,10 +13,7 @@ import java.sql.Timestamp;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/**
- *
- * @author Toni & Tony
- */
+
 public class LogImpl implements Log{
     
     private int id;

@@ -10,7 +10,6 @@ import courseweb.model.interfacce.Gruppo;
 import courseweb.model.interfacce.IgwDataLayer;
 import java.util.List;
 
-
 public class ServizioImpl implements Servizio {
 
     private int IDServizio;
@@ -63,6 +62,13 @@ public class ServizioImpl implements Servizio {
     }
 
     @Override
+    public List<Gruppo> getGruppi() throws DataLayerException {
+      if(Gruppi==null)
+          Gruppi=ownerdatalayer.getGruppiDelServizio(this);
+      return Gruppi;
+    }
+
+    @Override
     public void setGruppi(List<Gruppo> gruppi) {
         this.Gruppi=gruppi;
         this.dirty=true;
@@ -77,5 +83,6 @@ public class ServizioImpl implements Servizio {
     @Override
     public void setIDGruppo(int id_gruppo) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }   
+    }
+    
 }

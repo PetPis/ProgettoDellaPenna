@@ -8,10 +8,7 @@ package courseweb.model.interfacce;
 import courseweb.controller.data.DataLayerException;
 import java.util.List;
 
-/**
- *
- * @author Toni & Tony
- */
+
 public interface Docente{
     
     void setIDDocente(int id);

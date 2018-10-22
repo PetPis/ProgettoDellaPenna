@@ -13,10 +13,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 
-/**
- *
- * @author Toni & Tony
- */
+
 public class LibroImpl implements Libro {
     
     private int IDLibro;

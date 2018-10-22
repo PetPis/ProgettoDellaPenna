@@ -22,10 +22,12 @@ public interface Servizio {
     
     void setDescrizione(String descrizione);
     
+    List<Gruppo> getGruppi() throws DataLayerException;
+    
     void setGruppi(List<Gruppo> gruppi);
     
     void addGruppo(Gruppo gruppo);
 
     public void setIDGruppo(int aInt);
-     
+    
 }

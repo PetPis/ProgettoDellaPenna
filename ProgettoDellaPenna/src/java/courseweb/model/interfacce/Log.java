@@ -8,10 +8,6 @@ package courseweb.model.interfacce;
 import courseweb.controller.data.DataLayerException;
 import java.sql.Timestamp;
 
-/**
- *
- * @author Toni & Tony
- */
 public interface Log {
     
     void setIDUtente(int id_utente);

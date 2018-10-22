@@ -10,10 +10,7 @@ import courseweb.controller.data.DataLayerException;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-/**
- *
- * @author Toni & Tony
- */
+
 public class DocenteImpl implements Docente {
     
     private int id_docente;

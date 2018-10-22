@@ -7,10 +7,6 @@ package courseweb.model.interfacce;
 
 import courseweb.controller.data.DataLayerException;
 
-/**
- *
- * @author Tony
- */
 public interface Group_Services {
     
     Servizio getServizio() throws DataLayerException;

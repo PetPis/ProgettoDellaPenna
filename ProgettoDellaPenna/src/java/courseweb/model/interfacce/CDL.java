@@ -6,10 +6,7 @@ package courseweb.model.interfacce;
 import courseweb.controller.data.DataLayerException;
 import java.util.Calendar;
 import java.util.List;
-/**
- *
- @author Toni $ Tony
- */
+
 public interface CDL {
     
     void setIDCDL(int id);

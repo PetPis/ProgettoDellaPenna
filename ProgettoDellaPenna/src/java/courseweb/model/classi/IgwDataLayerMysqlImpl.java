@@ -7,11 +7,26 @@ package courseweb.model.classi;
 
 import courseweb.controller.data.DataLayerException;
 import courseweb.controller.data.DataLayerMysqlImpl;
+import courseweb.model.classi.CDLImpl;
+import courseweb.model.classi.CorsoImpl;
+import courseweb.model.classi.Descrizione_enImpl;
+import courseweb.model.classi.Descrizione_itImpl;
+import courseweb.model.classi.DocenteImpl;
+import courseweb.model.classi.Dublino_enImpl;
+import courseweb.model.classi.Dublino_itImpl;
+import courseweb.model.classi.GruppoImpl;
+import courseweb.model.classi.LibroImpl;
+import courseweb.model.classi.LogImpl;
+import courseweb.model.classi.MaterialeImpl;
+import courseweb.model.classi.ServizioImpl;
+import courseweb.model.classi.UtenteImpl;
 import courseweb.model.interfacce.CDL;
 import courseweb.model.interfacce.Corso;
-
+import courseweb.model.interfacce.Descrizione_en;
+import courseweb.model.interfacce.Descrizione_it;
 import courseweb.model.interfacce.Docente;
-
+import courseweb.model.interfacce.Dublino_en;
+import courseweb.model.interfacce.Dublino_it;
 import courseweb.model.interfacce.Gruppo;
 import courseweb.model.interfacce.IgwDataLayer;
 import courseweb.model.interfacce.Libro;
@@ -32,10 +47,6 @@ import java.util.logging.Logger;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
 
-/**
- *
- * @author Toni & Tony
- */
 public class IgwDataLayerMysqlImpl extends DataLayerMysqlImpl implements IgwDataLayer {
 
     private PreparedStatement sCorsiMutuatiByCorso,sCorsiPrerequisitiByCorso,sCorsiModuloByCorso,sDocentiByCorso,sLibriByCorso,sMaterialeByCorso,sCorsiByCDL,sUtentiByGruppo,sServiziByGruppo,sCorsiByDocente,sCorsiByLibro,sGruppiByServizio,sCorsi,sDocenti,sCDL,sCdlByMagistrale,sCdlByTriennale,sUtenteByDocente;
@@ -258,7 +269,107 @@ public class IgwDataLayerMysqlImpl extends DataLayerMysqlImpl implements IgwData
         } catch (SQLException ex) {
             throw new DataLayerException("Unable to create Docente object form ResultSet", ex);
         }
-    }    
+    }
+    
+    @Override
+    public Descrizione_it createDescrizione_it() {
+        return new Descrizione_itImpl(this);
+    }
+    
+            public Descrizione_it createDescrizione_it(ResultSet rs) throws DataLayerException {
+        try {
+            Descrizione_itImpl de = new Descrizione_itImpl(this);
+            
+            de.setIDCorso(rs.getInt("Corso")); 
+            de.setPrerequisiti(rs.getString("Prerequisiti"));
+            de.setObiettivi(rs.getString("Obiettivi"));
+            de.setMod_Esame(rs.getString("Mod_Esame"));  
+            de.setMod_Insegnamento(rs.getString("Mod_Insegnamento"));
+            de.setSillabo(rs.getString("Sillabo"));
+            de.setNote(rs.getString("Note"));
+            de.setHomepage(rs.getString("Homepage"));
+            de.setForum(rs.getString("Forum"));
+            de.setRisorse_Ext(rs.getString("Risorse_ext"));
+            return de;
+        } catch (SQLException ex) {
+            throw new DataLayerException("Unable to create Descrizione_it object form ResultSet", ex);
+        }
+   }
+    
+   
+    
+
+    @Override
+    public Descrizione_en createDescrizione_en() {
+        return new Descrizione_enImpl(this);
+    }
+    
+    public Descrizione_en createDescrizione_en(ResultSet rs) throws DataLayerException {
+        try {
+            Descrizione_enImpl de = new Descrizione_enImpl(this);
+            
+            de.setIDCorso(rs.getInt("Corso")); 
+            de.setPrerequisiti(rs.getString("Prerequisiti"));
+            de.setObiettivi(rs.getString("Obiettivi"));
+            de.setMod_Esame(rs.getString("Mod_Esame"));  
+            de.setMod_Insegnamento(rs.getString("Mod_Insegnamento"));
+            de.setSillabo(rs.getString("Sillabo"));
+            de.setNote(rs.getString("Note"));
+            de.setHomepage(rs.getString("Homepage"));
+            de.setForum(rs.getString("Forum"));
+            de.setRisorse_Ext(rs.getString("Risorse_ext"));
+            return de;
+        } catch (SQLException ex) {
+            throw new DataLayerException("Unable to create Descrizione_en object form ResultSet", ex);
+        }
+   }
+    
+    
+
+    @Override
+    public Dublino_it createDublino_it() {
+        return new Dublino_itImpl(this);
+    }
+    
+    
+    
+    public Dublino_it createDublino_it(ResultSet rs) throws DataLayerException {
+        try {
+            Dublino_itImpl de = new Dublino_itImpl(this);
+            
+            de.setIDCorso(rs.getInt("Corso")); 
+            de.setKnowledge(rs.getString("Knowledge"));
+            de.setApplication(rs.getString("Application"));
+            de.setEvaluation(rs.getString("Evaluation"));  
+            de.setCommunication(rs.getString("Communication"));
+            de.setLifelong(rs.getString("LifeLong"));
+            return de;
+        } catch (SQLException ex) {
+            throw new DataLayerException("Unable to create Dublino_it object form ResultSet", ex);
+        }
+   }
+
+    @Override
+    public Dublino_en createDublino_en() {
+        return new Dublino_enImpl(this);
+    }
+    
+        public Dublino_enImpl createDublino_en(ResultSet rs) throws DataLayerException {
+        try {
+            Dublino_enImpl de = new Dublino_enImpl(this);
+            
+            de.setIDCorso(rs.getInt("Corso")); 
+            de.setKnowledge(rs.getString("Knowledge"));
+            de.setApplication(rs.getString("Application"));
+            de.setEvaluation(rs.getString("Evaluation"));  
+            de.setCommunication(rs.getString("Communication"));
+            de.setLifelong(rs.getString("LifeLong"));
+            return de;
+        } catch (SQLException ex) {
+            throw new DataLayerException("Unable to create Dublino_en object form ResultSet", ex);
+        }
+   }
+    
 
     @Override
     public Materiale createMateriale() {
@@ -429,6 +540,66 @@ public class IgwDataLayerMysqlImpl extends DataLayerMysqlImpl implements IgwData
         }
         catch (SQLException ex){
             throw new DataLayerException("Unable to load Docente by ID",ex);
+        }
+        return null;
+    }
+
+    @Override
+    public Descrizione_it getDescrizione_it(Corso corso) throws DataLayerException {
+        try {
+            sDescrizione_itByCorso.setInt(1,corso.getID());
+            try (ResultSet rs=sDescrizione_itByCorso.executeQuery()) {
+                if(rs.next())
+                    return createDescrizione_it(rs);
+            }
+        }
+        catch (SQLException ex){
+            throw new DataLayerException("Unable to load Descrizione_it by Corso",ex);
+        }
+        return null;
+    }
+
+    @Override
+    public Descrizione_en getDescrizione_en(Corso corso) throws DataLayerException {
+        try {
+            sDescrizione_enByCorso.setInt(1,corso.getID());
+            try (ResultSet rs=sDescrizione_enByCorso.executeQuery()) {
+                if(rs.next())
+                    return createDescrizione_en(rs);
+            }
+        }
+        catch (SQLException ex){
+            throw new DataLayerException("Unable to load Descrizione_en by Corso",ex);
+        }
+        return null;
+    }
+
+    @Override
+    public Dublino_it getDublino_it(Corso corso) throws DataLayerException {
+        try {
+            sDublino_itByCorso.setInt(1,corso.getID());
+            try (ResultSet rs=sDublino_itByCorso.executeQuery()) {
+                if(rs.next())
+                    return createDublino_it(rs);
+            }
+        }
+        catch (SQLException ex){
+            throw new DataLayerException("Unable to load Dublino_it by Corso",ex);
+        }
+        return null;
+    }
+
+    @Override
+    public Dublino_en getDublino_en(Corso corso) throws DataLayerException {
+        try {
+            sDublino_enByCorso.setInt(1,corso.getID());
+            try (ResultSet rs=sDublino_enByCorso.executeQuery()) {
+                if(rs.next())
+                    return createDublino_en(rs);
+            }
+        }
+        catch (SQLException ex){
+            throw new DataLayerException("Unable to load Dublino_en by Corso",ex);
         }
         return null;
     }
@@ -1498,6 +1669,37 @@ public class IgwDataLayerMysqlImpl extends DataLayerMysqlImpl implements IgwData
         }
     }
     
+    
+    @Override
+    public void storeDescrizione_it(Descrizione_it descrizione) throws DataLayerException{
+         try {
+                if (!descrizione.isDirty()) {
+                    return;
+                }
+               iDescrizione_it.setInt(1, descrizione.getCorso().getID());
+               iDescrizione_it.setString(2, descrizione.getPrerequisiti());
+               iDescrizione_it.setString(3, descrizione.getObiettivi());
+               iDescrizione_it.setString(4, descrizione.getMod_Esame());
+               iDescrizione_it.setString(5, descrizione.getMod_Insegnamento());
+               iDescrizione_it.setString(6, descrizione.getSillabo());
+               iDescrizione_it.setString(7, descrizione.getNote()); 
+               iDescrizione_it.setString(8, descrizione.getHomepage());
+               iDescrizione_it.setString(9, descrizione.getForum());
+               iDescrizione_it.setString(10, descrizione.getRisorse_Ext());
+                
+                
+                if (iDescrizione_it.executeUpdate() == 1) {
+                    try {
+                    descrizione.copyFrom(getDescrizione_it(descrizione.getCorso()));
+                    } catch (DataLayerException ex) {
+                        Logger.getLogger(IgwDataLayerMysqlImpl.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+         } catch (SQLException ex) {
+            Logger.getLogger(IgwDataLayerMysqlImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
     @Override
     public boolean existUtente(String username) {
         try{
@@ -1523,6 +1725,89 @@ public class IgwDataLayerMysqlImpl extends DataLayerMysqlImpl implements IgwData
             Logger.getLogger(IgwDataLayerMysqlImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
         return result;
+    }
+
+    @Override
+    public void storeDescrizione_en(Descrizione_en descrizione) throws DataLayerException {
+        try {
+                if (!descrizione.isDirty()) {
+                    return;
+                }
+               iDescrizione_en.setInt(1, descrizione.getCorso().getID());
+               iDescrizione_en.setString(2, descrizione.getPrerequisiti());
+               iDescrizione_en.setString(3, descrizione.getObiettivi());
+               iDescrizione_en.setString(4, descrizione.getMod_Esame());
+               iDescrizione_en.setString(5, descrizione.getMod_Insegnamento());
+               iDescrizione_en.setString(6, descrizione.getSillabo());
+               iDescrizione_en.setString(7, descrizione.getNote()); 
+               iDescrizione_en.setString(8, descrizione.getHomepage());
+               iDescrizione_en.setString(9, descrizione.getForum());
+               iDescrizione_en.setString(10, descrizione.getRisorse_Ext());
+                
+                
+                if (iDescrizione_en.executeUpdate() == 1) {
+                    try {
+                    descrizione.copyFrom(getDescrizione_en(descrizione.getCorso()));
+                    } catch (DataLayerException ex) {
+                        Logger.getLogger(IgwDataLayerMysqlImpl.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+         } catch (SQLException ex) {
+            Logger.getLogger(IgwDataLayerMysqlImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+
+    @Override
+    public void storeDublino_it(Dublino_it dublino) throws DataLayerException {
+        try {
+                if (!dublino.isDirty()) {
+                    return;
+                }
+               iDublino_it.setInt(1, dublino.getCorso().getID());
+               iDublino_it.setString(2, dublino.getKnowledge());
+               iDublino_it.setString(3, dublino.getApplication());
+               iDublino_it.setString(4, dublino.getEvaluation());
+               iDublino_it.setString(5, dublino.getCommunication());
+               iDublino_it.setString(6, dublino.getLifelong());
+                
+                
+                if (iDublino_it.executeUpdate() == 1) {
+                    try {
+                    dublino.copyFrom(getDublino_it(dublino.getCorso()));
+                    } catch (DataLayerException ex) {
+                        Logger.getLogger(IgwDataLayerMysqlImpl.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+         } catch (SQLException ex) {
+            Logger.getLogger(IgwDataLayerMysqlImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    @Override
+    public void storeDublino_en(Dublino_en dublino) throws DataLayerException {
+        try {
+                if (!dublino.isDirty()) {
+                    return;
+                }
+               iDublino_en.setInt(1, dublino.getCorso().getID());
+               iDublino_en.setString(2, dublino.getKnowledge());
+               iDublino_en.setString(3, dublino.getApplication());
+               iDublino_en.setString(4, dublino.getEvaluation());
+               iDublino_en.setString(5, dublino.getCommunication());
+               iDublino_en.setString(6, dublino.getLifelong());
+                
+                
+                if (iDublino_en.executeUpdate() == 1) {
+                    try {
+                    dublino.copyFrom(getDublino_en(dublino.getCorso()));
+                    } catch (DataLayerException ex) {
+                        Logger.getLogger(IgwDataLayerMysqlImpl.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+         } catch (SQLException ex) {
+            Logger.getLogger(IgwDataLayerMysqlImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     @Override

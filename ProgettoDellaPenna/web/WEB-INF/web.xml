@@ -4,6 +4,15 @@
         <param-name>view.outline_template</param-name>
         <param-value>outline.ftl.html</param-value>
     </context-param>
+    
+    <servlet>
+        <servlet-name>CreateCDL</servlet-name>
+        <servlet-class>courseweb.controller.CreateCDL</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CreateCDL</servlet-name>
+        <url-pattern>/CreateCDL</url-pattern>
+    </servlet-mapping>
     <servlet>
         <servlet-name>Backoffice</servlet-name>
         <servlet-class>courseweb.controller.Backoffice</servlet-class>

@@ -7,10 +7,7 @@ package courseweb.model.interfacce;
 
 import courseweb.controller.data.DataLayerException;
 import java.util.List;
-/**
- *
- * @author Toni & Tony
- */
+
 public interface Docenti_Corso {
     
     Corso getCorso(int id_corso) throws DataLayerException;

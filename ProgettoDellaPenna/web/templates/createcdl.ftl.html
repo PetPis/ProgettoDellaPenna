@@ -1,0 +1,149 @@
+<section>
+    <!--breadcrumb-->
+    <section id="main_content">
+        <div class="container">
+            <ol class="breadcrumb">
+                <li><a href="Backoffice?lin=it">Backoffice</a></li>
+                <li class="active"> Crea Corso</li>
+            </ol>
+    </section>
+
+        <div class="container-fluid">
+            <div class="row content">
+                <div class="col-md-2 sidenav sfondoGrigio">
+                    <br>
+
+                    <h3>CREA</h3>
+                    <div class="sidemenu">
+                        <ul class="nav nav-pills nav-stacked">
+                            <li><a href="CreateCDL">Crea CDL</a></li>
+                            <li><a href="CreaCorso">Crea Corso</a></li>
+                            <li><a href="#">Crea Docente</a></li>
+                            <li><a href="#">Crea Amministratore</a></li>
+                        </ul>
+                        <br>
+                        <h3>MODIFICA</h3>
+                        <ul class="nav nav-pills nav-stacked">
+                            <li><a href="#">Modifica CDL</a></li>
+                            <li><a href="#">Modifica Corso</a></li>
+                            <li><a href="#">Modifica Docente</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-10">
+                    
+                    <form method="post" action="CreateCDL" enctype="multipart/form-data">
+
+                    <div class="row">
+                        <div class="col-md-6 col-sm-6">
+                            <h5>Nome CDL</h5>
+                            <div class="form-group"> 
+                                <input type="text" class="form-control" placeholder="Nome corso di laurea" name="nome" required>
+                                <span class="input-icon">
+                                    <i class="#"></i>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-6">
+                            <h5>Nome CDL EN</h5>
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Nome corso di laurea EN" name="nome_en" required>
+                                <span class="input-icon">
+                                    <i class="#"></i>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-md-6 col-sm-6">
+                            <h5>Sigla corso di laurea IT</h5>
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Sigla  IT" name="abbr_it" maxlength="5" required>
+                                <span class="input-icon">
+                                    <i class="#"></i>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-6">
+                          <h5>Sigla corso di laurea EN</h5>
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Sigla  EN" name="abbr_en" maxlength="5" required>
+                                <span class="input-icon">
+                                    <i class="#"></i>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <div class="row">
+                            <div class="col-md-6 col-sm-6">
+                                <h5>Cfu corso di laurea</h5>
+                                    <div class="form-group">
+                                        <input type="number" class="form-control" placeholder="Cfu" name="cfu" min=1>
+                                        <span class="input-icon">
+                                            <i class="#"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                                
+                        <div class="col-md-6 col-sm-6">
+                            
+                                <h5>Cdl Magistrale?</h5>
+                                <label class="switch-light switch-ios">
+                                    <input type="radio" name="mag"  value="yes">Si <br>
+                                    <input type="radio" name="mag"  value="no" checked> No
+                                </label>
+						
+                            
+                        </div>
+                        
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h4>Descrizione CDL In Italiano - Opzionale</h4>
+                            <div class="form-group">
+                                <textarea rows="5" id="mytextarea" name="descrizione_it" class="form-control tinymce" placeholder="Inserisci qui la descrizione"
+                                    style="height:150px;"></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h4>Descrizione CDL In Inglese - Opzionale</h4>
+                            <div class="form-group">
+                                <textarea rows="5" id="mytextarea" name="descrizione_en" class="form-control tinymce" placeholder="Write here your description"
+                                    style="height:150px;"></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h4>Upload Immagine - Opzionale</h4>
+                            <div class="form-group">
+                                <input type="file" name="immagine" onchange="ValidateImg(this)" />
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+
+
+
+
+                    <input type="submit" name="crea" value="Crea corso di laurea" class="btn btn-primary" id="submit-apply">
+
+                </form>
+                </div>
+            </div>
+        </div>
+</section>

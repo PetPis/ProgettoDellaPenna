@@ -9,10 +9,6 @@ import courseweb.controller.data.DataLayerException;
 import java.time.Year;
 import java.util.List;
 
-/**
- *
- * @author Toni & Tony
- */
 public interface Libro {
     
     int getIDLibro();

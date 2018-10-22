@@ -10,10 +10,7 @@ import courseweb.controller.data.DataLayerException;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-/**
- *
- * @author Toni & Tony
- */
+
 public class CorsoImpl implements Corso{
     
     private int id;
@@ -53,6 +50,14 @@ public class CorsoImpl implements Corso{
     
     private List<Docente> docenti;
     
+    private Descrizione_it descrizione_it;
+    
+    private Descrizione_en descrizione_en;
+    
+    private Dublino_it dublino_it;
+    
+    private Dublino_en dublino_en;
+    
     private List<Libro> libri;
     
     private List<Materiale> materiale;
@@ -79,6 +84,10 @@ public class CorsoImpl implements Corso{
         this.prerequisiti=null;
         this.modulo=null;
         this.docenti=null;
+        this.descrizione_en=null;
+        this.descrizione_it=null;
+        this.dublino_it=null;
+        this.dublino_en=null;
         this.libri=null;
         this.materiale=null;
         this.dirty=false;
@@ -294,6 +303,58 @@ public class CorsoImpl implements Corso{
     }
     
     @Override
+    public Descrizione_it getDescrizione_it() throws DataLayerException{
+        if(descrizione_it==null)
+            descrizione_it=ownerdatalayer.getDescrizione_it(this);
+        return descrizione_it;
+    }
+    
+    @Override
+    public Descrizione_en getDescrizione_en() throws DataLayerException{
+        if(descrizione_en==null)
+            descrizione_en=ownerdatalayer.getDescrizione_en(this);
+        return descrizione_en;
+    }
+    
+    @Override
+    public void setDescrizione_it(Descrizione_it descrizione){
+        this.descrizione_it=descrizione;
+        this.dirty=true;
+    }
+    
+    @Override
+    public void setDescrizione_en(Descrizione_en descrizione){
+        this.descrizione_en=descrizione;
+        this.dirty=true;
+    }
+    
+    @Override
+    public Dublino_it getDublino_it() throws DataLayerException{
+        if(dublino_it==null)
+            dublino_it=ownerdatalayer.getDublino_it(this);
+        return dublino_it;
+    }
+    
+    @Override
+    public void setDublino_it(Dublino_it dublino){
+        this.dublino_it=dublino;
+        this.dirty=true;
+    }
+    
+    @Override
+    public Dublino_en getDublino_en() throws DataLayerException{
+        if(dublino_en==null)
+            dublino_en=ownerdatalayer.getDublino_en(this);
+        return dublino_en;
+    }
+    
+    @Override
+    public void setDublino_en(Dublino_en dublino){
+        this.dublino_en=dublino;
+        this.dirty=true;
+    }
+    
+    @Override
     public List<Libro> getLibri() throws DataLayerException{
         if(libri==null)
             libri=ownerdatalayer.getLibriCorso(this);
@@ -359,6 +420,10 @@ public class CorsoImpl implements Corso{
             prerequisiti=corso.getCorsiPrerequisiti();
             modulo=corso.getCorsiModulo();
             docenti=corso.getDocenti();
+            descrizione_it=corso.getDescrizione_it();
+            descrizione_en=corso.getDescrizione_en();
+            dublino_it=corso.getDublino_it();
+            dublino_en=corso.getDublino_en();
             libri=corso.getLibri();
             materiale=corso.getMateriale();
             

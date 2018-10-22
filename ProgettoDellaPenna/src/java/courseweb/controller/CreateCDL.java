@@ -22,10 +22,7 @@ import javax.servlet.annotation.MultipartConfig;
 
 
 @MultipartConfig
-/**
- *
- * @author Toni & Tony
- */
+
 public class CreateCDL extends BaseController {
 
 
@@ -49,7 +46,7 @@ public class CreateCDL extends BaseController {
     
         if(lingua.equals("it")||lingua.equals("")){
                 request.setAttribute("lingua","it");
-                res.activate("Createcdl.ftl.html", request, response); 
+                res.activate("createcdl.ftl.html", request, response); 
             }
   
     }
