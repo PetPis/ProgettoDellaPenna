@@ -37,6 +37,17 @@
         <servlet-name>Docenti</servlet-name>
         <url-pattern>/Docenti</url-pattern>
     </servlet-mapping>
+      <servlet>
+        <servlet-name>ProfiloDocente</servlet-name>
+        <servlet-class>courseweb.controller.ProfiloDocente</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ProfiloDocente</servlet-name>
+        <url-pattern>/ProfiloDocente</url-pattern>
+    </servlet-mapping>
+    
+    
+    
     <servlet>
         <servlet-name>Corsi</servlet-name>
         <servlet-class>courseweb.controller.Corsi</servlet-class>
