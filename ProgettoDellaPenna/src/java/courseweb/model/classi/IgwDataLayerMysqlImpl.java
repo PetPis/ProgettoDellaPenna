@@ -49,7 +49,7 @@ import javax.sql.DataSource;
 
 public class IgwDataLayerMysqlImpl extends DataLayerMysqlImpl implements IgwDataLayer {
 
-    private PreparedStatement sCorsiMutuatiByCorso,sCorsiPrerequisitiByCorso,sCorsiModuloByCorso,sDocentiByCorso,sLibriByCorso,sMaterialeByCorso,sCorsiByCDL,sUtentiByGruppo,sServiziByGruppo,sCorsiByDocente,sCorsiByLibro,sGruppiByServizio,sCorsi,sDocenti,sCDL,sCdlByMagistrale,sCdlByTriennale,sUtenteByDocente;
+    private PreparedStatement sCorsiMutuatiByCorso,sCorsiPrerequisitiByCorso,sCorsiModuloByCorso,sDocentiByCorso,sLibriByCorso,sAllCorsi,sMaterialeByCorso,sCorsiByCDL,sUtentiByGruppo,sServiziByGruppo,sCorsiByDocente,sCorsiByLibro,sGruppiByServizio,sCorsi,sDocenti,sCDL,sCdlByMagistrale,sCdlByTriennale,sUtenteByDocente;
     private PreparedStatement sCDLByID,sCorsoByID,sDocenteByID,sDescrizione_itByCorso,sDescrizione_enByCorso,sDublino_itByCorso,sDublino_enByCorso,sMaterialeByID,sLibroByID,sGruppoByID,sUtenteByID,sServizioByID,sLogByID,sCorsiByAnno,sCDLByCorso,Login,sCorsoMutuaByCorso,sCorsiByCDLNoAnno,sAccess;
     
     private PreparedStatement iDocente, iUtente,iCorso,iDocentiCorso,iCDL,iCDLCorso,iColleg_Corso,iDescrizione_it,iDescrizione_en,iDublino_it,iDublino_en,iMateriale,iLibro,iLibri_Corso;
@@ -84,7 +84,8 @@ public class IgwDataLayerMysqlImpl extends DataLayerMysqlImpl implements IgwData
             sUtenteByID=connection.prepareStatement("SELECT * FROM Utente WHERE IDUtente=?");
             sServizioByID=connection.prepareStatement("SELECT * FROM Servizio WHERE IDServizio=?");
             sLogByID=connection.prepareStatement("SELECT * FROM Log WHERE IDLog=?");
-            sCorsiByAnno=connection.prepareStatement("SELECT * FROM Corso WHERE Anno=?");  /*LOOK*/
+            sCorsiByAnno=connection.prepareStatement("SELECT * FROM Corso WHERE Anno=?");
+            sAllCorsi=connection.prepareStatement("SELECT * FROM Corso");
             sCDLByCorso=connection.prepareStatement("SELECT * FROM CDL,Corsi_CDL WHERE CDL.IDCDL=Corsi_CDL.CDL AND Corso=?");
             sCorsoMutuaByCorso=connection.prepareStatement("SELECT * FROM Colleg_Corsi,Corso WHERE This_Corso=IDCorso AND Other_Corso=? AND Tipo='Mutuato'");
            
@@ -894,6 +895,20 @@ public class IgwDataLayerMysqlImpl extends DataLayerMysqlImpl implements IgwData
             }
         }catch (SQLException ex){
             throw new DataLayerException("Unable to load CorsiDelDocente by Docente",ex);
+        }
+        return result;
+    }
+    
+    @Override
+    public List<Corso> getCorsi() throws DataLayerException {
+        List<Corso> result = new ArrayList();
+        try{
+            try (ResultSet rs=sAllCorsi.executeQuery()){
+                while(rs.next())
+                    result.add(getCorso(rs.getInt("IDCorso")));
+            }
+        }catch (SQLException ex){
+            throw new DataLayerException("Unable to load CorsiDelLibro by Docente",ex);
         }
         return result;
     }

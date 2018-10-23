@@ -8,7 +8,7 @@
                     <a href="BackofficeD">BackofficeD</a>
                 </li>
                 <li class="active">
-                    Aggiungi materiale
+                    Aggiungi libro
                 </li>
             </ol>
             <#else>
@@ -17,7 +17,7 @@
                     <a href="Backoffice">Backoffice</a>
                 </li>
                 <li class="active">
-                    Aggiungi materiale
+                    Aggiungi libro
                 </li>
             </ol>
             </#if>
@@ -48,53 +48,69 @@
                 </div>
             </div>
             <div class="col-md-10">
-                <form method="post" action="CreateMateriale" enctype="multipart/form-data">
-                    <div class="row">
-                        <!--Materiali-->
-
-                        <div class="col-md-6">
-                            <h5>Upload materiale</h5>                            
-                            <input type="text" class="form-control" placeholder="Nome materiale" name="nomem">
-                        </div>
-                        <div class="col-md-6">
-                            <h5>File</h5>
-
-                            <input type="file" name="linkm" required/>
-                        </div>
-                    </div>
-                    <br>
+                <form method="post" action="CreateLibro">
                     <div class="row">
                         <div class="col-md-6">
-                            <h5>Descrizione materiale IT</h5>
-                            <textarea rows="5" name="descrizioneitm" class="form-control" placeholder="Inserisci qui descrizione materiale"
-                                      style="height:150px;"></textarea>
+                            <h5>Autore</h5>
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Autore" name="autore">
+                            </div>
                         </div>
                         <div class="col-md-6">
-                            <h5>Descrizione materiale EN</h5>
-                            <textarea rows="5" name="descrizioneenm" class="form-control" placeholder="Write here material description"
-                                      style="height:150px;"></textarea>
+                            <h5>Titolo libro</h5>
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Titolo" name="titolo" required>
+                            </div>
                         </div>
                     </div>
-                    <br>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h5>Volume libro</h5>
+                            <div class="form-group">
+                                <input type="number" class="form-control" placeholder="Volume" name="volume">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <h5>Anno pubblicazione</h5>
+                            <div class="form-group">
+                                <input type="number" class="form-control" placeholder="Anno" name="anno">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h5>Editore</h5>
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Editore" name="editore">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <h5>Link</h5>
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Link" name="link">
+                            </div>
+                        </div>
+                    </div>
+
+                    <hr>
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form-group">
                                 <select class="form-control" name="corso" required>
-                                    <option disabled selected>Seleziona corso...</option>
+                                    <option selected disabled>Seleziona corso</option>
                                     <#list corso as corso>
                                     <option value="${corso.ID}">${corso.nome_it}</option>
                                     </#list>
                                 </select>
                             </div>
+
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <input type="submit" name="crea" value="Creazione materiale" class="btn btn-primary">
-                        </div>
-                    </div>
-            </form>
+                    <input type="submit" name="aggiungi" value="Creazione materiale" class="btn btn-primary">
+                </form>
+            </div>
         </div>
     </div>
-</div>
 </section>

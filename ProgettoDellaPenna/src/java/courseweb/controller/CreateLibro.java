@@ -33,20 +33,20 @@ public class CreateLibro extends BaseController {
     
     private void action_default(HttpServletRequest request, HttpServletResponse response,String lingua) throws IOException, ServletException, TemplateManagerException {
         TemplateResult res = new TemplateResult(getServletContext());
-        request.setAttribute("servlet","LibroNew?");
+        request.setAttribute("servlet","CreateLibro?");
             if(lingua.equals("it")||lingua.equals("")){
             try {
                 request.setAttribute("lingua","it");
                 request.setAttribute("page_title", "Backoffice");
                 
-                request.setAttribute("corso",((IgwDataLayer)request.getAttribute("datalayer")).getCorsiByAnno());
+                request.setAttribute("corso",((IgwDataLayer)request.getAttribute("datalayer")).getCorsi());
                 
 
                 HttpSession s = request.getSession(false);
                 String a = (String) s.getAttribute("username");
                 request.setAttribute("nome",a);
                  
-                res.activate("libronew.ftl.html", request, response);
+                res.activate("createlibro.ftl.html", request, response);
             } catch (DataLayerException ex) {
                 Logger.getLogger(Backoffice.class.getName()).log(Level.SEVERE, "CIAOOOO", ex);
             }
@@ -65,7 +65,7 @@ public class CreateLibro extends BaseController {
             HttpSession s = SecurityLayer.checkSession(request);
             String username=(String)s.getAttribute("username");   
         try {
-            if (((IgwDataLayer)request.getAttribute("datalayer")).getAccessUtente(username,"LibroNew")) {
+            if (((IgwDataLayer)request.getAttribute("datalayer")).getAccessUtente(username,"CreateLibro")) {
             if(request.getParameter("lin")==null){
                 lin="it";}
             else{

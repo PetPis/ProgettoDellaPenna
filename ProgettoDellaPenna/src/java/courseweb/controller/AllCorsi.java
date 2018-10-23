@@ -34,7 +34,7 @@ public class AllCorsi extends BaseController {
 
     private void action_default(HttpServletRequest request, HttpServletResponse response, String lingua) throws IOException, ServletException, TemplateManagerException {
         TemplateResult res = new TemplateResult(getServletContext());
-        request.setAttribute("servlet","Corsianno?");
+        request.setAttribute("servlet","AllCorsi?");
             if(lingua.equals("it")||lingua.equals("")){
             try {
                 request.setAttribute("lingua","it");
@@ -55,7 +55,7 @@ public class AllCorsi extends BaseController {
                 request.setAttribute("nome",a);
                 
                 
-                res.activate("modificacorsi.ftl.html", request, response);
+                res.activate("allcorsi.ftl.html", request, response);
             } catch (DataLayerException ex) {
                 Logger.getLogger(Backoffice.class.getName()).log(Level.SEVERE, "CIAOOOO", ex);
             }
@@ -71,7 +71,7 @@ public class AllCorsi extends BaseController {
             HttpSession s = SecurityLayer.checkSession(request);
             String username=(String)s.getAttribute("username");   
         try {
-            if (((IgwDataLayer)request.getAttribute("datalayer")).getAccessUtente(username,"Corsianno")) {
+            if (((IgwDataLayer)request.getAttribute("datalayer")).getAccessUtente(username,"AllCorsi")) {
             if(request.getParameter("lin")==null){
                 lin="it";}
             else{
@@ -107,7 +107,7 @@ public class AllCorsi extends BaseController {
     private void action_special(HttpServletRequest request, HttpServletResponse response, int id, String lingua) throws TemplateManagerException {
         
                 TemplateResult res = new TemplateResult(getServletContext());
-                request.setAttribute("servlet","Corsianno?lin=it");
+                request.setAttribute("servlet","Allcorsi?");
                 if(lingua.equals("it")||lingua.equals("")){
                 try {
                 request.setAttribute("lingua","it");
@@ -150,7 +150,7 @@ public class AllCorsi extends BaseController {
                 request.setAttribute("nome",a);
                 
                 
-                res.activate("corsianno.ftl.html", request, response);
+                res.activate("allcorsi.ftl.html", request, response);
             } catch (DataLayerException ex) {
                 Logger.getLogger(Backoffice.class.getName()).log(Level.SEVERE,"ciaooo", ex);
             }
