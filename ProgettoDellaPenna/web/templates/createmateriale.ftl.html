@@ -1,0 +1,100 @@
+<section>
+    <!--breadcrumb-->
+    <section id="main_content">
+        <div class="container">
+            <#if docente??>
+            <ol class="breadcrumb"> 
+                <li>
+                    <a href="BackofficeD">BackofficeD</a>
+                </li>
+                <li class="active">
+                    Aggiungi materiale
+                </li>
+            </ol>
+            <#else>
+            <ol class="breadcrumb"> 
+                <li>
+                    <a href="Backoffice">Backoffice</a>
+                </li>
+                <li class="active">
+                    Aggiungi materiale
+                </li>
+            </ol>
+            </#if>
+    </section>
+
+    <div class="container-fluid">
+        <div class="row content">
+            <div class="col-md-2 sidenav sfondoGrigio">
+                <br>
+
+                <h3>CREA</h3>
+                <div class="sidemenu">
+                    <ul class="nav nav-pills nav-stacked">
+                        <li><a href="CreateCorso">Crea Corso</a></li>
+                        <li><a href="CreateCDL">Crea CDL</a></li>
+                        <li><a href="CreateDocente">Crea Docente</a></li>
+                        <li><a href="CreateAdmin">Crea Amministratore</a></li>
+                        <li><a href="CreateMateriale">Nuovo Materiale</a></li>
+                        <li><a href="CreateLibro">Nuovo Libro</a></li>
+                    </ul>
+                    <br>
+                    <h3>MODIFICA</h3>
+                    <ul class="nav nav-pills nav-stacked">
+                        <li><a href="ModificaCDL">Modifica CDL</a></li>
+                        <li><a href="AllCorsi">Modifica Corso</a></li>
+                        <li><a href="ModificaDocente">Modifica Docente</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-10">
+                <form method="post" action="MaterialeNew" enctype="multipart/form-data">
+                    <div class="row">
+                        <!--Materiali-->
+
+                        <div class="col-md-6">
+                            <h5>Upload materiale</h5>                            
+                            <input type="text" class="form-control" placeholder="Nome materiale" name="nomem">
+                        </div>
+                        <div class="col-md-6">
+                            <h5>File</h5>
+
+                            <input type="file" name="linkm" required/>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h5>Descrizione materiale IT</h5>
+                            <textarea rows="5" name="descrizioneitm" class="form-control" placeholder="Inserisci qui descrizione materiale"
+                                      style="height:150px;"></textarea>
+                        </div>
+                        <div class="col-md-6">
+                            <h5>Descrizione materiale EN</h5>
+                            <textarea rows="5" name="descrizioneenm" class="form-control" placeholder="Write here material description"
+                                      style="height:150px;"></textarea>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <select class="form-control" name="corso" required>
+                                    <option disabled selected>Seleziona corso...</option>
+                                    <#list corso as corso>
+                                    <option value="${corso.ID}">${corso.nome_it}</option>
+                                    </#list>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <input type="submit" name="crea" value="Creazione materiale" class="btn btn-primary">
+                        </div>
+                    </div>
+            </form>
+        </div>
+    </div>
+</div>
+</section>

@@ -54,7 +54,7 @@ public class CreateCorso extends BaseController {
               
             if(lingua.equals("it")||lingua.equals("")){
                 request.setAttribute("lingua","it");
-                res.activate("create_corso.ftl.html", request, response); 
+                res.activate("createcorso.ftl.html", request, response); 
             }
         } catch (DataLayerException ex) {
             Logger.getLogger(CreateCorso.class.getName()).log(Level.SEVERE, "CIAONE", ex);

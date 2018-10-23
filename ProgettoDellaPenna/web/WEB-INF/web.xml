@@ -6,6 +6,62 @@
     </context-param>
     
     <servlet>
+        <servlet-name>CreateLibro</servlet-name>
+        <servlet-class>courseweb.controller.CreateLibro</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CreateLibro</servlet-name>
+        <url-pattern>/CreateLibro</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>AllCorsi</servlet-name>
+        <servlet-class>courseweb.controller.AllCorsi</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AllCorsi</servlet-name>
+        <url-pattern>/AllCorsi</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>ModificaCorso</servlet-name>
+        <servlet-class>courseweb.controller.ModificaCorso</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ModificaCorso</servlet-name>
+        <url-pattern>/ModificaCorso</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>CreateMateriale</servlet-name>
+        <servlet-class>courseweb.controller.CreateMateriale</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CreateMateriale</servlet-name>
+        <url-pattern>/CreateMateriale</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>CreateAdmin</servlet-name>
+        <servlet-class>courseweb.controller.CreateAdmin</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CreateAdmin</servlet-name>
+        <url-pattern>/CreateAdmin</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>CreateDocente</servlet-name>
+        <servlet-class>courseweb.controller.CreateDocente</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CreateDocente</servlet-name>
+        <url-pattern>/CreateDocente</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>CreateCorso</servlet-name>
+        <servlet-class>courseweb.controller.CreateCorso</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CreateCorso</servlet-name>
+        <url-pattern>/CreateCorso</url-pattern>
+    </servlet-mapping>
+    <servlet>
         <servlet-name>CreateCDL</servlet-name>
         <servlet-class>courseweb.controller.CreateCDL</servlet-class>
     </servlet>

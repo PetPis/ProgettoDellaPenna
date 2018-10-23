@@ -1,0 +1,79 @@
+<section>
+    <!--breadcrumb-->
+    <section id="main_content">
+        <div class="container">
+            <ol class="breadcrumb">
+                <li><a href="Backoffice?lin=it">Backoffice</a></li>
+                <li class="active"> Registra nuovo admin</li>
+            </ol>
+    </section>
+
+    <div class="container-fluid">
+        <div class="row content">
+            <div class="col-md-2 sidenav sfondoGrigio">
+                <br>
+
+                <h3>CREA</h3>
+                <div class="sidemenu">
+                    <ul class="nav nav-pills nav-stacked">
+                        <li><a href="CreateCorso">Crea Corso</a></li>
+                        <li><a href="CreateCDL">Crea CDL</a></li>
+                        <li><a href="CreateDocente">Crea Docente</a></li>
+                        <li><a href="CreateAdmin">Crea Amministratore</a></li>
+                        <li><a href="CreateMateriale">Nuovo Materiale</a></li>
+                        <li><a href="CreateLibro">Nuovo Libro</a></li>
+                    </ul>
+                    <br>
+                    <h3>MODIFICA</h3>
+                    <ul class="nav nav-pills nav-stacked">
+                        <li><a href="ModificaCDL">Modifica CDL</a></li>
+                        <li><a href="AllCorsi">Modifica Corso</a></li>
+                        <li><a href="ModificaDocente">Modifica Docente</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-10">
+                <form method="post" action="CreateAdmin">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h5>Username Admin</h5>
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Nome" name="username" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h5>Password</h5>
+                            <div class="form-group">
+                                <div class="td">
+                                    <input type="password" class="form-control" placeholder=" password" name="password" required>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="col-md-6 col-sm-6">
+                            <h5>Ripeti Password</h5>
+                            <div class="form-group">
+                                <div class="td">
+                                    <input type="password" class="form-control"  placeholder="Ripeti password" onChange="checkPasswordMatch();"
+                                           name="repassword" required>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                    <hr>
+
+                    <input type="submit" name="registra" value="Registra admin" class="btn btn-primary">
+
+                </form>
+
+            </div>
+        </div>
+    </div>
+</section>

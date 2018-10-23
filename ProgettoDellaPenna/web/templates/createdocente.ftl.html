@@ -4,7 +4,7 @@
         <div class="container">
             <ol class="breadcrumb">
                 <li><a href="Backoffice?lin=it">Backoffice</a></li>
-                <li class="active"> Crea Corso di Larea</li>
+                <li class="active"> Registra nuovo docente</li>
             </ol>
     </section>
 
@@ -33,90 +33,108 @@
                 </div>
             </div>
             <div class="col-md-10">
-
-                <form method="post" action="CreateCDL" enctype="multipart/form-data">
-
+                <form method="post" action="CreateDocente" enctype="multipart/form-data">
                     <div class="row">
                         <div class="col-md-6">
-                            <h5>Nome CDL</h5>
-                            <div class="form-group"> 
-                                <input type="text" class="form-control" placeholder="Nome corso di laurea" name="nome" required>
+                            <h5>Nome del docente</h5>
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Nome" name="nome" required>
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <h5>Nome CDL EN</h5>
+                            <h5>Cognome del docente</h5>
                             <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Nome corso di laurea EN" name="nome_en" required>
+                                <input type="text" class="form-control" placeholder="Cognome" name="cognome" required>
                             </div>
                         </div>
                     </div>
 
                     <div class="row">
                         <div class="col-md-6">
-                            <h5>Sigla corso di laurea IT</h5>
+                            <h5>Email - Optional</h5>
                             <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Sigla  IT" name="abbr_it" maxlength="5" required>
+                                <input type="email" class="form-control" placeholder="Email" style="margin-bottom:5px;" name="email">
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <h5>Sigla corso di laurea EN</h5>
+                            <h5>Telefono - Optional</h5>
                             <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Sigla  EN" name="abbr_en" maxlength="5" required>
+                                <input type="tel" class="form-control" placeholder="Numero Telefonico" style="margin-bottom:5px;" name="telefono">
                             </div>
                         </div>
                     </div>
 
-
-
                     <div class="row">
                         <div class="col-md-6">
-                            <h5>Cfu corso di laurea</h5>
+                            <h5>Uffico - Optional</h5>
                             <div class="form-group">
-                                <input type="number" class="form-control" placeholder="Cfu" name="cfu" min=1>
+                                <input type="text" class="form-control" placeholder="Ufficio n&#186" style="margin-bottom:5px;" name="ufficio">
+
                             </div>
                         </div>
-
                         <div class="col-md-6">
-                            <h5>Cdl Magistrale?</h5>
-                            <input type="radio" name="mag" value="yes">Si <br>
-                            <input type="radio" name="mag" value="no" checked> No
+                            <h5>Specializzazione - Optional</h5>
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Specializzazione" style="margin-bottom:5px;" name="specializzazione">    
+                            </div>
                         </div>
-
                     </div>
 
-
                     <div class="row">
+                        <div class="col-md-6">
+                            <h5>Ricevimento - Optional</h5>
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Giorno  Ora inizio-Ora Fine" style="margin-bottom:5px;" name="ricevimento">
+                            </div>
+                        </div>
+                    </div>
+
+                    <hr>
+                    <div class="row"> 
                         <div class="col-md-12">
-                            <h4>Descrizione CDL In Italiano - Opzionale</h4>
                             <div class="form-group">
-                                <textarea rows="5" id="mytextarea" name="descrizione_it" class="form-control" placeholder="Inserisci qui la descrizione"
-                                          style="height:150px;"></textarea>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-md-12">
-                            <h4>Descrizione CDL In Inglese - Opzionale</h4>
-                            <div class="form-group">
-                                <textarea rows="5" id="mytextarea" name="descrizione_en" class="form-control" placeholder="Write here your description"
-                                          style="height:150px;"></textarea>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-md-12">
-                            <h4>Upload Immagine - Opzionale</h4>
-                            <div class="form-group">
-                                <input type="file" name="immagine" onchange="ValidateImg(this)" />
+                                <h4>Ricerche docente - Optional</h4>
+                                <textarea rows="5" maxlength="50" id="mytextarea" name="ricerche" class="form-control" placeholder="Scrivi qui la tua pagina di ricerche" style="height:150px;"></textarea>
                             </div>
                         </div>
                     </div>
                     <hr>
-                    <input type="submit" name="crea" value="Crea corso di laurea" class="btn btn-primary" id="submit-apply">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <h4>Pubblicazioni docente - Optional</h4>
+                                <textarea rows="5" maxlength="50"  name="pubblicazioni" class="form-control" placeholder="Scrivi qui la tua pagina di pubblicazioni" style="height:150px;"></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <hr>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <h4>Upload curriculum - Optional</h4>
+                                <input type="file" name="curriculum" onchange="ValidateCurr(this)"/>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <h4>Upload Immagine - Optional</h4>
+                                <input type="file" name="immagine" onchange="ValidateImg(this)"/>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+
+                    <input type="submit" name="registra" value="Registra docente" class="btn btn-primary">
 
                 </form>
+
             </div>
         </div>
     </div>

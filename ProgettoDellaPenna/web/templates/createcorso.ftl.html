@@ -1,0 +1,541 @@
+<section>
+    <!--breadcrumb-->
+    <section id="main_content">
+        <div class="container">
+            <ol class="breadcrumb">
+                <li><a href="Backoffice?lin=it">Backoffice</a></li>
+                <li class="active"> Crea Corso</li>
+            </ol>
+    </section>
+
+    <div class="container-fluid">
+        <div class="row content">
+            <div class="col-md-2 sidenav sfondoGrigio">
+                <br>
+
+                <h3>CREA</h3>
+                <div class="sidemenu">
+                    <ul class="nav nav-pills nav-stacked">
+                        <li><a href="CreateCorso">Crea Corso</a></li>
+                        <li><a href="CreateCDL">Crea CDL</a></li>
+                        <li><a href="CreateDocente">Crea Docente</a></li>
+                        <li><a href="CreateAdmin">Crea Amministratore</a></li>
+                        <li><a href="CreateMateriale">Nuovo Materiale</a></li>
+                        <li><a href="CreateLibro">Nuovo Libro</a></li>
+                    </ul>
+                    <br>
+                    <h3>MODIFICA</h3>
+                    <ul class="nav nav-pills nav-stacked">
+                        <li><a href="ModificaCDL">Modifica CDL</a></li>
+                        <li><a href="AllCorsi">Modifica Corso</a></li>
+                        <li><a href="ModificaDocente">Modifica Docente</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-10">
+
+                <form method="post" action="CreateCorso">
+                    
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h5>Nome Del Corso</h5>
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Nome Corso" name="nome" autofocus required>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <h5>Nome Del Corso EN - Optional</h5>
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Nome Corso EN" name="nome_en" required>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h5>SSD - Optional</h5>
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="SSD" name="ssd">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <h5>Lingua - Optional</h5>
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Lingua" name="linguac">
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h5>Semestre - Optional</h5>
+                            <div class="form-group">                               
+                                <select class="form-control" name="semestre">
+                                    <option value="" selected>Seleziona semestre corso...</option>
+                                    <option value="1">Primo Semestre</option>
+                                    <option value="2">Secondo Semestre</option>
+                                </select>                         
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <h5>CFU Del Corso - Optional</h5>
+                            <div class="form-group">
+                                <input type="number" class="form-control" placeholder="CFU" name="cfu" min=1>                                
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h5>Tipologia CFU - Optional</h5>
+                            <div class="form-group">
+                                <select class="form-control" name="tipologia">
+                                    <option value="n" selected>Seleziona tipologia cfu...</option>
+                                    <option value="A">A</option>
+                                    <option value="B">B</option>
+                                </select>                               
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <hr>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div>
+                                <h4>Associa i docenti al corso</h4>
+                                <div>
+                                    <select  name="docenti">
+                                        <#list docenti?sort_by( "nome") as docente>
+                                        <option value="${docente.IDDocente}">${docente.nome} ${docente.cognome}</option>
+                                        </#list>
+
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div>
+                                <h4>Associa i cdl al corso</h4>
+                                <div>
+
+                                    <select name="cdl" onchange="CheckSelect(document.getElementsByName('cdl')[0])" required>
+                                        <#list cdl?sort_by( "nome_it") as cdl>
+                                        <option value="${cdl.IDCDL}">${cdl.nome_it}</option>
+                                        </#list>
+
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div>
+                                <h4>Corsi mutuati</h4>
+                                <div>
+                                    <select name="mutuati">
+                                        <#list corsi as corsi>
+                                        <option value="${corsi.ID}">${corsi.nome_it}</option>
+                                        </#list>
+
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div>
+                                <h4>Corsi Propedeudici</h4>
+                                <div>
+                                    <select name="propedeudici">
+
+
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div>
+                                <h4>Corsi Modulo</h4>
+                                <div >
+                                    <select name="modulo">
+
+
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <hr>
+
+
+
+
+                    <div class="row">
+                        <!--IT DESCRIZIONE-->
+
+                        <div class="panel-group" id="accordion">
+
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapse1">Informazioni supplementari corso - Optional
+
+                                        </a>
+                                    </h4>
+                                </div>
+                                <div id="collapse1" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        <h4>Descrizione del corso</h4>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <h5>Prerequisiti Del Corso</h5>
+                                                    <textarea rows="5" id="mytextarea" name="prerequisiti" class="form-control" placeholder="Inserisci qui i prerequisiti del corso"
+                                                              style="height:150px;"></textarea>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <h5>Obiettivi Del Corso</h5>
+                                                <div class="form-group">
+                                                    <textarea rows="5" id="mytextarea" name="obiettivi" class="form-control" placeholder="Inserisci qui gli obiettivi del corso"
+                                                              style="height:150px;"></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <h5>Modalit&#224 D'Esame Del Corso</h5>
+                                                <div class="form-group">
+                                                    <textarea rows="5" id="mytextarea" name="modesa" class="form-control" placeholder="Inserisci qui le modalit&#224 di esame del corso"
+                                                              style="height:150px;"></textarea>
+
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <h5>Modalit&#224 Di Insegnamento Del Corso</h5>
+                                                <div class="form-group">
+                                                    <textarea rows="5" id="mytextarea" name="modins" class="form-control" placeholder="Inserisci qui le modalit&#224 di insegnamento del corso"
+                                                              style="height:150px;"></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-md-6 col-sm-6">
+                                                <h5>Sillabo</h5>
+                                                <div class="form-group">
+                                                    <textarea rows="5" id="mytextarea" name="sillabo" class="form-control" placeholder="Inserisci qui il sillabo del corso"
+                                                              style="height:150px;"></textarea>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 col-sm-6">
+                                                <h5>Note extra</h5>
+                                                <div class="form-group">
+                                                    <textarea rows="5" id="mytextarea" name="note" class="form-control" placeholder="Inserisci qui altre informazioni utili del corso"
+                                                              style="height:150px;"></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <h4>Link esterni</h4>
+                                            </div>
+                                            <div class="col-md-4 col-sm-4">
+                                                <h5>Homepage</h5>
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control" placeholder="Link Homepage" name="homepage">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4 col-sm-4">
+                                                <h5>Forum</h5>
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control" placeholder="Link Forum" name="forum">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4 col-sm-4">
+                                                <h5>Risorse esterne</h5>
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control" placeholder="Link Risorse esterne" name="risorse">
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="row">
+                        <!--EN DESCRIZIONE-->
+
+                        <div class="panel-group" id="accordion">
+
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapse2">Informazioni supplementari corso (EN Version) - Optional
+                                        </a>
+                                    </h4>
+                                </div>
+                                <div id="collapse2" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        <h4>Descrizione del corso EN</h4>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <h5>Prerequisiti Del Corso EN</h5>
+                                                <div class="form-group">
+                                                    <div class="form-group">
+                                                        <textarea rows="5" id="mytextarea" name="prerequisitien" class="form-control" placeholder="Write here course's prerequisites"
+                                                                  style="height:150px;"></textarea>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <h5>Obiettivi Del Corso EN</h5>
+                                                <div class="form-group">
+                                                    <textarea rows="5" id="mytextarea" name="obiettivien" class="form-control" placeholder="Write here course's targets"
+                                                              style="height:150px;"></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+
+
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <h5>Modalit&#224 D'Esame Del Corso EN</h5>
+                                                <div class="form-group">
+                                                    <textarea rows="5" id="mytextarea" name="modesaen" class="form-control" placeholder="Write here course's exam modes"
+                                                              style="height:150px;"></textarea>
+
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-6">
+                                                <h5>Modalit&#224 Di Insegnamento Del Corso EN</h5>
+                                                <div class="form-group">
+                                                    <textarea rows="5" id="mytextarea" name="modinsen" class="form-control" placeholder="Write here course's teaching methods"
+                                                              style="height:150px;"></textarea>
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+
+
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <h5>Sillabo EN</h5>
+                                                <div class="form-group">
+                                                    <textarea rows="5" id="mytextarea" name="sillaboen" class="form-control" placeholder="Write here course's sillabus"
+                                                              style="height:150px;"></textarea>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-6">
+                                                <h5>Note extra EN</h5>
+                                                <div class="form-group">
+                                                    <textarea rows="5" id="mytextarea" name="noteen" class="form-control" placeholder="Write here other information about the course"
+                                                              style="height:150px;"></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <h4>Link esterni</h4>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <h5>Homepage</h5>
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control" placeholder="Link Homepage" name="homepageen">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <h5>Forum</h5>
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control" placeholder="Link Forum" name="forumen">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <h5>Risorse esterne</h5>
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control" placeholder="Link Risorse esterne" name="risorseen">
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+
+
+                    <div class="row">
+                        <!--SILLABO IT-->
+
+                        <div class="panel-group" id="accordion">
+
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapse4">Dublino - Optional
+                                        </a>
+                                    </h4>
+                                </div>
+                                <div id="collapse4" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        <h4></h4>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <h5>Knowledge</h5>
+                                                <div class="form-group">
+                                                    <textarea rows="5" id="mytextarea" name="prerequisitien" class="form-control" style="height:150px;"></textarea>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-6">
+                                                <h5>Application</h5>
+                                                <div class="form-group">
+                                                    <textarea rows="5" id="mytextarea" name="application" class="form-control" style="height:150px;"></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+
+                                        <div class="row">
+                                            <div class="col-md-6 col-sm-6">
+                                                <h5>Evaluation</h5>
+                                                <div class="form-group">
+                                                    <textarea rows="5" id="mytextarea" name="evaluation" class="form-control" style="height:150px;"></textarea>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-6 col-sm-6">
+                                                <h5>Communication</h5>
+                                                <div class="form-group">
+                                                    <textarea rows="5" id="mytextarea" name="communication" class="form-control" style="height:150px;"></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="row">
+                                            <div class="col-md-6 col-sm-6">
+                                                <h5>Lifelong</h5>
+                                                <div class="form-group">
+                                                        <textarea rows="5" id="mytextarea" name="lifelong" class="form-control" style="height:150px;"></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="row">
+                        <!--SILLABO EN-->
+
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapse5">Dublino EN - Optional
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapse5" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <h4></h4>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <h5>Knowledge EN</h5>
+                                            <div class="form-group">
+                                                <textarea rows="5" id="mytextarea" name="knoledgeen" class="form-control" style="height:150px;"></textarea>
+                                            </div>
+                                        </div>
+                                   
+                                        <div class="col-md-6">
+                                            <h5>Application EN</h5>
+                                            <div class="form-group">
+                                                <textarea rows="5" id="mytextarea" name="applicationen" class="form-control" style="height:150px;"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <h5>Evaluation EN</h5>
+                                            <div class="form-group">
+                                                <textarea rows="5" id="mytextarea" name="evaluetionen" class="form-control" style="height:150px;"></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <h5>Communication EN</h5>
+                                            <div class="form-group">
+                                                <textarea rows="5" id="mytextarea" name="communicationen" class="form-control" style="height:150px;"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <h5>Lifelong EN</h5>
+                                            <div class="form-group">
+                                                <textarea rows="5" id="mytextarea" name="lifelongen" class="form-control" style="height:150px;"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <hr>
+                    <input type="submit" name="crea" value="Crea Corso" class="btn btn-primary" id="submit-apply">
+
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
