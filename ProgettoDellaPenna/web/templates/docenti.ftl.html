@@ -18,26 +18,34 @@
             <li class="active">Lista Docenti</li>
         </ol>
 
-
+        
         <div id="table" class="row">
+
+            <#list docenti as docente>
+
             <div class="col-md-6 col-sm-6">
-                <div class="box_style_3">
-                    <p><img id="img-docente" src="img/FilippoMignosi.jpg" alt="Teacher" class="img-doc"></p>
-                    <h4 class="p-title">Filippo Mignosi ${docente.cognome} <br> <small>${docente.specializzazione}</small></h4>
+                
+                    <p><img id="img-docente" src="${docente.immagine}" alt="Teacher" class="img-doc img img-rounded"></p>
+                    <h4 class="p-title">${docente.nome} ${docente.cognome} <br> <small>${docente.specializzazione}</small></h4>
                     <p></p>
-                    <ul class="social_team">
-                                    <li><a href="https://www.facebook.com"><img id="social" src="img/Facebook.png"/></a></li>
-                                    <li><a href="https://www.twitter.com"><img id="social" src="img/Twitter.png"/></a></li>
-                                    <li><a href="https://www.google.com/gmail/"><img id="social" src="img/Gmail.png"/></a></li>
-                                    
-                    </ul>    
-                    <br>
-                 <a href="dettaglidocente?k=${docente.IDDocente}&lin=it" class="button_profile">Profilo</a>           
-                               
+
+
                     
+                        <ul class="social_team">
+                            <li><a href="https://www.facebook.com"><img id="social" src="img/Facebook.png"/></a></li>
+                            <li><a href="https://www.twitter.com"><img id="social" src="img/Twitter.png"/></a></li>
+                            <li><a href="https://www.google.com/gmail/"><img id="social" src="img/Gmail.png"/></a></li>
+
+                        </ul>    
+                        <br>
+                        <a href="dettaglidocente?k=${docente.IDDocente}&lin=it" class="button_profile">Profilo</a>           
                     
-                    
-                </div>
-            </div><!-- End row -->    
-        </div><!-- End container -->
+                
+            </div>
+        </#list>    
+
+
+
+    </div><!-- End row -->    
+</div><!-- End container -->
 </section><!-- End main_content-->

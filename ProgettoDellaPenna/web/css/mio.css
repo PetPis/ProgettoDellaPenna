@@ -142,24 +142,6 @@ ul.submenu-col li a:hover {
     margin-top: 30px
 }
 
-#search {
-    position: relative;
-    float: right;
-    top: -20px;
-    width: 120px;
-    box-sizing: border-box;
-    border: 2px solid #2a97d6;
-    border-radius: 20px;
-    font-size: 16px;
-    background-color: white;
-    background-position: 10px 10px;
-    background-repeat: no-repeat;
-    padding: 10px 20px 12px 40px;
-    -webkit-transition: width 0.4s ease-in-out;
-    transition: width 0.4s ease-in-out;
-    margin-bottom: 2em;
-}
-
 .add_bottom_45 {
     margin-bottom: 45px;
 }
@@ -171,18 +153,18 @@ ul.submenu-col li a:hover {
 }
 
 
-.box_style_3 {
+/*.box_teachers {
     position: relative;
     margin: 0 0 2em;
     text-align: center;
     background: #fff;
     padding: 30px 30px 10px;
     border: 2px solid #c4c4c4;
-}
+}*/
 
 #img-docente {
-    width: 30%;
-    height: 30%;
+    width:50%;
+    height: 50%;
 }
 
 .img-doc {
