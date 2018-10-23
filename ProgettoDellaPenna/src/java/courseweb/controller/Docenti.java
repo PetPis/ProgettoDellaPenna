@@ -1,7 +1,5 @@
 package courseweb.controller;
 
-import courseweb.controller.data.DataLayerException;
-import courseweb.model.interfacce.IgwDataLayer;
 import courseweb.view.FailureResult;
 import courseweb.view.TemplateManagerException;
 import courseweb.view.TemplateResult;
@@ -21,36 +19,32 @@ public class Docenti extends BaseController {
         }
     }
 
-    private void action_default(HttpServletRequest request, HttpServletResponse response, String lingua) throws IOException, ServletException, TemplateManagerException {
-        try {
-            TemplateResult res = new TemplateResult(getServletContext());
-
-            request.setAttribute("docenti", ((IgwDataLayer) request.getAttribute("datalayer")).getDocente());
-            request.setAttribute("servlet", "listdocenti?");
-            request.setAttribute("change", "y");
-            HttpSession session = request.getSession(false);
-            if (session != null && request.isRequestedSessionIdValid()) {
-                String a = (String) session.getAttribute("username");
-                request.setAttribute("nome", a);
-                boolean doc = (boolean) session.getAttribute("docente");
-                if (doc == true) {
-                    int id = (int) session.getAttribute("docenteid");
-                    request.setAttribute("docente", id);
-                }
+    private void action_default(HttpServletRequest request, HttpServletResponse response,String lingua) throws IOException, ServletException, TemplateManagerException {
+        TemplateResult res = new TemplateResult(getServletContext());
+        
+        HttpSession session = request.getSession(false);
+        if (session != null && request.isRequestedSessionIdValid()) {
+            String a = (String) session.getAttribute("username");
+            request.setAttribute("nome", a);
+            boolean doc = (boolean) session.getAttribute("docente");
+            if (doc == true) {
+                int id = (int) session.getAttribute("docenteid");
+                request.setAttribute("docente", id);
             }
-            if (lingua.equals("it") || lingua.equals("")) {
-                request.setAttribute("lingua", "it");
-                request.setAttribute("page_title", "Lista Docenti");
-                res.activate("docenti.ftl.html", request, response);
-            } else {
-                request.setAttribute("lingua", "en");
-                request.setAttribute("page_title", "Teachers List");
+        }
+        
+        request.setAttribute("servlet", "Docenti?");
+        request.setAttribute("change", "y");
+        if(lingua.equals("it")||lingua.equals("")){
+                request.setAttribute("lingua","it");
+                request.setAttribute("page_title", "Docenti");
+                res.activate("docenti.ftl.html", request, response); 
+            }
+            else{
+                request.setAttribute("lingua","en");
+                request.setAttribute("page_title", "Teachers");
                 res.activate("docenti_en.ftl.html", request, response);
             }
-        } catch (DataLayerException ex) {
-            request.setAttribute("message", "Data access exception: " + ex.getMessage());
-            action_error(request, response);
-        }
     }
 
     @Override
@@ -58,12 +52,11 @@ public class Docenti extends BaseController {
             throws ServletException {
         String lin;
         try {
-            if (request.getParameter("lin") == null) {
-                lin = "it";
-            } else {
-                lin = request.getParameter("lin");
-            }
-            action_default(request, response, lin);
+            if(request.getParameter("lin")==null)
+                lin="it";
+            else
+                lin=request.getParameter("lin");
+            action_default(request, response,lin);
 
         } catch (IOException ex) {
             request.setAttribute("exception", ex);

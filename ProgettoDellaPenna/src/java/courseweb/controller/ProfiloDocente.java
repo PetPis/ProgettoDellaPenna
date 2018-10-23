@@ -17,7 +17,7 @@ import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 
 
-public class DetailsDocente extends BaseController {
+public class ProfiloDocente extends BaseController {
 
     private void action_error(HttpServletRequest request, HttpServletResponse response) {
         if (request.getAttribute("exception") != null) {
@@ -26,7 +26,7 @@ public class DetailsDocente extends BaseController {
             (new FailureResult(getServletContext())).activate((String) request.getAttribute("message"), request, response);
         }
     }
-
+    
     private void action_default(HttpServletRequest request, HttpServletResponse response, int id, String lingua) throws IOException, ServletException, TemplateManagerException {
         try {
             TemplateResult res = new TemplateResult(getServletContext());
@@ -86,7 +86,7 @@ public class DetailsDocente extends BaseController {
             action_error(request, response);
                
         }
-    }
+    } 
 
     /**
      * Returns a short description of the servlet.
