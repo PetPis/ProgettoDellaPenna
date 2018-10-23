@@ -172,7 +172,7 @@ ul.submenu-col li a:hover {
     -moz-box-shadow: 0 0 0 5px #d3edd6;
     -webkit-box-shadow: 0 0 0 5px #d3edd6;
     box-shadow: 0 0 0 5px #ededed;
-    margin: auto; 
+    margin-top: 100px;
 }
 
 .p-title {

@@ -3,9 +3,106 @@
         <div class="row">
             <div class="col-md-10 col-md-offset-1 text-center">
                 <h1>Insegnanti</h1>
-                <p class="lead"></p>
             </div>
         </div><!-- End row -->
     </div><!-- End container -->
-    <div class="divider_top"></div>
 </section><!-- End sub-header -->
+
+
+
+
+
+
+<!-- rivedere classe main_content-->
+<section>
+    <div class="container">
+
+        <ol class="breadcrumb">
+            <li><a href="Home?lin=it">Home</a></li>
+            <li><a href="Docenti?lin=it">Lista Docenti</a></li>
+            <li class="active">${docente.nome} ${docente.cognome}</li>
+        </ol>
+
+
+        <div class="row">
+            <div class="col-md-4">
+                <div class="box_docente">
+                    <p class="text-center"><img id="img-docente" src="${docente.immagine}" alt="Teacher" class="img-doc img img-rounded"></p> 
+                    <br>
+                    <ul type="none">
+                        <li>Nome<strong class="pull-right">${docente.nome} ${docente.cognome}</strong> </li>
+                        <li>Specializzazione <strong class="pull-right">${docente.specializzazione}</strong></li>
+                        <li>Email<a href="mailto:${docente.email}" target="top"> <strong class="pull-right">${docente.email}</strong></a></li>
+                        <li>Ufficio<strong class="pull-right">${docente.ufficio}</strong></li>
+                        <li>Telefono<strong class="pull-right">${docente.telefono}</strong></li>
+                        <li>Ricevimento<strong class="pull-right">${docente.ricevimento}</strong></li>
+                        <li>Curriculum<strong class="pull-right"><a <#if docente.curriculum??> href="download?k=${docente.curriculum}" <#else> href="#" </#if> target="_self"><i class="fa fa-arrow-circle-down" aria-hidden="true"></i></a></strong></li>
+                    </ul>
+
+
+
+                </div><!--End box-->
+            </div>
+
+            <div class="col-md-8">
+
+
+                <ul class="nav nav-tabs">
+                    <li class="active"><a data-toggle="tab" href="#tab1">Ricerche</a></li>
+                    <li><a data-toggle="tab" href="#tab2">Pubblicazioni</a></li>
+                    <li><a data-toggle="tab" href="#tab3">Insegnamenti attivi</a></li>
+                </ul>
+
+                <div class="tab-content">
+                    <div id="tab1" class="tab-pane fade in active">
+                        <#noautoesc>
+                        ${docente.ricerche}
+                        </#noautoesc>
+                    </div>
+
+                    
+                    <div id="tab2" class="tab-pane fade">
+                        <#noautoesc>
+                        ${docente.pubblicazione}
+                        </#noautoesc>
+                    </div>
+
+                    
+                    <div id="tab3" class="tab-pane fade">
+                        <div class="table-responsive">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Nome</th>
+                                        <th>SSD</th>
+                                        <th>CFU</th>
+                                        <th>Lingua</th>
+                                        <th>Semestre</th>
+                                        <th>CDL</th>
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                    <#list docentecorsi as docentecorsi>
+                                    <tr>
+                                        <td><a href="DetailsCorso?n=${docentecorsi.ID}&lin=it"><#if docentecorsi.nome_it?trim?has_content> ${docentecorsi.nome_it} <#else> ${docentecorso.nome_en} </#if></a></td>
+
+                                        <td>${docentecorsi.SSD}</td>
+                                        <td>${docentecorsi.cfu}</td>
+                                        <td>${docentecorsi.lingua}</td>
+                                        <td>${docentecorsi.semestre}</td>
+                                        <td><#list docentecorsi.CDL as cdl>
+                                            <#if cdl.abbr_it?trim?has_content>${cdl.abbr_it}<#else>${cdl.abbr_en}</#if><#if cdl?has_next>,&nbsp&nbsp</#if>
+                                            </#list></td>
+
+                                    </tr>
+                                    </#list>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>       
+</section>

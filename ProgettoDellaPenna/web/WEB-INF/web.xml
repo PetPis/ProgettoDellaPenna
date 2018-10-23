@@ -94,12 +94,12 @@
         <url-pattern>/Docenti</url-pattern>
     </servlet-mapping>
       <servlet>
-        <servlet-name>ProfiloDocente</servlet-name>
-        <servlet-class>courseweb.controller.ProfiloDocente</servlet-class>
+        <servlet-name>DettagliDocente</servlet-name>
+        <servlet-class>courseweb.controller.DetailsDocente</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>ProfiloDocente</servlet-name>
-        <url-pattern>/ProfiloDocente</url-pattern>
+        <servlet-name>DettagliDocente</servlet-name>
+        <url-pattern>/DettagliDocente</url-pattern>
     </servlet-mapping>
     
     
