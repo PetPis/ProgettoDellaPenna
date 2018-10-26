@@ -2,6 +2,7 @@ package courseweb.controller;
 
 import courseweb.controller.data.DataLayerException;
 import courseweb.controller.security.SecurityLayer;
+import courseweb.model.interfacce.Docente;
 import courseweb.model.interfacce.IgwDataLayer;
 import courseweb.model.interfacce.Libro;
 import courseweb.view.FailureResult;
@@ -18,7 +19,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 
-public class CreateLibro extends BaseController {
+
+public class CreateLibroD extends BaseController {
     
 
     private void action_error(HttpServletRequest request, HttpServletResponse response) {
@@ -33,20 +35,26 @@ public class CreateLibro extends BaseController {
     
     private void action_default(HttpServletRequest request, HttpServletResponse response,String lingua) throws IOException, ServletException, TemplateManagerException {
         TemplateResult res = new TemplateResult(getServletContext());
-        request.setAttribute("servlet","CreateLibro?");
+        request.setAttribute("servlet","LibroNewD?");
             if(lingua.equals("it")||lingua.equals("")){
             try {
                 request.setAttribute("lingua","it");
                 request.setAttribute("page_title", "Backoffice");
                 
-                request.setAttribute("corso",((IgwDataLayer)request.getAttribute("datalayer")).getCorsiByAnno());
-                
-
                 HttpSession s = request.getSession(false);
                 String a = (String) s.getAttribute("username");
                 request.setAttribute("nome",a);
+                
+                String b=request.getSession().getId();
+                request.setAttribute("session_id",b);
+                
+                int id=(int) s.getAttribute("docenteid");
+                
+                Docente docente=((IgwDataLayer)request.getAttribute("datalayer")).getDocente(id);
+                
+                request.setAttribute("corso",((IgwDataLayer)request.getAttribute("datalayer")).getCorsiDelDocente(docente));
                  
-                res.activate("createlibro.ftl.html", request, response);
+                res.activate("libronewD.ftl.html", request, response);
             } catch (DataLayerException ex) {
                 Logger.getLogger(Backoffice.class.getName()).log(Level.SEVERE, "CIAOOOO", ex);
             }
@@ -60,33 +68,29 @@ public class CreateLibro extends BaseController {
     
    @Override
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException {
-        String lin;
-        try{
-            HttpSession s = SecurityLayer.checkSession(request);
-            String username=(String)s.getAttribute("username");   
         try {
-            if (((IgwDataLayer)request.getAttribute("datalayer")).getAccessUtente(username,"CreateLibro")) {
-            if(request.getParameter("lin")==null){
-                lin="it";}
-            else{
+            String lin;
+            int n=0;
+            if(request.getParameter("lin")==null)
+                lin="it";
+            else
                 lin=request.getParameter("lin");
-            }
-            if(request.getParameter("aggiungi")!=null)
-                action_aggiungi(request,response);
-            action_default(request, response,lin);
-            }
-            else {
+            HttpSession s = SecurityLayer.checkSession(request);
+            String username=(String)s.getAttribute("username");
+            if (((IgwDataLayer)request.getAttribute("datalayer")).getAccessUtente(username,"LibroNewD")) {
+                if (request.getParameter("aggiungi") != null)
+                    action_aggiungi(request, response);
+                            action_default(request, response,lin);          
+            }else {
                 SecurityLayer.disposeSession(request);
-                    response.sendRedirect("Login?referrer=" + URLEncoder.encode(request.getRequestURI(), "UTF-8"));
-            }
-            } catch (DataLayerException ex) {
-                Logger.getLogger(AllCorsi.class.getName()).log(Level.SEVERE, null, ex);
-            }
-
-        } catch (IOException | TemplateManagerException ex) {
-            request.setAttribute("exception", ex);
-            action_error(request, response);
-
+                response.sendRedirect("Login?referrer=" + URLEncoder.encode(request.getRequestURI(), "UTF-8"));
+            }                
+        } catch (DataLayerException ex) {
+            Logger.getLogger(CreateCorsoD.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(CreateCorsoD.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (TemplateManagerException ex) {
+            Logger.getLogger(CreateCorsoD.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     

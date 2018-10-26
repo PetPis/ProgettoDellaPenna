@@ -43,7 +43,7 @@ public class CreateMateriale extends BaseController {
                 request.setAttribute("lingua","it");
                 request.setAttribute("page_title", "Backoffice");
                 
-                request.setAttribute("corso",((IgwDataLayer)request.getAttribute("datalayer")).getCorsi());
+                request.setAttribute("corso",((IgwDataLayer)request.getAttribute("datalayer")).getCorsiByAnno());
                 
 
                 HttpSession s = request.getSession(false);
@@ -52,7 +52,7 @@ public class CreateMateriale extends BaseController {
                  
                 res.activate("createmateriale.ftl.html", request, response);
             } catch (DataLayerException ex) {
-                Logger.getLogger(Backoffice.class.getName()).log(Level.SEVERE, "cc", ex);
+                Logger.getLogger(Backoffice.class.getName()).log(Level.SEVERE, "CIAOOOO", ex);
             }
        
 

@@ -1,16 +1,44 @@
-<!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<html>
-    <head>
-        <title>TODO supply a title</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    </head>
-    <body>
-        <div>TODO write content</div>
-    </body>
-</html>
+<section>
+    <!--breadcrumb-->
+    <section id="main_content">
+        <div class="container">
+            <ol class="breadcrumb">
+                <li><a href="BackofficeD?lin=it">BackofficeD</a></li>
+                <li class="active"> I miei corsi</li>
+            </ol>
+    </section>
+
+    <div class="container-fluid">
+        <div class="row content">
+            <div class="col-md-2 sidenav ">
+                <br>
+
+                <div class="sidemenu sfondoGrigio">
+                    <h3>I miei Corsi</h3>
+                    <ul class="nav nav-pills nav-stacked">
+
+                        <#list corso as c>
+                        <li>
+                            <a href="CreateCorsoD?n=${corso.ID}"> ${c.nome_it} </a>
+                        </li>
+                        </#list>
+
+                    </ul>
+                    <h3>CREA</h3>
+                    <ul class="nav nav-pills nav-stacked">
+                        <li><a href="CreateMaterialeD">Nuovo Materiale</a></li>
+                        <li><a href="CreateLibroD">Nuovo Libro</a></li>
+                    </ul>
+                    <br>
+                    <h3>MODIFICA</h3>
+                    <ul class="nav nav-pills nav-stacked">
+                        <li><a href="UpdateMaterialeD">Aggiorna Materiale</a></li>
+                        <li><a href="UpdateLibroD">Aggiorna Libro</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-10">
+            </div>
+        </div>
+    </div>
+</section>

@@ -6,6 +6,54 @@
     </context-param>
     
     <servlet>
+        <servlet-name>CreateLibroD</servlet-name>
+        <servlet-class>courseweb.controller.CreateLibroD</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CreateLibroD</servlet-name>
+        <url-pattern>/CreateLibroD</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>CreateMaterialeD</servlet-name>
+        <servlet-class>courseweb.controller.CreateMaterialeD</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CreateMaterialeD</servlet-name>
+        <url-pattern>/CreateMaterialeD</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>UpdateMaterialeD</servlet-name>
+        <servlet-class>courseweb.controller.UpdateMaterialeD</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UpdateMaterialeD</servlet-name>
+        <url-pattern>/UpdateMaterialeD</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>UpdateLibroD</servlet-name>
+        <servlet-class>courseweb.controller.UpdateLibroD</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UpdateLibroD</servlet-name>
+        <url-pattern>/UpdateLibroD</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>UpdateLibro</servlet-name>
+        <servlet-class>courseweb.controller.UpdateLibro</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UpdateLibro</servlet-name>
+        <url-pattern>/UpdateLibro</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>UpdateMateriale</servlet-name>
+        <servlet-class>courseweb.controller.UpdateMateriale</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UpdateMateriale</servlet-name>
+        <url-pattern>/UpdateMateriale</url-pattern>
+    </servlet-mapping>
+    <servlet>
         <servlet-name>Log</servlet-name>
         <servlet-class>courseweb.controller.Log</servlet-class>
     </servlet>

@@ -1,0 +1,168 @@
+<section>
+    <!--breadcrumb-->
+    <section id="main_content">
+        <div class="container">
+            <ol class="breadcrumb">
+                <li><a href="Backoffice?lin=it">Backoffice</a></li>
+                <li class="active"> Aggiorna libro
+                </li>
+            </ol>
+    </section>
+
+    <div class="container-fluid">
+        <div class="row content">
+            <div class="col-md-2 sidenav ">
+                <br>
+
+                <div class="sidemenu sfondoGrigio">
+                    <ul class="nav nav-pills nav-stacked">
+                        <li><a href="Log">Visualizza Log</a></li>
+                    </ul>
+                    <h3>CREA</h3>
+                    <ul class="nav nav-pills nav-stacked">
+                        <li><a href="CreateCorso">Crea Corso</a></li>
+                        <li><a href="CreateCDL">Crea CDL</a></li>
+                        <li><a href="CreateDocente">Crea Docente</a></li>
+                        <li><a href="CreateAdmin">Crea Amministratore</a></li>
+                        <li><a href="CreateMateriale">Nuovo Materiale</a></li>
+                        <li><a href="CreateLibro">Nuovo Libro</a></li>
+                    </ul>
+                    <br>
+                    <h3>MODIFICA</h3>
+                    <ul class="nav nav-pills nav-stacked">
+                        <li><a href="AllCorsi">Modifica Corso</a></li>
+                        <li><a href="ModificaCDL">Modifica CDL</a></li>
+                        <li><a href="ModificaDocente">Modifica Docente</a></li>
+                        <li><a href="UpdateMateriale">Aggiorna Materiale</a></li>
+                            <li><a href="UpdateLibro">Aggiorna Libro</a></li>
+                    </ul>
+                </div>
+                <div class="dropdown">
+                    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Corsi
+                        <span class="caret"></span></button>
+                    <ul class="dropdown-menu">
+                        <#list corsi as corsi>
+                            <li>
+                                <a href="UpdateLibro?n=${corsi.ID}"> ${corsi.nome_it} </a>
+                            </li>
+                        </#list>
+                    </ul>
+                </div>
+            </div>
+            
+            
+            <div class="col-md-10">
+                
+                <#if libri??>
+                
+                
+                    <#assign x=1>
+
+                    <#list libri as libro>
+                    <form method="post" action="UpdateLibro">
+
+
+
+                        <div class="row">
+                            <!--LIBRI-->
+
+                            <div class="panel-group" id="accordion">
+
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h4 class="panel-title">
+                                            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapse${x}">Libro ${libro.titolo}
+                                                
+                                            </a>
+                                        </h4>
+                                    </div>
+                                    <div id="collapse${x}" class="panel-collapse collapse">
+
+                                        <div class="panel-body">
+
+
+
+
+                                            <h4>Indicazioni libri - Libro #${x}</h4>
+
+
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <h5>Autore</h5>
+                                                    <div class="form-group">
+                                                        <input type="text" class="form-control" placeholder="Autore" value="${libro.autore}" name="autore">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <h5>Titolo libro</h5>
+                                                    <div class="form-group">
+                                                        <input type="text" class="form-control " placeholder="Titolo" value="${libro.titolo}" name="titolo">
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <h5>Volume libro</h5>
+                                                    <div class="form-group">
+                                                        <input type="number" class="form-control" placeholder="Volume" value="${libro.volume}" name="volume">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <h5>Anno pubblicazione</h5>
+                                                    <div class="form-group">
+                                                        <input type="text" class="form-control " placeholder="Anno" value="${libro.anno?c}" name="anno">
+
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <h5>Editore</h5>
+                                                    <div class="form-group">
+                                                        <input type="text" class="form-control " placeholder="Editore" value="${libro.editore}" name="editore">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <h5>Link</h5>
+                                                    <div class="form-group">
+                                                        <input type="text" class="form-control " placeholder="Link" value="${libro.link}" name="link">
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <hr>
+                                            <input type="hidden" name="id" value="${libro.IDLibro}">
+                                            <input type="submit" name="modifica" value="Modifica Libro" class="btn btn-primary">
+                                            <input type="submit" name="cancella" value="Cancella Libro" style="float:right" class="btn btn-primary">
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </div>
+
+
+                    </form>
+                    <#assign x++>
+
+                    </#list>
+
+
+
+
+
+                </div>
+                </#if>
+            </div>
+        </div>
+    </div>
+</section>
