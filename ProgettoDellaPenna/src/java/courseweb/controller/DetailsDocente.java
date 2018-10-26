@@ -37,7 +37,7 @@ public class DetailsDocente extends BaseController {
             request.setAttribute("docentecorsi", doc.getCorsi());
           
 
-            request.setAttribute("servlet","dettaglidocente?k="+id+"&");
+            request.setAttribute("servlet","DettagliDocente?k="+id+"&");
             request.setAttribute("change","y");
             HttpSession session= request.getSession(false);
             if(session!=null && request.isRequestedSessionIdValid()){

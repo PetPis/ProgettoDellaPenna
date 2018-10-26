@@ -26,7 +26,7 @@ public class Docenti extends BaseController {
             TemplateResult res = new TemplateResult(getServletContext());
 
             request.setAttribute("docenti", ((IgwDataLayer) request.getAttribute("datalayer")).getDocente());
-            request.setAttribute("servlet", "listdocenti?");
+            request.setAttribute("servlet", "Docenti?");
             request.setAttribute("change", "y");
             HttpSession session = request.getSession(false);
             if (session != null && request.isRequestedSessionIdValid()) {
