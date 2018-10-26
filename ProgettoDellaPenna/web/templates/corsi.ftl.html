@@ -1,16 +1,76 @@
-<!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<html>
-    <head>
-        <title>TODO supply a title</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    </head>
-    <body>
-        <div>TODO write content</div>
-    </body>
-</html>
+<section id="sub-header-corsi">
+    <div class="container">
+        <div class="col-md-10 col-md-offset-1 text-center">
+            <h1>Courses</h1>
+                <p class="lead boxed">All the courses available</p>
+        </div>
+    </div>
+</section>
+
+<!--    -->
+
+
+    
+    
+    <section id="main_content" >
+    	<div class="container">
+        
+        <ol class="breadcrumb">
+          <li><a href="Home">Home</a></li>
+          <li class="active">Lista Corsi</li>
+        </ol>
+        
+        <div class="row" >
+        <div class="col-md-12">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Corsi</h3>
+                        
+                    </div>
+                    <table class="table table-responsive table-striped table-bordered">
+                        <thead>   
+                                <th>Name</th>
+                                <th>SSD</th>
+                                <th>CFU</th>
+                                <th>Lingua</th>
+                                <th>Semestre</th>
+                                <th>Tipologia</th>
+                                <th>CDL</th>
+                                <th>Docenti</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <#list corsi?sort_by("nome_it") as corso>
+                            <tr>
+                                
+                                <td><strong><a href="Dettagli?n=${corso.ID}&lin=it"><#if corso.nome_it?trim?has_content>${corso.nome_it}<#else>${corso.nome_en}</#if></a></strong></td>
+                                <td>${corso.SSD}</td>
+                                <td>${corso.cfu}</td>
+                                <td>${corso.lingua}</td>
+                                <td>${corso.semestre}</td>
+                                <td>${corso.tipologia}</td>
+                                <td>
+                                    <#list corso.CDL as cdl>
+                                    <#if cdl.abbr_it?trim?has_content>${cdl.abbr_it}<#else>${cdl.abbr_en}</#if><#if cdl?has_next>,&nbsp&nbsp</#if>
+                                    </#list>
+                                </td>
+                                <td>
+                                    <#list corso.docenti as docenti>
+                                    ${docenti.cognome}<#if docenti?has_next>,&nbsp&nbsp</#if>
+                                    </#list>
+                                </td>
+                            </tr>
+                           </#list>
+        
+                        </tbody>
+                </table>
+                </div><!-- End filterable -->
+                    
+      
+ 
+        </div><!-- End col-lg-9-->                        
+        </div><!-- End row -->
+        
+       
+            	
+        </div>
+    </section>

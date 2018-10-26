@@ -1,9 +1,17 @@
 package courseweb.controller;
 
+import courseweb.controller.data.DataLayerException;
+import courseweb.model.interfacce.IgwDataLayer;
 import courseweb.view.FailureResult;
 import courseweb.view.TemplateManagerException;
 import courseweb.view.TemplateResult;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -19,36 +27,43 @@ public class Corsi extends BaseController {
         }
     }
 
-    private void action_default(HttpServletRequest request, HttpServletResponse response, String lingua) throws IOException, ServletException, TemplateManagerException {
-        TemplateResult res = new TemplateResult(getServletContext());
-        
-        HttpSession session = request.getSession(false);
-        if (session != null && request.isRequestedSessionIdValid()) {
+    private void action_default(HttpServletRequest request, HttpServletResponse response,String lingua) throws IOException, ServletException, TemplateManagerException {
+        try {
+            TemplateResult res = new TemplateResult(getServletContext());
+            
+            HttpSession session= request.getSession(false);
+            if(session!=null && request.isRequestedSessionIdValid()){
             String a = (String) session.getAttribute("username");
-            request.setAttribute("nome", a);
+            request.setAttribute("nome",a);
             boolean doc = (boolean) session.getAttribute("docente");
-            if (doc == true) {
-                int id = (int) session.getAttribute("docenteid");
-                request.setAttribute("docente", id);
+            if(doc==true){
+            int id=(int) session.getAttribute("docenteid");
+            request.setAttribute("docente",id);}
             }
-        }
-        
-        request.setAttribute("servlet", "Corsi?");
-        request.setAttribute("change", "y");
-        if (lingua.equals("it") || lingua.equals("")) {
-            request.setAttribute("lingua", "it");
-            request.setAttribute("page_title", "Corsi");
-            res.activate("corsi.ftl.html", request, response);
-        } else {
-            request.setAttribute("lingua", "en");
-            request.setAttribute("page_title", "Courses");
-            res.activate("corsi_en.ftl.html", request, response);
+            
+            request.setAttribute("corsi", ((IgwDataLayer)request.getAttribute("datalayer")).getCorsi());
+            request.setAttribute("cdl",((IgwDataLayer)request.getAttribute("datalayer")).getCDLNoMag());
+            request.setAttribute("cdlm",((IgwDataLayer)request.getAttribute("datalayer")).getCDLMag());
+            request.setAttribute("servlet","Corsi?");
+            request.setAttribute("change","y");
+            if(lingua.equals("it")||lingua.equals("")){
+                request.setAttribute("lingua","it");
+                request.setAttribute("page_title", "Lista Corsi");
+                res.activate("corsi.ftl.html", request, response); 
+            }
+            else{
+                request.setAttribute("lingua","en");
+                request.setAttribute("page_title", "Courses List");
+                res.activate("corsi_en.ftl.html", request, response);
+            }
+        } catch (DataLayerException ex) {
+            request.setAttribute("message", "Data access exception: " + ex.getMessage());
+            action_error(request, response);
         }
     }
 
     @Override
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException {
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException {
         String lin;
         try {
             if (request.getParameter("lin") == null) {
@@ -58,7 +73,11 @@ public class Corsi extends BaseController {
             }
             action_default(request, response, lin);
 
-        } catch (IOException | TemplateManagerException ex) {
+        } catch (IOException ex) {
+            request.setAttribute("exception", ex);
+            action_error(request, response);
+
+        } catch (TemplateManagerException ex) {
             request.setAttribute("exception", ex);
             action_error(request, response);
 
@@ -75,4 +94,8 @@ public class Corsi extends BaseController {
         return "Main Corso servlet";
     }// </editor-fold>
 
+    //federico 23/10
+    
+    
+    
 }
