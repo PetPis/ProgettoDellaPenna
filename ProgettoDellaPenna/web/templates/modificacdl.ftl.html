@@ -1,0 +1,161 @@
+<section>
+    <!--breadcrumb-->
+    <section id="main_content">
+        <div class="container">
+            <ol class="breadcrumb">
+                <li><a href="Backoffice?lin=it">Backoffice</a></li>
+                <li class="active"> Modifica CDL
+                </li>
+            </ol>
+    </section>
+
+    <div class="container-fluid">
+        <div class="row content">
+            <div class="col-md-2 sidenav">
+                <br>
+                <div class="sfondoGrigio">
+                    <div class="sidemenu">
+                        <ul class="nav nav-pills nav-stacked">
+                            <li><a href="Log">Visualizza Log</a></li>
+                        </ul>
+                        <h3>CREA</h3>
+                        <ul class="nav nav-pills nav-stacked">
+                            <li><a href="CreateCorso">Crea Corso</a></li>
+                            <li><a href="CreateCDL">Crea CDL</a></li>
+                            <li><a href="CreateDocente">Crea Docente</a></li>
+                            <li><a href="CreateAdmin">Crea Amministratore</a></li>
+                            <li><a href="CreateMateriale">Nuovo Materiale</a></li>
+                            <li><a href="CreateLibro">Nuovo Libro</a></li>
+                        </ul>
+                        <br>
+                        <h3>MODIFICA</h3>
+                        <ul class="nav nav-pills nav-stacked">
+                            <li><a href="ModificaCDL">Modifica CDL</a></li>
+                            <li><a href="AllCorsi">Modifica Corso</a></li>
+                            <li><a href="ModificaDocente">Modifica Docente</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h5> Seleziona il cdl interessato</h5>
+                <div class="dropdown">
+                    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">CDL Triennali
+                        <span class="caret"></span></button>
+                    <ul class="dropdown-menu">
+                        <#list cdl as cdl>
+                        <li>
+                            <a href="ModificaCDL?n=${cdl.IDCDL}"><#if cdl.nome_it?trim?has_content>${cdl.nome_it}<#else>${cdl.nome_en} </#if></a>
+                        </li>
+                        </#list>
+                    </ul>
+                </div>
+                <br>
+                <div class="dropdown">
+                    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">CDL Magistrali
+                        <span class="caret"></span></button>
+                    <ul class="dropdown-menu">
+                        <#list cdlm as cdlm>
+                        <li>
+                            <a href="ModificaCDL?n=${cdlm.IDCDL}"><#if cdlm.nome_it?trim?has_content>${cdlm.nome_it}<#else>${cdlm.nome_en}</#if></a>
+                        </li>
+                        </#list>
+                    </ul>
+                </div>      
+            </div>
+
+            <div class="col-md-10">
+
+                <#if cdls??>
+                <form method="post" action="ModificaCDL" enctype="multipart/form-data">
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h5>Nome CDL</h5>
+                            <div class="form-group">
+                                <input type="text" class="form-control" value="${cdls.nome_it}" placeholder="Nome corso di laurea" name="nome" required>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <h5>Nome CDL EN</h5>
+                            <div class="form-group">
+                                <input type="text" class="form-control" value="${cdls.nome_en}" placeholder="Nome corso di laurea EN" name="nome_en"
+                                       required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h5>Sigla corso di laurea IT</h5>
+                            <div class="form-group">
+                                <input type="text" class="form-control" value="${cdls.abbr_it}" placeholder="Sigla  IT" name="abbr_it" required>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <h5>Sigla corso di laurea EN</h5>
+                            <div class="form-group">
+                                <input type="text" class="form-control" value="${cdls.abbr_en}" placeholder="Sigla  EN" name="abbr_en" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h5>Cfu corso di laurea</h5>
+                            <div class="form-group">
+                                <input type="number" class="form-control" value="${cdls.cfu}" placeholder="Cfu" name="cfu" min=1>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-6">
+                            <h5>Cdl Magistrale?</h5>
+                            <input type="radio" name="mag" value="yes">Si <br>
+                            <input type="radio" name="mag" value="no" checked> No
+                        </div>
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h4>Descrizione CDL In Italiano - Optional</h4>
+                            <div class="form-group">
+                                <textarea rows="5" name="descrizione_it"  class="form-control" placeholder="Scrivi qui la descrizione"
+                                          style="height:150px;">${cdls.descrizione_it}</textarea>
+                            </div>
+                        </div>                                      
+                        <div class="col-md-6">
+                            <h4>Descrizione CDL In Inglese - Optional</h4>
+                            <div class="form-group">
+                                <textarea rows="5" name="descrizione_en"  class="form-control" placeholder="Write here your description"
+                                          style="height:150px;">${cdls.descrizione_en}</textarea>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+                    <hr>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h4>Upload Immagine - Optional</h4>
+                            <div class="form-group">
+                                <img src="${cdls.immagine}" alt="ImgCDL"><br><br>
+                                <input type="file" name="immagine" value="${cdls.immagine}" onchange="ValidateImg(this)" />
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+
+
+
+                    <input type="hidden" name="id" value="${cdls.IDCDL}">
+                    <input type="submit" name="modifica" value="Modifica corso di laurea" class="btn btn-primary">
+                    <input type="submit" name="cancella" value="Cancella corso di laurea" class="btn btn-primary" style="float:right">
+
+                </form>
+
+                </#if>
+            </div>
+        </div>
+    </div>
+</section>

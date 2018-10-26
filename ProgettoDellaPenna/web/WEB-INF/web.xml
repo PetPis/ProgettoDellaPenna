@@ -6,6 +6,30 @@
     </context-param>
     
     <servlet>
+        <servlet-name>Log</servlet-name>
+        <servlet-class>courseweb.controller.Log</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Log</servlet-name>
+        <url-pattern>/Log</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>ModificaDocente</servlet-name>
+        <servlet-class>courseweb.controller.ModificaDocente</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ModificaDocente</servlet-name>
+        <url-pattern>/ModificaDocente</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>ModificaCDL</servlet-name>
+        <servlet-class>courseweb.controller.ModificaCDL</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ModificaCDL</servlet-name>
+        <url-pattern>/ModificaCDL</url-pattern>
+    </servlet-mapping>
+    <servlet>
         <servlet-name>CreateLibro</servlet-name>
         <servlet-class>courseweb.controller.CreateLibro</servlet-class>
     </servlet>
@@ -100,10 +124,7 @@
     <servlet-mapping>
         <servlet-name>DettagliDocente</servlet-name>
         <url-pattern>/DettagliDocente</url-pattern>
-    </servlet-mapping>
-    
-    
-    
+    </servlet-mapping>    
     <servlet>
         <servlet-name>Corsi</servlet-name>
         <servlet-class>courseweb.controller.Corsi</servlet-class>

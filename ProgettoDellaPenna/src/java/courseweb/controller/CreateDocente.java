@@ -54,7 +54,7 @@ public class CreateDocente extends BaseController {
                 
                     
                 
-                RandomString random = new RandomString();
+                GeneratePassword random = new GeneratePassword();
                 
                 String password=random.nextString();
 

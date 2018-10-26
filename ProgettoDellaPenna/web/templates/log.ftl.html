@@ -37,6 +37,24 @@
                     </div>
             </div>
             <div class="col-md-10">
+                <table class="table">
+                            <thead>
+                              <tr>
+                                <th>Utente</th>
+                                <th>Azione</th>
+                                <th>Data</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                                <#list log as log>
+                              <tr>
+                                <td>${log.utente.username}</td>
+                                <td>${log.descrizione}</td>
+                                <td>${log.data?string.medium_short}</td>
+                              </tr>
+                           </#list>
+                            </tbody>
+                          </table>
             </div>
         </div>
     </div>

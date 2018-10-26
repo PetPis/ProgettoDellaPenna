@@ -1,0 +1,605 @@
+<section>
+    <!--breadcrumb-->
+    <section id="main_content">
+        <div class="container">
+            <ol class="breadcrumb">
+                <li><a href="Backoffice?lin=it">Backoffice</a></li>
+                <li class="active"> Modifica Corso
+                </li>
+            </ol>
+    </section>
+
+    <div class="container-fluid">
+        <div class="row content">
+            <div class="col-md-2 sidenav sfondoGrigio">
+                <br>
+
+                <div class="sidemenu">
+                    <ul class="nav nav-pills nav-stacked">
+                        <li><a href="Log">Visualizza Log</a></li>
+                    </ul>
+                    <h3>CREA</h3>
+                    <ul class="nav nav-pills nav-stacked">
+                        <li><a href="CreateCorso">Crea Corso</a></li>
+                        <li><a href="CreateCDL">Crea CDL</a></li>
+                        <li><a href="CreateDocente">Crea Docente</a></li>
+                        <li><a href="CreateAdmin">Crea Amministratore</a></li>
+                        <li><a href="CreateMateriale">Nuovo Materiale</a></li>
+                        <li><a href="CreateLibro">Nuovo Libro</a></li>
+                    </ul>
+                    <br>
+                    <h3>MODIFICA</h3>
+                    <ul class="nav nav-pills nav-stacked">
+                        <li><a href="ModificaCDL">Modifica CDL</a></li>
+                        <li><a href="AllCorsi">Modifica Corso</a></li>
+                        <li><a href="ModificaDocente">Modifica Docente</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-10">
+                
+                <form method="post" action="ModificaCorso">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h5>Nome Del Corso</h5>
+                            <div class="form-group">
+                                <input type="text" class="form-control" value="${corso.nome_it}" name="nome" required>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <h5>Nome Del Corso EN</h5>
+                            <div class="form-group">
+                                <input type="text" class="form-control" value="${corso.nome_en}" name="nome_en" required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h5>SSD</h5>
+                            <div class="form-group">
+                                <input type="text" class="form-control" value="${corso.SSD}" name="ssd">
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-6">
+                            <h5>Lingua Del Corso</h5>
+                            <div class="form-group">
+                                <input type="text" class="form-control" value="${corso.lingua}" name="linguac">
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h5>Semestre</h5>
+                            <div class="form-group">
+                                    <select class="form-control" name="semestre">
+                                        <#if corso.semestre==1>
+                                        <option value="1" selected>Primo Semestre</option>
+                                        <option value="2">Secondo Semestre</option>
+                                        <#elseif corso.semestre==2>
+                                        <option value="1">Primo Semestre</option>
+                                        <option value="2" selected>Secondo Semestre</option>
+                                        <#else>
+                                        <option value="" selected>Seleziona semestre corso...</option>
+                                        <option value="1">Primo Semestre</option>
+                                        <option value="2" selected>Secondo Semestre</option>
+                                        </#if>
+                                    </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <h5>CFU del Corso</h5>
+                            <div class="form-group">
+                                <input type="number" class="form-control" value="${corso.cfu}" name="cfu" min=1>
+                                <span class="input-icon">
+                                    <i class="#"></i>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h5>Tipologia Dei Crediti</h5>
+                            <div class="form-group">
+                                
+                                    <select class="form-control" name="tipologia">
+                                        <#if corso.tipologia=='A'>
+                                        <option value="A" selected>A</option>
+                                        <option value="B">B</option>
+                                        <#elseif corso.tipologia=='B'>
+                                        <option value="A">A</option>
+                                        <option value="B" selected>B</option>
+                                        <#else>
+                                        <option value="n" selected>Seleziona tipologia cfu...</option>
+                                        <option value="A">A</option>
+                                        <option value="B">B</option>
+                                        </#if>
+                                    </select>
+                                
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <hr>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <#assign seq=[]>
+                            <h5>Docenti associati</h5>
+                            <#list docente?sort_by( "nome") as docente>
+                            <#assign seq=seq+[docente.IDDocente]>
+                            <li>${docente.nome} ${docente.cognome}</li>
+                            </#list>
+                        </div>
+                        <div class="col-md-6">
+                            <h4>Cambia Docenti Associati</h4>
+                            <select name="docenti">
+                                <#list docenti?sort_by( "nome") as docenti>
+                                <option value="${docenti.IDDocente}" <#if seq?seq_contains(docenti.IDDocente)>selected</#if>>${docenti.nome} ${docenti.cognome}</option>
+                                </#list>
+                            </select>
+
+                        </div>
+                    </div>
+
+
+                    <hr>
+
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <#assign seq=[]>
+                            <h5>Cdl associati</h5>
+                            <#list cdl?sort_by( "nome_it") as cdl>
+                            <#assign seq=seq+[cdl.IDCDL]>
+                            <li>${cdl.nome_it}</li>
+                            </#list>
+                        </div>
+                        <div class="col-md-6">
+                            <h4>Modifica il cdl corso</h4>
+                            <select  name="cdl" required  onchange="CheckSelect(document.getElementsByName('cdl')[0])">
+                                <#list cdl1?sort_by( "nome_it") as cdl1>
+                                <option value="${cdl1.IDCDL}" <#if seq?seq_contains(cdl1.IDCDL)>selected</#if>>
+                                        <#if cdl1.nome_it?trim?has_content>${cdl1.nome_it}
+                                        <#else>${cdl1.nome_en}</#if>
+                            </option>
+                            </#list>
+                        </select>
+
+                    </div>
+                </div>
+                <hr>
+
+                <div class="row">
+                    <div class="col-md-4">
+                        <div>
+                            <h4>Corsi mutuati</h4>
+                            <div>
+                                <select  name="mutuati">
+                                    <#assign seq=[]>
+                                    <#list mutuati as corsi>
+                                    <#assign seq=seq+[corsi.ID]>
+                                    </#list>
+                                    <#list corsi as corsi>
+                                    <option value="${corsi.ID}" <#if seq?seq_contains(corsi.ID)>selected</#if>>${corsi.nome_it}</option>
+                                    </#list>
+
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div>
+                            <h4>Corsi Propedeudici</h4>
+                            
+                                <select name="propedeudici">
+                                    <#assign seq=[]>
+                                    <#list propedeudici as corsi>
+                                    <#assign seq=seq+[corsi.ID]>
+                                    </#list>
+                                    <#list corsicdl as id,nome>
+                                    <option value="${id}"<#if seq?seq_contains(id)>selected</#if>>${nome}</option>
+                                    </#list>
+
+                                </select>
+                            
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div>
+                            <h4>Corsi Modulo</h4>
+                            
+                                <select name="modulo" >
+                                    <#assign seq=[]>
+                                    <#list modulo as corsi>
+                                    <#assign seq=seq+[corsi.ID]>
+                                    </#list>
+                                    <#list corsicdl as id,nome>
+                                    <option value="${id}"<#if seq?seq_contains(id)>selected</#if>>${nome}</option>
+                                    </#list>
+
+                                </select>
+                            
+                        </div>
+                    </div>
+
+
+                </div>
+                <hr>
+
+
+
+
+                <div class="row">
+                    <!--IT DESCRIZIONE-->
+
+                    <div class="panel-group" id="accordion">
+
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapse1">Informazioni supplementari corso - Optional
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapse1" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <h4>Descrizione del corso</h4>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <h5>Prerequisiti Del Corso</h5>
+                                            <div class="form-group">
+                                                <div class="form-group">
+                                                    <textarea rows="5" class="form-control" name="prerequisiti" >${descrizioneit.prerequisiti}</textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    
+                                        <div class="col-md-6">
+                                            <h5>Obiettivi Del Corso</h5>
+                                            <div class="form-group">
+                                                <textarea rows="5" name="obiettivi" class="form-control">${descrizioneit.obiettivi}</textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <h5>Modalit&#224 D'Esame Del Corso</h5>
+                                            <div class="form-group">
+                                                <textarea rows="5" name="modesa" class="form-control">${descrizioneit.mod_Esame}</textarea>
+
+                                            </div>
+                                        </div>
+                                    
+                                        <div class="col-md-6">
+                                            <h5>Modalit&#224 Di Insegnamento Del Corso</h5>
+                                            <div class="form-group">
+                                                <textarea rows="5" name="modins" class="form-control">${descrizioneit.mod_Insegnamento}</textarea>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <h5>Sillabo</h5>
+                                            <div class="form-group">
+                                                <textarea rows="5" name="sillabo" class="form-control">${descrizioneit.sillabo}</textarea>
+                                            </div>
+                                        </div>
+                                    
+                                        <div class="col-md-6">
+                                            <h5>Note extra</h5>
+                                            <div class="form-group">
+                                                <textarea rows="5" name="note" class="form-control">${descrizioneit.note}</textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <h4>Link esterni</h4>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <h5>Homepage</h5>
+                                            <div class="form-group">
+                                                <input type="text" class="form-control" placeholder="Link Homepage" value="${descrizioneit.homepage}" name="homepage">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <h5>Forum</h5>
+                                            <div class="form-group">
+                                                <input type="text" class="form-control" placeholder="Link Forum" value="${descrizioneit.forum}" name="forum">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <h5>Risorse esterne</h5>
+                                            <div class="form-group">
+                                                <input type="text" class="form-control" placeholder="Link Risorse esterne" value="${descrizioneit.risorse_Ext}" name="risorse">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="row">
+                    <!--EN DESCRIZIONE-->
+
+                    <div class="panel-group" id="accordion">
+
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapse2">Informazioni supplementari corso (EN Version) - Optional
+                                        
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapse2" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <h4>Descrizione del corso EN</h4>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <h5>Prerequisiti Del Corso EN</h5>
+                                            <div class="form-group">
+                                                <div class="form-group">
+                                                    <textarea rows="5" name="prerequisitien" class="form-control">${descrizioneen.prerequisiti}</textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                                                            <div class="col-md-6">
+                                            <h5>Obiettivi Del Corso EN</h5>
+                                            <div class="form-group">
+                                                <textarea rows="5" name="obiettivien" class="form-control">${descrizioneen.obiettivi}</textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <h5>Modalit&#224 D'Esame Del Corso EN</h5>
+                                            <div class="form-group">
+                                                <textarea rows="5" name="modesaen" class="form-control">${descrizioneen.modesame}</textarea>
+
+                                            </div>
+                                        </div>
+                                    
+                                        <div class="col-md-6">
+                                            <h5>Modalit&#224 Di Insegnamento Del Corso EN</h5>
+                                            <div class="form-group">
+                                                <textarea rows="5" name="modinsen" class="form-control">${descrizioneen.modinsegnamento}</textarea>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <h5>Sillabo EN</h5>
+                                            <div class="form-group">
+                                                <textarea rows="5" name="sillaboen" class="form-control">${descrizioneen.sillabo}</textarea>
+                                            </div>
+                                        </div>
+                                    
+                                        <div class="col-md-6">
+                                            <h5>Note extra EN</h5>
+                                            <div class="form-group">
+                                                <textarea rows="5" name="noteen" class="form-control">${descrizioneen.note}</textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <h4>Link esterni</h4>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <h5>Homepage</h5>
+                                            <div class="form-group">
+                                                <input type="text" value="${descrizioneen.homepage}" class="form-control" placeholder="Link Homepage" name="homepageen">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <h5>Forum</h5>
+                                            <div class="form-group">
+                                                <input type="text" value="${descrizioneen.forum}" class="form-control" placeholder="Link Forum" name="forumen">
+                                                
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <h5>Risorse esterne</h5>
+                                            <div class="form-group">
+                                                <input type="text" value="${descrizioneen.risorse_Ext}" class="form-control" placeholder="Link Risorse esterne" name="risorseen">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="row">
+                    <!--SILLABO IT-->
+                    <div class="panel-group" id="accordion">
+
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapse4">Descrittori di dublino - Optional
+                                        
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapse4" class="panel-collapse collapse">
+                                <div class="panel-body">
+
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <h5>Knowledge</h5>
+                                            <div class="form-group">
+                                                <textarea rows="5" name="knowledge" class="form-control">${dublinoit.knowledge}</textarea>
+                                            </div>
+                                        </div>
+                                    
+                                        <div class="col-md-6">
+                                            <h5>Application</h5>
+                                            <div class="form-group">
+                                                <textarea rows="5" name="application" class="form-control">${dublinoit.application}</textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <h5>Evaluation</h5>
+                                            <div class="form-group">
+                                                <textarea rows="5" name="evaluation" class="form-control">${dublinoit.evaluation}</textarea>
+                                            </div>
+                                        </div>
+                                    
+                                        <div class="col-md-6">
+                                            <h5>Communication</h5>
+                                            <div class="form-group">
+                                                <textarea rows="5" name="communication" class="form-control">${dublinoit.communication}</textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <h5>Lifelong</h5>
+                                            <div class="form-group">
+                                                <textarea rows="5" name="lifelong" class="form-control">${dublinoit.lifelong}</textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="row">
+                    <!--SILLABO EN-->
+
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapse5">Descrittori di dublino EN - Optional
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="collapse5" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <h4></h4>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <h5>Knowledge EN</h5>
+                                        <div class="form-group">
+                                            <textarea rows="5" name="knowledgeen" class="form-control">${dublinoen.knowledge}</textarea>
+                                        </div>
+                                    </div>
+                               
+                                    <div class="col-md-6">
+                                        <h5>Application EN</h5>
+                                        <div class="form-group">
+                                            <textarea rows="5" name="applicationen" class="form-control">${dublinoen.knowledge}</textarea>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <h5>Evaluation EN</h5>
+                                        <div class="form-group">
+                                            <textarea rows="5" name="evaluationen" class="form-control">${dublinoen.knowledge}</textarea>
+                                        </div>
+                                    </div>
+                                
+                                    <div class="col-md-6">
+                                        <h5>Communication EN</h5>
+                                        <div class="form-group">
+                                            <textarea rows="5" name="communicationen" class="form-control">${dublinoen.knowledge}</textarea>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <h5>Lifelong EN</h5>
+                                        <div class="form-group">
+                                            <textarea rows="5" name="lifelongen" class="form-control">${dublinoen.lifelong}</textarea>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+
+                <hr>
+
+
+
+                <input type='hidden' name='key' value='${corso.ID}'>
+                <input type="submit" name="modifica" value="Aggiorna Corso" class="btn btn-primary">
+                <input type="submit" name="cancella" value="Cancella Corso" class="btn btn-primary" style="float:right">
+
+            </form>
+
+
+        </div>
+    </div>
+</div>
+</section>

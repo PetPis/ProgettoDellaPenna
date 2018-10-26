@@ -1,0 +1,203 @@
+<section>
+    <!--breadcrumb-->
+    <section id="main_content">
+        <div class="container">
+            <ol class="breadcrumb">
+                <li><a href="Backoffice?lin=it">Backoffice</a></li>
+                <li class="active"> Modifica Corso
+                </li>
+            </ol>
+    </section>
+
+    <div class="container-fluid">
+        <div class="row content">
+            <div class="col-md-2 sidenav">
+                <br>
+                <div class="sfondoGrigio">
+
+                    <div class="sidemenu">
+                        <ul class="nav nav-pills nav-stacked">
+                            <li><a href="Log">Visualizza Log</a></li>
+                        </ul>
+                        <h3>CREA</h3>
+                        <ul class="nav nav-pills nav-stacked">
+                            <li><a href="CreateCorso">Crea Corso</a></li>
+                            <li><a href="CreateCDL">Crea CDL</a></li>
+                            <li><a href="CreateDocente">Crea Docente</a></li>
+                            <li><a href="CreateAdmin">Crea Amministratore</a></li>
+                            <li><a href="CreateMateriale">Nuovo Materiale</a></li>
+                            <li><a href="CreateLibro">Nuovo Libro</a></li>
+                        </ul>
+                        <br>
+                        <h3>MODIFICA</h3>
+                        <ul class="nav nav-pills nav-stacked">
+                            <li><a href="ModificaCDL">Modifica CDL</a></li>
+                            <li><a href="AllCorsi">Modifica Corso</a></li>
+                            <li><a href="ModificaDocente">Modifica Docente</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h5> Seleziona il docente interessato</h5>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapse1">Docenti
+
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapse1" class="panel-collapse collapse">
+                        <div class="panel-body">
+
+                            <ul class="nav nav-pills nav-stacked">
+                                <#list docenti as docenti>
+                                <li>
+                                    <a href="ModificaDocente?n=${docenti.IDDocente}">${docenti.nome} ${docenti.cognome}</a>
+                                </li>
+                                </#list>
+                            </ul>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+                    <div class="col-md-10">
+
+                        <#if docente??>
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <h4>Modifica Docente ${docente.nome} ${docente.cognome}</h4>
+
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <form method="post" action="ModificaDocente" enctype="multipart/form-data">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <h5>Nome del docente</h5>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" placeholder="Nome" value="${docente.nome}"
+                                                   name="nome" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <h5>Cognome del docente</h5>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" placeholder="Cognome" value="${docente.cognome}" name="cognome" required>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6 col-sm-6">
+                                        <h5>Email - Optional</h5>
+                                        <div class="form-group">
+                                            <input type="email" class="form-control" placeholder="Email" value="${docente.email}" name="email">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <h5>Telefono - Optional</h5>
+                                        <div class="form-group">
+                                            <input type="tel" class="form-control" placeholder="Numero Telefonico" value="${docente.telefono}" name="telefono">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <h5>Uffico - Optional</h5>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" placeholder="Ufficio n&#186" value="${docente.ufficio}"name="ufficio">
+
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <h5>Specializzazione - Optional</h5>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" placeholder="Specializzazione" value="${docente.specializzazione}" name="specializzazione">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <h5>Ricevimento - Optional</h5>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" placeholder="Giorno  Ora inizio&#247Ora Fine" value="${docente.ricevimento}"
+                                                   name="ricevimento">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <hr>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <h4>Ricerche docente - Optional</h4>
+                                            <textarea rows="5" maxlength="50" name="ricerche" class="form-control" placeholder="Scrivi qui la tua pagina di ricerche"
+                                                      style="height:150px;">${docente.ricerche}</textarea>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <h4>Pubblicazioni docente - Optional</h4>
+                                            <textarea rows="5" maxlength="50" name="pubblicazioni" class="form-control" placeholder="Scrivi qui la tua pagina di pubblicazioni"
+                                                      style="height:150px;">${docente.pubblicazione}</textarea>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <hr>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <h4>Upload curriculum - Optional</h4>
+                                            <h5>
+                                                <a <#if docente.curriculum??> href="download?k=${docente.curriculum}"
+                                                    <#else> href="#" </#if> target="_self">
+                                                    Curriculum
+                                            </a>
+                                        </h5>
+                                        <input type="file" name="curriculum" onchange="ValidateCurr(this)">
+                                    </div>
+                                </div>
+                            </div>
+                            <hr>
+
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <h4>Upload Immagine - Optional</h4>
+                                        <img src="${docente.immagine}" alt="Teacher" class="img-circle">
+                                        <br>
+                                        <br>
+                                        <input type="file" name="immagine" onchange="ValidateImg(this)">
+
+                                    </div>
+                                </div>
+                            </div>
+                            <hr>
+
+
+
+                            <input name="id" type="hidden" value="${docente.IDDocente}">
+                            <input type="submit" name="modifica" value="Modifica docente" class="btn btn-primary">
+                            <input type="submit" name="cancella" value="Cancella docente" style="float: right" class="btn btn-primary">
+
+                        </form>
+                    </div>
+
+                    </#if>
+                </div>
+            </div>
+        </div>
+        </section>

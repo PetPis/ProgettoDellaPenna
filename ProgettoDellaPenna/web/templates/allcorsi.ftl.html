@@ -14,8 +14,11 @@
             <div class="col-md-2 sidenav">
                 <br>
                 <div class="sfondoGrigio">
-                    <h3>CREA</h3>
                     <div class="sidemenu">
+                        <ul class="nav nav-pills nav-stacked">
+                            <li><a href="Log">Visualizza Log</a></li>
+                        </ul>
+                        <h3>CREA</h3>
                         <ul class="nav nav-pills nav-stacked">
                             <li><a href="CreateCorso">Crea Corso</a></li>
                             <li><a href="CreateCDL">Crea CDL</a></li>
@@ -33,67 +36,70 @@
                         </ul>
                     </div>
                 </div>
+
                 <h5> Seleziona il cdl interessato</h5>
-                <h6> Cdl triennali</h6>
-
-                <#list cdl as cdl>
-                <li>
-                    <a href="AllCorsi?n=${cdl.IDCDL}"><#if cdl.nome_it?trim?has_content>${cdl.nome_it}<#else>${cdl.nome_en} </#if></a>
-                </li>
-
-                </#list>
-
-
-                <h6>Cdl magistrali</h6>
-
-                <#list cdlm as cdlm>
-                <li>
-                    <a href="AllCorsi?n=${cdlm.IDCDL}"><#if cdlm.nome_it?trim?has_content>${cdlm.nome_it}<#else>${cdlm.nome_en}</#if></a>
-                </li>
-                </#list>
-
-
-
-
-            </div>
-        
-        <div class="col-md-10">
-
-            <#if corso??>
-            <h3>Seleziona l'anno interessato alla modifica</h3>
-            <div class="panel-group" id="accordion">
-                <#assign x=1>
-
-                <#list corso as anno,corso>
-
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h4 class="panel-title">
-                            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapse${x}"> ${anno?c}
-                                <i class="indicator icon-plus pull-right"></i>
-                            </a>
-                        </h4>
-                    </div>
-                    <div id="collapse${x}" class="panel-collapse collapse">
-                        <div class="panel-body">
-                            <ul>
-                                <#list corso as corso>
-
-                                <li>
-                                    <#if materiale??>
-                                    <a href="MaterialeUp?n=${corso.ID}&lin=it"><#if corso.nome_it?trim?has_content>${corso.nome_it}<#else>${corso.nome_en}</#if></a>
-                                    </#if>
-                                    <a href="ModificaCorso?n=${corso.ID}&lin=it"><#if corso.nome_it?trim?has_content>${corso.nome_it}<#else>${corso.nome_en}</#if></a>
-                                </li>
-                                </#list>
-                            </ul>
-                        </div>
-                    </div>
-                    <#assign x++>
+                <div class="dropdown">
+                    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">CDL Triennali
+                        <span class="caret"></span></button>
+                    <ul class="dropdown-menu">
+                        <#list cdl as cdl>
+                        <li>
+                            <a href="AllCorsi?n=${cdl.IDCDL}"><#if cdl.nome_it?trim?has_content>${cdl.nome_it}<#else>${cdl.nome_en} </#if></a>
+                        </li>
+                        </#list>
+                    </ul>
                 </div>
-                </#list>
-                </#if>
+                <br>
+                <div class="dropdown">
+                    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">CDL Magistrali
+                        <span class="caret"></span></button>
+                    <ul class="dropdown-menu">
+                        <#list cdlm as cdlm>
+                        <li>
+                            <a href="AllCorsi?n=${cdlm.IDCDL}"><#if cdlm.nome_it?trim?has_content>${cdlm.nome_it}<#else>${cdlm.nome_en}</#if></a>
+                        </li>
+                        </#list>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-md-10">
+
+                <#if corso??>
+                <h3>Seleziona l'anno interessato alla modifica</h3>
+                <div class="panel-group" id="accordion">
+                    <#assign x=1>
+
+                    <#list corso as anno,corso>
+
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapse${x}"> ${anno?c}
+                                    <i class="indicator icon-plus pull-right"></i>
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="collapse${x}" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <ul>
+                                    <#list corso as corso>
+
+                                    <li>
+                                        <#if materiale??>
+                                        <a href="MaterialeUp?n=${corso.ID}&lin=it"><#if corso.nome_it?trim?has_content>${corso.nome_it}<#else>${corso.nome_en}</#if></a>
+                                        </#if>
+                                        <a href="ModificaCorso?n=${corso.ID}&lin=it"><#if corso.nome_it?trim?has_content>${corso.nome_it}<#else>${corso.nome_en}</#if></a>
+                                    </li>
+                                    </#list>
+                                </ul>
+                            </div>
+                        </div>
+                        <#assign x++>
+                    </div>
+                    </#list>
+                    </#if>
+                </div>
             </div>
         </div>
-    </div>
 </section>
