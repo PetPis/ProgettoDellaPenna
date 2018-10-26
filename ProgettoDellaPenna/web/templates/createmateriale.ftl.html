@@ -30,15 +30,9 @@
 
                 <div class="sidemenu sfondoGrigio">
                     <#if docente??>
-                    <h3>I miei Corsi</h3>
+                    <div class="sidemenu sfondoGrigio">
                     <ul class="nav nav-pills nav-stacked">
-
-                        <#list corso as c>
-                        <li>
-                            <a href="CreateCorsoD?n=${corso.ID}"> ${c.nome_it} </a>
-                        </li>
-                        </#list>
-
+                        <li><a href="BackofficeD?lin=it">I miei corsi</a></li>
                     </ul>
                     <h3>CREA</h3>
                     <ul class="nav nav-pills nav-stacked">
@@ -51,6 +45,7 @@
                         <li><a href="UpdateMaterialeD">Aggiorna Materiale</a></li>
                         <li><a href="UpdateLibroD">Aggiorna Libro</a></li>
                     </ul>
+                </div>
                     <#else>
                     <ul class="nav nav-pills nav-stacked">
                         <li><a href="Log">Visualizza Log</a></li>

@@ -35,7 +35,7 @@ public class UpdateMaterialeD extends BaseController {
 
     private void action_default(HttpServletRequest request, HttpServletResponse response,String lingua) throws IOException, ServletException, TemplateManagerException {
         TemplateResult res = new TemplateResult(getServletContext());
-        request.setAttribute("servlet","MaterialeUpD?");
+        request.setAttribute("servlet","UpdateMaterialeD?");
             if(lingua.equals("it")||lingua.equals("")){
             try {
                 request.setAttribute("lingua","it");
@@ -54,7 +54,7 @@ public class UpdateMaterialeD extends BaseController {
                 
                 
                 
-                res.activate("materialeupd.ftl.html", request, response);
+                res.activate("updatematerialeD.ftl.html", request, response);
             } catch (DataLayerException ex) {
                 Logger.getLogger(Backoffice.class.getName()).log(Level.SEVERE, "CIAOOOO", ex);
             }
@@ -161,7 +161,7 @@ public class UpdateMaterialeD extends BaseController {
     private void action_selcorso(HttpServletRequest request, HttpServletResponse response, int id ,String lin) throws IOException, TemplateManagerException {
         
         TemplateResult res = new TemplateResult(getServletContext());
-        request.setAttribute("servlet","MaterialeUpD?");
+        request.setAttribute("servlet","UpdateMaterialeD?");
             if(lin.equals("it")||lin.equals("")){
             try {
                 request.setAttribute("lingua","it");

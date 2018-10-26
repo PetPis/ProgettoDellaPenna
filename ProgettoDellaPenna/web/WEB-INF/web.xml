@@ -4,7 +4,22 @@
         <param-name>view.outline_template</param-name>
         <param-value>outline.ftl.html</param-value>
     </context-param>
-    
+    <servlet>
+        <servlet-name>download</servlet-name>
+        <servlet-class>courseweb.controller.download</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>download</servlet-name>
+        <url-pattern>/download</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>CreateCorsoD</servlet-name>
+        <servlet-class>courseweb.controller.CreateCorsoD</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CreateCorsoD</servlet-name>
+        <url-pattern>/CreateCorsoD</url-pattern>
+    </servlet-mapping>
     <servlet>
         <servlet-name>CreateLibroD</servlet-name>
         <servlet-class>courseweb.controller.CreateLibroD</servlet-class>
@@ -165,14 +180,14 @@
         <servlet-name>Docenti</servlet-name>
         <url-pattern>/Docenti</url-pattern>
     </servlet-mapping>
-      <servlet>
+    <servlet>
         <servlet-name>DettagliDocente</servlet-name>
         <servlet-class>courseweb.controller.DetailsDocente</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>DettagliDocente</servlet-name>
         <url-pattern>/DettagliDocente</url-pattern>
-    </servlet-mapping>    
+    </servlet-mapping>
     <servlet>
         <servlet-name>Corsi</servlet-name>
         <servlet-class>courseweb.controller.Corsi</servlet-class>

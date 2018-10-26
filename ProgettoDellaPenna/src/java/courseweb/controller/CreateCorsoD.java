@@ -67,7 +67,7 @@ public class CreateCorsoD extends BaseController {
                 request.setAttribute("docente", docente);
                 request.setAttribute("corso", corso);
                 
-                res.activate("create_corsoD.ftl.html", request, response);
+                res.activate("createcorsoD.ftl.html", request, response);
             } catch (DataLayerException ex) {
                 Logger.getLogger(Backoffice.class.getName()).log(Level.SEVERE, "ciao", ex);
             }

@@ -35,7 +35,7 @@ public class UpdateLibroD extends BaseController {
 
     private void action_default(HttpServletRequest request, HttpServletResponse response,String lingua) throws IOException, ServletException, TemplateManagerException {
         TemplateResult res = new TemplateResult(getServletContext());
-        request.setAttribute("servlet","LibroUpD?");
+        request.setAttribute("servlet","UpdateLibroD?");
             if(lingua.equals("it")||lingua.equals("")){
             try {
                 request.setAttribute("lingua","it");
@@ -55,7 +55,7 @@ public class UpdateLibroD extends BaseController {
                 request.setAttribute("corso",((IgwDataLayer)request.getAttribute("datalayer")).getCorsiDelDocente(docente));
 
                  
-                res.activate("libroupD.ftl.html", request, response);
+                res.activate("updatelibroD.ftl.html", request, response);
             } catch (DataLayerException ex) {
                 Logger.getLogger(Backoffice.class.getName()).log(Level.SEVERE, "CIAOOOO", ex);
             }
@@ -115,7 +115,7 @@ public class UpdateLibroD extends BaseController {
     private void action_selcorso(HttpServletRequest request, HttpServletResponse response, int id ,String lin) throws IOException, TemplateManagerException {
         
         TemplateResult res = new TemplateResult(getServletContext());
-        request.setAttribute("servlet","LibroUpD?");
+        request.setAttribute("servlet","UpdateLibroD?");
             if(lin.equals("it")||lin.equals("")){
             try {
                 request.setAttribute("lingua","it");

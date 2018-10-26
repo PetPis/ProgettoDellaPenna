@@ -35,7 +35,7 @@ public class CreateLibroD extends BaseController {
     
     private void action_default(HttpServletRequest request, HttpServletResponse response,String lingua) throws IOException, ServletException, TemplateManagerException {
         TemplateResult res = new TemplateResult(getServletContext());
-        request.setAttribute("servlet","LibroNewD?");
+        request.setAttribute("servlet","CreateLibroD?");
             if(lingua.equals("it")||lingua.equals("")){
             try {
                 request.setAttribute("lingua","it");
@@ -54,7 +54,7 @@ public class CreateLibroD extends BaseController {
                 
                 request.setAttribute("corso",((IgwDataLayer)request.getAttribute("datalayer")).getCorsiDelDocente(docente));
                  
-                res.activate("libronewD.ftl.html", request, response);
+                res.activate("createlibroD.ftl.html", request, response);
             } catch (DataLayerException ex) {
                 Logger.getLogger(Backoffice.class.getName()).log(Level.SEVERE, "CIAOOOO", ex);
             }
@@ -77,7 +77,7 @@ public class CreateLibroD extends BaseController {
                 lin=request.getParameter("lin");
             HttpSession s = SecurityLayer.checkSession(request);
             String username=(String)s.getAttribute("username");
-            if (((IgwDataLayer)request.getAttribute("datalayer")).getAccessUtente(username,"LibroNewD")) {
+            if (((IgwDataLayer)request.getAttribute("datalayer")).getAccessUtente(username,"CreateLibroD")) {
                 if (request.getParameter("aggiungi") != null)
                     action_aggiungi(request, response);
                             action_default(request, response,lin);          

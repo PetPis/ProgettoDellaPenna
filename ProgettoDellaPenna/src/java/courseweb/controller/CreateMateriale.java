@@ -37,7 +37,7 @@ public class CreateMateriale extends BaseController {
     
     private void action_default(HttpServletRequest request, HttpServletResponse response,String lingua) throws IOException, ServletException, TemplateManagerException {
         TemplateResult res = new TemplateResult(getServletContext());
-        request.setAttribute("servlet","CreateMateriale?");
+        request.setAttribute("servlet","CreateMaterialeD?");
             if(lingua.equals("it")||lingua.equals("")){
             try {
                 request.setAttribute("lingua","it");

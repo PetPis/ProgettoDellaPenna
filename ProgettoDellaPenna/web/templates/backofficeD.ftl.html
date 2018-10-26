@@ -14,15 +14,8 @@
                 <br>
 
                 <div class="sidemenu sfondoGrigio">
-                    <h3>I miei Corsi</h3>
                     <ul class="nav nav-pills nav-stacked">
-
-                        <#list corso as c>
-                        <li>
-                            <a href="CreateCorsoD?n=${corso.ID}"> ${c.nome_it} </a>
-                        </li>
-                        </#list>
-
+                        <li><a href="BackofficeD?lin=it">I miei corsi</a></li>
                     </ul>
                     <h3>CREA</h3>
                     <ul class="nav nav-pills nav-stacked">
@@ -38,6 +31,21 @@
                 </div>
             </div>
             <div class="col-md-10">
+                <h3>I miei Corsi</h3>
+                <div class="row">
+                    <div class="col-md-12">
+                    <ul class="nav nav-pills nav-stacked">
+
+                        <#list corso as c>
+                        <li>
+                            
+                            <a href="CreateCorsoD?n=${corso.ID}"> ${c.nome_it} </a>
+                        </li>
+                        </#list>
+
+                    </ul>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
