@@ -226,13 +226,14 @@ a.button_profile:hover {
 
 #sub-header-corsi 
 {
-    padding: 300px 0 60px;
+    padding: 450px 0px 0px ;
     color: #000;
-    position: relative;
     text-shadow: 0 1px 1px rgba(0, 0, 0, .4);
     width: 100%;
     height: 100%;
-    background: url(../img/corsi_modificato_1.png) no-repeat ;
+    background: url(../img/corsi3.png) no-repeat ;
+    background-position: center;
+    background-size:  contain ;
 }
 .box_style_4
 {
