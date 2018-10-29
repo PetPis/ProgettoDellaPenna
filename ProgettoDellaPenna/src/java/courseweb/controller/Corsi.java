@@ -94,7 +94,7 @@ public class Corsi extends BaseController {
         return "Main Corso servlet";
     }// </editor-fold>
 
-    //federico 23/10
+
     
     
     

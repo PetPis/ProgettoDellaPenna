@@ -17,7 +17,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
+//federico
 public class Dettagli extends BaseController {
 
     private void action_error(HttpServletRequest request, HttpServletResponse response) {
