@@ -184,7 +184,7 @@ public class UpdateLibroD extends BaseController {
         
         courseweb.model.interfacce.Log log=((IgwDataLayer)request.getAttribute("datalayer")).CreateLog();
         log.setIDUtente(id1);
-        log.setDescrizione("Ha modificato il libro"+""+ nomelog);
+        log.setDescrizione("Ha modificato il libro "+ nomelog);
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
         log.setData(timestamp);
         
@@ -204,7 +204,7 @@ public class UpdateLibroD extends BaseController {
         
         courseweb.model.interfacce.Log log=((IgwDataLayer)request.getAttribute("datalayer")).CreateLog();
         log.setIDUtente(id1);
-        log.setDescrizione("Ha cancellato il libro"+""+ nomelog);
+        log.setDescrizione("Ha cancellato il libro "+ nomelog);
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
         log.setData(timestamp);
         

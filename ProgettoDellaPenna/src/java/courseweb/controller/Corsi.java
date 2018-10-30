@@ -41,7 +41,7 @@ public class Corsi extends BaseController {
             request.setAttribute("docente",id);}
             }
             
-            request.setAttribute("corsi", ((IgwDataLayer)request.getAttribute("datalayer")).getCorsi());
+            request.setAttribute("corsi", ((IgwDataLayer)request.getAttribute("datalayer")).getCorsiByAnno());
             request.setAttribute("cdl",((IgwDataLayer)request.getAttribute("datalayer")).getCDLNoMag());
             request.setAttribute("cdlm",((IgwDataLayer)request.getAttribute("datalayer")).getCDLMag());
             request.setAttribute("servlet","Corsi?");

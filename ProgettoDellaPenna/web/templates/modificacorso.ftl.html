@@ -181,7 +181,7 @@
                         <div>
                             <h4>Corsi mutuati</h4>
                             <div>
-                                <select  name="mutuati">
+                                <select  name="mutuati" multiple>
                                     <#assign seq=[]>
                                     <#list mutuati as corsi>
                                     <#assign seq=seq+[corsi.ID]>
@@ -199,7 +199,7 @@
                         <div>
                             <h4>Corsi Propedeudici</h4>
                             
-                                <select name="propedeudici">
+                                <select name="propedeudici" multiple>
                                     <#assign seq=[]>
                                     <#list propedeudici as corsi>
                                     <#assign seq=seq+[corsi.ID]>
@@ -217,7 +217,7 @@
                         <div>
                             <h4>Corsi Modulo</h4>
                             
-                                <select name="modulo" >
+                                <select name="modulo" multiple>
                                     <#assign seq=[]>
                                     <#list modulo as corsi>
                                     <#assign seq=seq+[corsi.ID]>
