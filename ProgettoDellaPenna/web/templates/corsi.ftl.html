@@ -42,7 +42,7 @@
                             <#list corsi?sort_by("nome_it") as corso>
                             <tr>
                                 
-                                <td><strong><a href="Dettagli?n=${corso.ID}&lin=it"><#if corso.nome_it?trim?has_content>${corso.nome_it}<#else>${corso.nome_en}</#if></a></strong></td>
+                                <td><strong><a href="DettagliCorso?n=${corso.ID}&lin=it"><#if corso.nome_it?trim?has_content>${corso.nome_it}<#else>${corso.nome_en}</#if></a></strong></td>
                                 <td>${corso.SSD}</td>
                                 <td>${corso.cfu}</td>
                                 <td>${corso.lingua}</td>

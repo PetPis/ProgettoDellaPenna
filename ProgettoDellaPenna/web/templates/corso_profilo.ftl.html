@@ -1,0 +1,236 @@
+<#noautoesc>
+
+<section id="sub-header-corsi" >
+  	<div class="container">
+    
+    	<div class="row">
+        	<div class="col-md-12 text-center">
+            	<h1>Dettagli Del Corso</h1>
+                <p class="lead"></p>
+            </div>
+        </div><!-- End row -->
+        
+        <div class="row" id="sub-header-features-2">
+        	<div class="col-md-4">
+            	<h2>Informazioni generali</h2>
+                <ul class="list_ok">
+                    <li><strong>SSD:</strong> &nbsp;${corso.SSD}</li>
+                    <li><strong>CDL:</strong>&nbsp;<#list corso.CDL as cdl>
+                                    <#if cdl.abbr_it?trim?has_content>${cdl.abbr_it}<#else>${cdl.abbr_en}</#if><#if cdl?has_next>,&nbsp;</#if>
+                                </#list></li>
+                    <li><strong>Lingua:</strong>&nbsp;  ${corso.lingua}</li>
+                    <li><strong>Semestre:</strong>&nbsp;  ${corso.semestre}</li>
+                    <li><strong>CFU (e tipo):</strong>&nbsp;  ${corso.cfu} / ${corso.tipologia}</li>
+                    <li><strong>Anno Accademico:</strong>&nbsp; ${corso.anno?c}/${(corso.anno+1)?c}</li>
+                </ul>
+            </div>
+
+            <div class="col-md-4">
+                <h2>Prerequisiti</h2>
+                <span><#if descrizione_it.prerequisiti?trim?has_content> ${descrizione_it.prerequisiti} <#else> ${descrizione_en.prerequisiti} </#if></span>
+            </div>
+
+           <div class="col-md-4">
+            <h2>Obiettivi</h2>
+            <span><#if descrizione_it.obiettivi?trim?has_content> ${descrizione_it.obiettivi} <#else> ${descrizione_en.obiettivi} </#if></span>
+       </div>
+
+        	       
+        </div><!-- End row --> 
+
+        <div id="divider"></div>
+        <div class="row">
+            <div class="col-md-12" id="tipocorso">
+
+
+                    <#list propedeudici as propedeudico>
+                    <li><strong>Corsi propedeudici:</strong> <strong><a href="DetailsCorso?n=${propedeudico.ID}&lin=it" id="dc"><#if propedeudico.nome_it?trim?has_content>  ${propedeudico.nome_it} <#else> ${propedeudico.nome_en} </#if></a></strong> </li>
+                    </#list>
+
+
+                    <#if mutuati?has_content>
+                    <li><strong>Corsi mutuati:</strong><#list mutuati as mutua> <strong><a href="DetailsCorso?n=${mutua.ID}&lin=it" id="dc"> <#if mutua.nome_it?trim?has_content>  ${mutua.nome_it} <#if mutua?has_next>,&nbsp</#if> <#else> ${mutua.nome_en} <#if mutua?has_next>,&nbsp</#if></#if></a></strong></#list> </li>
+                    </#if>   
+                    
+                    <#if mutuato??><li><strong>Mutuato da:</strong> <strong><a href="DetailsCorso?n=${mutuato.ID}&lin=it" id="dc"><#if mutuato.nome_it?trim?has_content>  ${mutuato.nome_it} <#else> ${mutuato.nome_en}</#if></a></strong> </#if></li>
+                    
+                
+                    <#list moduli as modulo>
+                    <li><strong>Corsi moduli:</strong> <strong><a href="DetailsCorso?n=${modulo.ID}&lin=it" id="dc"><#if modulo.nome_it?trim?has_content>  ${modulo.nome_it} <#else> ${modulo.nome_en} </#if></a></strong> </li>
+                    </#list>
+
+                   
+
+            </div>
+        </div>
+
+
+    </div><!-- End container -->
+
+
+
+
+<div class="divider_top"></div>
+  </section>
+  
+  <!------------ FINE PARTE INFORMATIVA (VERDE)---->
+
+  <section id="main_content">
+   <div class="container">
+  
+  <ol class="breadcrumb">
+      <li><a href="Home?lin=it">Home</a></li>
+      <li><a href="listcorsi?lin=it">Lista Corsi</a></li>
+      <li class="active"><#if corso.nome_it?trim?has_content> ${corso.nome_it} <#else> ${corso.nome_en} </#if></li>
+    </ol>
+
+	 
+
+<!--------Contenuto principale---------->
+<div class="row">
+    <div class="col-md-8">
+
+            <section id="space">
+                <h3>Sillabo</h3>
+                 <#if descrizione_it.sillabo?trim?has_content> ${descrizione_it.sillabo} <#else> ${descrizione_en.sillabo} </#if>
+            </section>
+
+
+
+
+
+
+
+        <h3>Descrittori di Dublino</h3>
+        <main class="main" id="space">
+
+            <input class="input" id="tab1" type="radio" name="tabs" checked>
+            <label for="tab1">Knowledge</label>
+              
+            <input class="input" id="tab2" type="radio" name="tabs">
+            <label for="tab2">Application</label>
+              
+            <input class="input" id="tab3" type="radio" name="tabs">
+            <label for="tab3">Evaluation</label>
+              
+            <input class="input" id="tab4" type="radio" name="tabs">
+            <label for="tab4">Communication</label>
+              
+            <input class="input" id="tab5" type="radio" name="tabs">
+            <label for="tab5">Lifelong</label>
+            
+
+            <section class="section" id="content1">
+                 <#if dublino_it.knowledge?trim?has_content> ${dublino_it.knowledge} <#else> ${dublino_en.knowledge} </#if>
+            </section>
+              
+            <section class="section" id="content2">
+                 <#if dublino_it.application?trim?has_content> ${dublino_it.application} <#else> ${dublino_en.application} </#if>
+            </section>
+              
+            <section class="section" id="content3">
+                 <#if dublino_it.evaluation?trim?has_content> ${dublino_it.evaluation} <#else> ${dublino_en.evaluation} </#if>
+            </section>
+              
+            <section class="section" id="content4">
+                <#if dublino_it.communication?trim?has_content> ${dublino_it.communication} <#else> ${dublino_en.communication} </#if>
+            </section>
+              
+            <section class="section" id="content5">
+                 <#if dublino_it.lifelong?trim?has_content> ${dublino_it.lifelong} <#else> ${dublino_en.lifelong} </#if>
+            </section>
+    </main>
+        
+        
+
+
+    <section id="space">
+            <h3>Modalit&#224 d'esame</h3>
+
+            <#if descrizione_it.mod_Esame?trim?has_content> ${descrizione_it.mod_Esame} <#else> ${descrizione_en.mod_Esame} </#if>
+            
+        </section>
+
+        <section id="space">
+                <h3>Modalit&#224 d'insegnamento</h3>
+    
+                <#if descrizione_it.mod_Insegnamento?trim?has_content> ${descrizione_it.mod_Insegnamento} <#else> ${descrizione_en.mod_Insegnamento} </#if>
+                
+            </section>
+        
+        <section id="space">
+            <h3>Note</h3>
+
+            <#if descrizione_it.note?trim?has_content> ${descrizione_it.note} <#else> ${descrizione_en.note} </#if>
+            
+        </section>
+        
+       
+        <#if precedenti??>
+        <section id="space">
+            <h3>Versioni Pagina Corso</h3>
+            <#list precedenti?sort_by("anno") as precedenti>
+            <li><a href="DetailsCorso?n=${precedenti.ID}&lin=it&new=${nn}"> A.A. ${precedenti.anno?c}/${(precedenti.anno+1)?c} </a></li>
+            </#list>
+            <#if nn!=corso.ID> <li><a href="DetailsCorso?n=${nn}&lin=it"> Informazioni correnti </a></li> </#if>
+        </section>
+      </#if>
+    </div><!-- End col-md-8-->   	
+
+
+<!-------Fine Contenuto principale---------->
+  	                 
+
+            <aside class="col-md-4"> <!--tabelle destra-->
+            
+            	<div class="box_style_1">
+                    <h4><a href="listmateriale?k=${corso.ID}&lin=it">Materiale</a></h4><br>
+                	<h4>Insegnanti</h4>
+                        <#list docenti as docente>
+                    <div class="media">
+                        <div class="pull-right">
+                            <img id="img-piccola" src="${docente.immagine}" class="img-circle" alt="">
+                        </div>
+                        <div class="media-body">
+                            <h5 class="media-heading"><a href="dettaglidocente?k=${docente.IDDocente}&lin=it">${docente.nome} ${docente.cognome}</a></h5>
+                            <p>
+                                ${docente.specializzazione}
+                            </p>
+                        </div>
+                    </div>
+                    </#list>
+                    
+                    
+           </div>
+           
+            <div class="box_style_1">
+                    <h4>Libri di Testo</h4>
+                    <ul class="legend_course">
+                        <#list libri as libro>
+                        <li><#if libro.link??><a href="${libro.link}"></#if>${libro.titolo}</a>,<#if libro.volume!=0> Vol.${libro.volume},</#if> ${libro.anno?c}, ${libro.autore}, ${libro.editore} </li>
+                        </#list>
+                     </ul>
+           </div>
+
+       	 	
+           
+            <#if descrizione_it.homepage?trim?has_content || descrizione_it.forum?trim?has_content || descrizione_it.risorse_Ext?trim?has_content || descrizione_en.homepage?trim?has_content || descrizione_en.forum?trim?has_content || descrizione_en.risorse_Ext?trim?has_content>   
+                
+           <div class="box_style_1">
+                    <h4>Link Esterni</h4>
+                    <ul class="list_1">
+                          <#if descrizione_it.homepage?trim?has_content><li><a href="${descrizione_it.homepage}">Homepage</a></li><#elseif descrizione_en.homepage?trim?has_content><li><a href="${descrizione_en.homepage}">Homepage</a></li></#if>
+                          <#if descrizione_it.forum?trim?has_content><li><a href="${descrizione_it.forum}">Forum</a></li><#elseif descrizione_en.forum?trim?has_content><li><a href="${descrizione_en.forum}">Forum</a></li></#if>
+                          <#if descrizione_it.risorse_Ext?trim?has_content><li><a href="${descrizione_it.risorse_Ext}">Risorse Esterne</a></li><#elseif descrizione_en.risorse_Ext?trim?has_content><li><a href="${descrizione_en.risorse_Ext}">Risorse Esterne</a></li></#if>
+                     </ul>
+           </div>
+            
+            </#if>
+            
+         </aside> <!-- End col-md-4 -->
+     	
+     </div><!-- End row -->
+  </div><!-- End container -->
+  </section>
+
+</#noautoesc>

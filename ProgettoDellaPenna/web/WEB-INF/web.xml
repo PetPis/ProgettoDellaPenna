@@ -196,6 +196,15 @@
         <servlet-name>Corsi</servlet-name>
         <url-pattern>/Corsi</url-pattern>
     </servlet-mapping>
+        <servlet>
+        <servlet-name>DettagliCorso</servlet-name>
+        <servlet-class>courseweb.controller.DetailsCorso</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DettagliCorso</servlet-name>
+        <url-pattern>/DettagliCorso</url-pattern>
+    </servlet-mapping>
+    
     <servlet>
         <servlet-name>Logout</servlet-name>
         <servlet-class>courseweb.controller.Logout</servlet-class>

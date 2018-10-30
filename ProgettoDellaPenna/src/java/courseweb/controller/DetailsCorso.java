@@ -43,7 +43,7 @@ public class DetailsCorso extends BaseController {
             request.setAttribute("docenti", corso.getDocenti());
             request.setAttribute("libri", corso.getLibri());
             request.setAttribute("change","y");
-            request.setAttribute("servlet","DetailsCorso?n="+id+"&");
+            request.setAttribute("servlet","DettagliCorso?n="+id+"&");
             request.setAttribute("cdl",((IgwDataLayer)request.getAttribute("datalayer")).getCDLInCorso(corso));
             
             HttpSession session= request.getSession(false);
@@ -80,7 +80,7 @@ public class DetailsCorso extends BaseController {
                 else
                     title=corso.getNome_it();
                 request.setAttribute("page_title", title);                
-                res.activate("course_details_4.ftl.html", request, response); 
+                res.activate("corso_profilo.ftl.html", request, response); 
             }
             else{
                 request.setAttribute("lingua","en");
@@ -90,7 +90,7 @@ public class DetailsCorso extends BaseController {
                 else
                     title=corso.getNome_en();
                 request.setAttribute("page_title", title);
-                res.activate("course_details_4_en.ftl.html", request, response);
+                res.activate("corso_profilo_en.ftl.html", request, response);
             }
             
         } catch (DataLayerException ex) {
