@@ -117,6 +117,14 @@
         <url-pattern>/ModificaCorso</url-pattern>
     </servlet-mapping>
     <servlet>
+        <servlet-name>Materiale</servlet-name>
+        <servlet-class>courseweb.controller.Materiale</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Materiale</servlet-name>
+        <url-pattern>/Materiale</url-pattern>
+    </servlet-mapping>
+    <servlet>
         <servlet-name>CreateMateriale</servlet-name>
         <servlet-class>courseweb.controller.CreateMateriale</servlet-class>
     </servlet>

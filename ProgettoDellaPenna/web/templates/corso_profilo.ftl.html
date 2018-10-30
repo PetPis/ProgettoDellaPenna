@@ -1,70 +1,69 @@
 <#noautoesc>
 
-
 <section id="sub-header-corsi" >
-    
 
-        <div class="row">
-            <div class="col-md-12 text-center">
-                <h1>Dettagli Del Corso</h1>
-                <p class="lead"></p>
-            </div>
-        </div><!-- End row -->
+
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <h1>Dettagli Del Corso</h1>
+            <p class="lead"></p>
+        </div>
+    </div><!-- End row -->
 </section>
 
 <div class="container">
-<div class="row" id="sub-header-features-2">
-    <div class="col-md-4">
-        <h2>Informazioni generali</h2>
-        <ul class="list_ok">
-            <li><strong>SSD:</strong> &nbsp;${corso.SSD}</li>
-            <li><strong>CDL:</strong>&nbsp;<#list corso.CDL as cdl>
-                <#if cdl.abbr_it?trim?has_content>${cdl.abbr_it}<#else>${cdl.abbr_en}</#if><#if cdl?has_next>,&nbsp;</#if>
-                </#list></li>
-            <li><strong>Lingua:</strong>&nbsp;  ${corso.lingua}</li>
-            <li><strong>Semestre:</strong>&nbsp;  ${corso.semestre}</li>
-            <li><strong>CFU (e tipo):</strong>&nbsp;  ${corso.cfu} / ${corso.tipologia}</li>
-            <li><strong>Anno Accademico:</strong>&nbsp; ${corso.anno?c}/${(corso.anno+1)?c}</li>
-        </ul>
-        <br>
+    <div class="row" id="sub-header-features-2">
+        <div class="col-md-4">
+            <h2>Informazioni generali</h2>
+            <ul class="list_ok">
+                <li><strong>SSD:</strong> &nbsp;${corso.SSD}</li>
+                <li><strong>CDL:</strong>&nbsp;<#list corso.CDL as cdl>
+                    <#if cdl.abbr_it?trim?has_content>${cdl.abbr_it}<#else>${cdl.abbr_en}</#if><#if cdl?has_next>,&nbsp;</#if>
+                    </#list></li>
+                <li><strong>Lingua:</strong>&nbsp;  ${corso.lingua}</li>
+                <li><strong>Semestre:</strong>&nbsp;  ${corso.semestre}</li>
+                <li><strong>CFU (e tipo):</strong>&nbsp;  ${corso.cfu} / ${corso.tipologia}</li>
+                <li><strong>Anno Accademico:</strong>&nbsp; ${corso.anno?c}/${(corso.anno+1)?c}</li>
+            </ul>
+            <br>
+        </div>
+
+        <div class="col-md-4">
+            <h2>Prerequisiti</h2>
+            <span><#if descrizione_it.prerequisiti?trim?has_content> ${descrizione_it.prerequisiti} <#else> ${descrizione_en.prerequisiti} </#if></span>
+        </div>
+
+        <div class="col-md-4">
+            <h2>Obiettivi</h2>
+            <span><#if descrizione_it.obiettivi?trim?has_content> ${descrizione_it.obiettivi} <#else> ${descrizione_en.obiettivi} </#if></span>
+        </div>
+
+
+    </div><!-- End row --> 
+    <div class="row">
+        <div class="col-md-12">
+
+            <ul class="nav nav-pills nav-stacked">
+                <#list propedeudici as propedeudico>
+                <li><strong>Corsi propedeudici:</strong> <strong><a href="DetailsCorso?n=${propedeudico.ID}&lin=it" id="dc"><#if propedeudico.nome_it?trim?has_content>  ${propedeudico.nome_it} <#else> ${propedeudico.nome_en} </#if></a></strong> </li>
+                </#list>
+
+
+                <#if mutuati?has_content>
+                <li><strong>Corsi mutuati:</strong><#list mutuati as mutua> <strong><a href="DetailsCorso?n=${mutua.ID}&lin=it" id="dc"> <#if mutua.nome_it?trim?has_content>  ${mutua.nome_it} <#if mutua?has_next>,&nbsp</#if> <#else> ${mutua.nome_en} <#if mutua?has_next>,&nbsp</#if></#if></a></strong></#list> </li>
+                </#if>   
+
+                <#if mutuato??><li><strong>Mutuato da:</strong> <strong><a href="DetailsCorso?n=${mutuato.ID}&lin=it" id="dc"><#if mutuato.nome_it?trim?has_content>  ${mutuato.nome_it} <#else> ${mutuato.nome_en}</#if></a></strong> </#if></li>
+
+
+                <#list moduli as modulo>
+                <li><strong>Corsi moduli:</strong> <strong><a href="DetailsCorso?n=${modulo.ID}&lin=it" id="dc"><#if modulo.nome_it?trim?has_content>  ${modulo.nome_it} <#else> ${modulo.nome_en} </#if></a></strong> </li>
+                </#list>
+
+
+            </ul>
+        </div>
     </div>
-
-    <div class="col-md-4">
-        <h2>Prerequisiti</h2>
-        <span><#if descrizione_it.prerequisiti?trim?has_content> ${descrizione_it.prerequisiti} <#else> ${descrizione_en.prerequisiti} </#if></span>
-    </div>
-
-    <div class="col-md-4">
-        <h2>Obiettivi</h2>
-        <span><#if descrizione_it.obiettivi?trim?has_content> ${descrizione_it.obiettivi} <#else> ${descrizione_en.obiettivi} </#if></span>
-    </div>
-
-
-</div><!-- End row --> 
-<div class="row">
-    <div class="col-md-12">
-
-        <ul class="nav nav-pills nav-stacked">
-            <#list propedeudici as propedeudico>
-            <li><strong>Corsi propedeudici:</strong> <strong><a href="DetailsCorso?n=${propedeudico.ID}&lin=it" id="dc"><#if propedeudico.nome_it?trim?has_content>  ${propedeudico.nome_it} <#else> ${propedeudico.nome_en} </#if></a></strong> </li>
-            </#list>
-
-
-            <#if mutuati?has_content>
-            <li><strong>Corsi mutuati:</strong><#list mutuati as mutua> <strong><a href="DetailsCorso?n=${mutua.ID}&lin=it" id="dc"> <#if mutua.nome_it?trim?has_content>  ${mutua.nome_it} <#if mutua?has_next>,&nbsp</#if> <#else> ${mutua.nome_en} <#if mutua?has_next>,&nbsp</#if></#if></a></strong></#list> </li>
-            </#if>   
-
-            <#if mutuato??><li><strong>Mutuato da:</strong> <strong><a href="DetailsCorso?n=${mutuato.ID}&lin=it" id="dc"><#if mutuato.nome_it?trim?has_content>  ${mutuato.nome_it} <#else> ${mutuato.nome_en}</#if></a></strong> </#if></li>
-
-
-            <#list moduli as modulo>
-            <li><strong>Corsi moduli:</strong> <strong><a href="DetailsCorso?n=${modulo.ID}&lin=it" id="dc"><#if modulo.nome_it?trim?has_content>  ${modulo.nome_it} <#else> ${modulo.nome_en} </#if></a></strong> </li>
-            </#list>
-
-
-        </ul>
-    </div>
-</div>
 
 
 </div><!-- End container -->
@@ -102,41 +101,40 @@
                 <h3>Descrittori di Dublino</h3>
                 <main class="main" id="space">
 
-                    <input class="input" id="tab1" type="radio" name="tabs" checked>
-                    <label for="tab1">Knowledge</label>
-
-                    <input class="input" id="tab2" type="radio" name="tabs">
-                    <label for="tab2">Application</label>
-
-                    <input class="input" id="tab3" type="radio" name="tabs">
-                    <label for="tab3">Evaluation</label>
-
-                    <input class="input" id="tab4" type="radio" name="tabs">
-                    <label for="tab4">Communication</label>
-
-                    <input class="input" id="tab5" type="radio" name="tabs">
-                    <label for="tab5">Lifelong</label>
-
-
-                    <section class="section" id="content1">
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a data-toggle="tab" href="#tab4">Knowledge</a></li>
+                        <li><a data-toggle="tab" href="#tab5">Application</a></li>
+                        <li><a data-toggle="tab" href="#tab6">Evaluation attivi</a></li>
+                        <li><a data-toggle="tab" href="#tab7">Communication</a></li>
+                        <li><a data-toggle="tab" href="#tab8">Lifelong</a></li>
+                    </ul>
+                    
+                    <div class="tab-content">
+                    <div id="tab4" class="tab-pane fade in active">
+                        <#noautoesc>
                         <#if dublino_it.knowledge?trim?has_content> ${dublino_it.knowledge} <#else> ${dublino_en.knowledge} </#if>
-                    </section>
-
-                    <section class="section" id="content2">
-                        <#if dublino_it.application?trim?has_content> ${dublino_it.application} <#else> ${dublino_en.application} </#if>
-                    </section>
-
-                    <section class="section" id="content3">
+                        </#noautoesc>
+                    </div>
+                    <div id="tab5" class="tab-pane fade">
+                        <#noautoesc>
+                        <#if dublino_it.application?trim?has_content> ${dublino_it.application} <#else> ${dublino_en.application} </#if>              
+                        </#noautoesc>
+                    </div>
+                    <div id="tab6" class="tab-pane fade">
+                        <#noautoesc>
                         <#if dublino_it.evaluation?trim?has_content> ${dublino_it.evaluation} <#else> ${dublino_en.evaluation} </#if>
-                    </section>
-
-                    <section class="section" id="content4">
+                        </#noautoesc>
+                    </div> 
+                    <div id="tab7" class="tab-pane fade">
+                        <#noautoesc>
                         <#if dublino_it.communication?trim?has_content> ${dublino_it.communication} <#else> ${dublino_en.communication} </#if>
-                    </section>
-
-                    <section class="section" id="content5">
+                        </#noautoesc>
+                    </div>    
+                    <div id="tab8" class="tab-pane fade">
+                        <#noautoesc>
                         <#if dublino_it.lifelong?trim?has_content> ${dublino_it.lifelong} <#else> ${dublino_en.lifelong} </#if>
-                    </section>
+                        </#noautoesc>
+                    </div>          
                 </main>
 
 
@@ -168,7 +166,7 @@
                 <section id="space">
                     <h3>Versioni Pagina Corso</h3>
                     <#list precedenti?sort_by("anno") as precedenti>
-                    <li><a href="DetailsCorso?n=${precedenti.ID}&lin=it&new=${nn}"> A.A. ${precedenti.anno?c}/${(precedenti.anno+1)?c} </a></li>
+                    <li><a href="Materiale?n=${precedenti.ID}&lin=it&new=${nn}"> A.A. ${precedenti.anno?c}/${(precedenti.anno+1)?c} </a></li>
                     </#list>
                     <#if nn!=corso.ID> <li><a href="DetailsCorso?n=${nn}&lin=it"> Informazioni correnti </a></li> </#if>
                 </section>
@@ -190,7 +188,7 @@
                             <img id="img-piccola" src="${docente.immagine}" class="img-circle" alt="">
                         </div>
                         <div class="media-body">
-                            <h5 class="media-heading"><a href="dettaglidocente?k=${docente.IDDocente}&lin=it">${docente.nome} ${docente.cognome}</a></h5>
+                            <h5 class="media-heading"><a href="DettagliDocente?k=${docente.IDDocente}&lin=it">${docente.nome} ${docente.cognome}</a></h5>
                             <p>
                                 ${docente.specializzazione}
                             </p>
