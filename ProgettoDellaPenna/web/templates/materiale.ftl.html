@@ -4,7 +4,7 @@
         <ol class="breadcrumb">
           <#if lingua=="it">
             <li><a href="Home">Home</a></li>
-            <li><a href="listcorsi">Lista Corsi</a></li>
+            <li><a href="Corsi">Lista Corsi</a></li>
             <li><a href="DetailsCorso?n=${corso.ID}"><#if corso.nome_it?trim?has_content>${corso.nome_it}<#else>${corso.nome_en}</#if></a></li>
             <li class="active">Materiale</li>
           <#else>

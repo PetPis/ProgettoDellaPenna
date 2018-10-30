@@ -1,4 +1,6 @@
 package courseweb.controller;
+
+
 import courseweb.controller.data.DataLayerException;
 import courseweb.controller.security.SecurityLayer;
 import courseweb.model.interfacce.Corso;
@@ -20,7 +22,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-public class Materiale extends BaseController {
+public class ListMateriale extends BaseController {
 
     private void action_error(HttpServletRequest request, HttpServletResponse response) {
         if (request.getAttribute("exception") != null) {
@@ -38,11 +40,11 @@ public class Materiale extends BaseController {
             File file;
             
             Iterator<Materiale> itr=mat.iterator();
-            Materiale m;
+            ListMateriale m;
             String relativePath = getServletContext().getRealPath("");
             String filePath;
             while (itr.hasNext()){
-                m=itr.next();
+                m=(ListMateriale) itr.next();
                 filePath=relativePath+"/"+m.getLink();
                 file=new File(filePath);
                 pesi.add((int)(file.length()/1024));
@@ -70,7 +72,7 @@ public class Materiale extends BaseController {
             
             //request.setAttribute("pesofile",pesi);
             
-            request.setAttribute("servlet","listmateriale?k="+id+"&");
+            request.setAttribute("servlet","Materiale?k="+id+"&");
             request.setAttribute("change","y");
             if(lingua.equals("it")||lingua.equals("")){
                 request.setAttribute("page_title", "Lista Materiale");

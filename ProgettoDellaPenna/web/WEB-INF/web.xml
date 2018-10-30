@@ -118,7 +118,7 @@
     </servlet-mapping>
     <servlet>
         <servlet-name>Materiale</servlet-name>
-        <servlet-class>courseweb.controller.Materiale</servlet-class>
+        <servlet-class>courseweb.controller.ListMateriale</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>Materiale</servlet-name>
@@ -204,7 +204,7 @@
         <servlet-name>Corsi</servlet-name>
         <url-pattern>/Corsi</url-pattern>
     </servlet-mapping>
-        <servlet>
+    <servlet>
         <servlet-name>DettagliCorso</servlet-name>
         <servlet-class>courseweb.controller.DetailsCorso</servlet-class>
     </servlet>
@@ -212,7 +212,6 @@
         <servlet-name>DettagliCorso</servlet-name>
         <url-pattern>/DettagliCorso</url-pattern>
     </servlet-mapping>
-    
     <servlet>
         <servlet-name>Logout</servlet-name>
         <servlet-class>courseweb.controller.Logout</servlet-class>
