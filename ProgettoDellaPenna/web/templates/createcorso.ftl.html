@@ -147,7 +147,8 @@
                             <div>
                                 <h4>Corsi mutuati</h4>
                                 <div>
-                                    <select name="mutuati">
+                                    <select name="mutuati" multiple>
+                                        
                                         <#list corsi as corsi>
                                         <option value="${corsi.ID}">${corsi.nome_it}</option>
                                         </#list>
@@ -161,8 +162,12 @@
                             <div>
                                 <h4>Corsi Propedeudici</h4>
                                 <div>
-                                    <select name="propedeudici">
-
+                                    
+                                    <select name="propedeudici" multiple>
+                                        
+                                        <#list corsi as corsi>
+                                        <option value="${corsi.ID}">${corsi.nome_it}</option>
+                                        </#list>
 
                                     </select>
                                 </div>
@@ -171,10 +176,14 @@
 
                         <div class="col-md-4">
                             <div>
+                                
                                 <h4>Corsi Modulo</h4>
                                 <div >
-                                    <select name="modulo">
-
+                                    <select name="modulo" multiple>
+                                        
+                                         <#list corsi as corsi>
+                                        <option value="${corsi.ID}">${corsi.nome_it}</option>
+                                        </#list>
 
                                     </select>
                                 </div>

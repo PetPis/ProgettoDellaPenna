@@ -10,6 +10,7 @@ import courseweb.view.TemplateManagerException;
 import courseweb.view.TemplateResult;
 import java.io.IOException;
 import java.net.URLEncoder;
+import java.sql.Timestamp;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -38,7 +39,7 @@ public class CreateMaterialeD extends BaseController {
     
     private void action_default(HttpServletRequest request, HttpServletResponse response,String lingua) throws IOException, ServletException, TemplateManagerException {
         TemplateResult res = new TemplateResult(getServletContext());
-        request.setAttribute("servlet","CreateMateriale?");
+        request.setAttribute("servlet","CreateMaterialeD?");
             if(lingua.equals("it")||lingua.equals("")){
             try {
                 request.setAttribute("lingua","it");
@@ -83,6 +84,16 @@ public class CreateMaterialeD extends BaseController {
         materiale.setNome(nome);
         materiale.setLink(filePath);
         ((IgwDataLayer)request.getAttribute("datalayer")).storeMateriale(materiale);
+        HttpSession session= request.getSession(false);
+        int id1 = (int) session.getAttribute("userid");
+        //int id = (int) session.getAttribute("docenteid");
+        
+        courseweb.model.interfacce.Log log=((IgwDataLayer)request.getAttribute("datalayer")).CreateLog();
+        log.setIDUtente(id1);
+        log.setDescrizione("Ha aggiunto il materiale "+ nome);
+        Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+        log.setData(timestamp);
+        ((IgwDataLayer)request.getAttribute("datalayer")).storeLog(log);
     }
      
     

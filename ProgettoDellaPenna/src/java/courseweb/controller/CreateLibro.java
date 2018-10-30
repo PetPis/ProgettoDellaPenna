@@ -118,7 +118,7 @@ public class CreateLibro extends BaseController {
         
         courseweb.model.interfacce.Log log=((IgwDataLayer)request.getAttribute("datalayer")).CreateLog();
         log.setIDUtente(id);
-        log.setDescrizione("Ha aggiunto il libro"+ titolo +"corso"+ corso);
+        log.setDescrizione("Ha aggiunto il libro "+ titolo);
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
         log.setData(timestamp);
         ((IgwDataLayer)request.getAttribute("datalayer")).storeLog(log);

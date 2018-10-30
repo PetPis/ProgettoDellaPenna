@@ -72,7 +72,11 @@
                 </div>
             </div> 
             <div class="col-md-10">
+                <#if docente??>
+                <form method="post" action="CreateMaterialeD" enctype="multipart/form-data">
+                <#else>
                 <form method="post" action="CreateMateriale" enctype="multipart/form-data">
+                </#if>
                     <div class="row">
                         <!--Materiali-->
 

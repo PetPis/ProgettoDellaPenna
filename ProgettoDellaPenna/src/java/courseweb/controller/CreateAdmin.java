@@ -48,7 +48,7 @@ public class CreateAdmin extends BaseController {
         
         courseweb.model.interfacce.Log log=((IgwDataLayer)request.getAttribute("datalayer")).CreateLog();
         log.setIDUtente(id1);
-        log.setDescrizione("Ha creato il nuovo amministratore"+""+ nomelog);
+        log.setDescrizione("Ha creato il nuovo amministratore "+ nomelog);
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
         log.setData(timestamp);
         

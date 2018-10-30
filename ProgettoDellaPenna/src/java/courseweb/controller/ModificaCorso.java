@@ -352,7 +352,7 @@ public class ModificaCorso extends BaseController {
         
         courseweb.model.interfacce.Log log=((IgwDataLayer)request.getAttribute("datalayer")).CreateLog();
         log.setIDUtente(id1);
-        log.setDescrizione("Ha modificato il corso di"+ nomelog);
+        log.setDescrizione("Ha modificato il corso di "+ nomelog);
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
         log.setData(timestamp);
         ((IgwDataLayer)request.getAttribute("datalayer")).storeLog(log);
@@ -384,7 +384,7 @@ public class ModificaCorso extends BaseController {
         
         courseweb.model.interfacce.Log log=((IgwDataLayer)request.getAttribute("datalayer")).CreateLog();
         log.setIDUtente(id1);
-        log.setDescrizione("Ha cancellato il corso di "+ nome + " appartenente al cdl di "+ cdl );
+        log.setDescrizione("Ha cancellato il corso di "+ nome );
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
         log.setData(timestamp);
         ((IgwDataLayer)request.getAttribute("datalayer")).storeLog(log);

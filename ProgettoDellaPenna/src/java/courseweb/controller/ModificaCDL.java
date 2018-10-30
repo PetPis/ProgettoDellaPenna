@@ -205,7 +205,7 @@ public class ModificaCDL extends BaseController {
         
         Log log=((IgwDataLayer)request.getAttribute("datalayer")).CreateLog();
         log.setIDUtente(id1);
-        log.setDescrizione("Ha cancellato il cdl " + " "+ nomelog);
+        log.setDescrizione("Ha cancellato il cdl "+ nomelog);
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
         log.setData(timestamp);
         

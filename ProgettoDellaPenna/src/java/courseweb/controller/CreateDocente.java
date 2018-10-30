@@ -143,7 +143,7 @@ public class CreateDocente extends BaseController {
         
         courseweb.model.interfacce.Log log=((IgwDataLayer)request.getAttribute("datalayer")).CreateLog();
         log.setIDUtente(id1);
-        log.setDescrizione("Ha registrato il docente"+ nome +""+""+cognome);
+        log.setDescrizione("Ha registrato il docente "+ nome +""+""+cognome);
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
         log.setData(timestamp);
         ((IgwDataLayer)request.getAttribute("datalayer")).storeLog(log);
