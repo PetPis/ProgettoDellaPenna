@@ -200,10 +200,10 @@ public class IgwDataLayerMysqlImpl extends DataLayerMysqlImpl implements IgwData
     public CDL createCDL(ResultSet rs) throws DataLayerException {
         try {
             CDLImpl c = new CDLImpl(this);
-            c.setIDCDL(rs.getInt("IDCDL")); //dobbiamo mettere tutti i metodi setid puttana
+            c.setIDCDL(rs.getInt("IDCDL")); //dobbiamo mettere tutti i metodi setid
             c.setNome_it(rs.getString("Nome_it").toUpperCase());
             c.setNome_en(rs.getString("Nome_en").toUpperCase());
-            c.setAnno(rs.getInt("Anno"));  //il metodo getYear è stato deprecato https://docs.oracle.com/javase/7/docs/api/java/sql/Time.html probabile che dobbiamo suare caldendar
+            c.setAnno(rs.getInt("Anno"));  
             c.setCfu(rs.getInt("Cfu"));
             c.setMagistrale(rs.getInt("Magistrale"));
             c.setImmagine(rs.getString("Immagine"));
@@ -1208,7 +1208,6 @@ public class IgwDataLayerMysqlImpl extends DataLayerMysqlImpl implements IgwData
          try {
             if (key > 0) { //update
                 //non facciamo nulla se l'oggetto non ha subito modifiche
-                //do not store the object if it was not modified
                 if (!utente.isDirty()) {
                     return;
                 }
@@ -1238,18 +1237,12 @@ public class IgwDataLayerMysqlImpl extends DataLayerMysqlImpl implements IgwData
                     //per leggere la chiave generata dal database
                     //per il record appena inserito, usiamo il metodo
                     //getGeneratedKeys sullo statement.
-                    //to read the generated record key from the database
-                    //we use the getGeneratedKeys method on the same statement
                     try (ResultSet keys = iUtente.getGeneratedKeys()) {
                         //il valore restituito è un ResultSet con un record
                         //per ciascuna chiave generata (uno solo nel nostro caso)
-                        //the returned value is a ResultSet with a distinct record for
-                        //each generated key (only one in our case)
                         if (keys.next()) {
                             //i campi del record sono le componenti della chiave
                             //(nel nostro caso, un solo intero)
-                            //the record fields are the key componenets
-                            //(a single integer in our case)
                             key = keys.getInt(1);
                         }
                     }
@@ -1259,10 +1252,6 @@ public class IgwDataLayerMysqlImpl extends DataLayerMysqlImpl implements IgwData
             //dal database tramite le API del modello. In tal
             //modo terremo conto di ogni modifica apportata
             //durante la fase di inserimento
-            //we return the just-inserted object RELOADED from the
-            //database through our API. In this way, the resulting
-            //object will ambed any data correction performed by
-            //the DBMS
             if (key > 0) {
                 utente.copyFrom(getUtente(key));
             }
@@ -1277,8 +1266,7 @@ public class IgwDataLayerMysqlImpl extends DataLayerMysqlImpl implements IgwData
         int key = corso.getID();
          try {
             if (key > 0) { //update
-                //non facciamo nulla se l'oggetto non ha subito modifiche
-                //do not store the object if it was not modified
+                //non facciamo nulla se l'oggetto non ha subito modifiche                
                 if (!corso.isDirty()) {
                     return;
                 }
@@ -1374,35 +1362,7 @@ public class IgwDataLayerMysqlImpl extends DataLayerMysqlImpl implements IgwData
                         iColleg_Corso.setString(3, "propedeudico");
                         iColleg_Corso.executeUpdate();
                     }
-                    
-                    /*
-                    for(Docente doc:docx) 
-                        if(!corso.getDocenti().contains(doc)){                                                                                                              
-                            dDocentiCorso.setInt(1, corso.getID());
-                            dDocentiCorso.setInt(2, doc.getIDDocente());
-                            dDocentiCorso.executeUpdate();
-                            docx.remove(doc);
-                        }
-                    for(Docente doc:corso.getDocenti())
-                        if(!docx.contains(doc)){
-                            iDocentiCorso.setInt(1, corso.getID());
-                            iDocentiCorso.setInt(2, doc.getIDDocente());
-                            iDocentiCorso.executeUpdate();
-                        }
-                    List<CDL> cdl=getCDLInCorso(corso);
-                    for(CDL cd:cdl)
-                        if(!corso.getCDL().contains(cd)){
-                           dCDLCorso.setInt(1, corso.getID());
-                           dCDLCorso.setInt(2,cd.getIDCDL());
-                           dCDLCorso.executeUpdate();
-                           cdl.remove(cd);
-                        }
-                    for(CDL cd:corso.getCDL())
-                        if(!cdl.contains(cd)){
-                            iCDLCorso.setInt(1, corso.getID());
-                            iCDLCorso.setInt(2, cd.getIDCDL());
-                            iCDLCorso.executeUpdate();
-                        }*/
+                  
                     corso.copyFrom(corso);
                 
                 corso.setDirty(false);
@@ -1496,16 +1456,6 @@ public class IgwDataLayerMysqlImpl extends DataLayerMysqlImpl implements IgwData
             }
             corso.setDirty(false);
             }
-            /*Iterator doc;
-            if(!corso.getDocenti().isEmpty()){
-                doc=corso.getDocenti().iterator();
-                Docente d = null;
-                while(doc.hasNext()){
-                    d=(Docente)doc.next();
-                    iDocentiCorso.setInt(1, corso.getID());
-                    iDocentiCorso.setInt(2,d.getIDDocente());
-                }
-            }*/
             
         } catch (SQLException ex) {
             throw new DataLayerException("Unable to store Corso", ex);
@@ -1517,7 +1467,6 @@ public class IgwDataLayerMysqlImpl extends DataLayerMysqlImpl implements IgwData
     @Override
     public void destroy() {
         //anche chiudere i PreparedStamenent è una buona pratica...
-        //also closing PreparedStamenents is a good practice...
         try {
             sCorsoByID.close();
             sLog.close();
@@ -1605,7 +1554,6 @@ public class IgwDataLayerMysqlImpl extends DataLayerMysqlImpl implements IgwData
          try {
             if (key > 0) { //update
                 //non facciamo nulla se l'oggetto non ha subito modifiche
-                //do not store the object if it was not modified
                 if (!cdl.isDirty()) {
                     return;
                 }
