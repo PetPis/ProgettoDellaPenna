@@ -138,11 +138,15 @@
 
                     <hr>
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-12">
                             <h4>Upload Immagine - Optional</h4>
                             <div class="form-group">
-                                <img src="${cdls.immagine}" alt="ImgCDL"><br><br>
+                                <div class="col-md-6">
+                                <img src="${cdls.immagine}" id="img-docente" class="img img-rounded" alt="ImgCDL"><br><br>
+                                </div>
+                                <div class="col-md-6">
                                 <input type="file" name="immagine" value="${cdls.immagine}" />
+                                </div>
                             </div>
                         </div>
                     </div>

@@ -195,7 +195,7 @@ public class ModificaCDL extends BaseController {
         int id=Integer.parseInt(request.getParameter("id"));
         CDL cdl=((IgwDataLayer)request.getAttribute("datalayer")).getCDL(id);
         String context=request.getServletContext().getRealPath("");
-        Upload.delete(context, cdl.getImmagine());
+        
         
         String nomelog=cdl.getNome_it();
         HttpSession session= request.getSession(false);
