@@ -181,14 +181,9 @@
                     <h4>Insegnanti</h4>
                     <#list docenti as docente>
                     <div class="media">
-                        <div class="pull-right">
-                            <img id="img-docente" src="${docente.immagine}" class="img-doc img img-rounded">
-                        </div>
+                            
                         <div class="media-body">
                             <h5 class="media-heading"><a href="DettagliDocente?k=${docente.IDDocente}&lin=it">${docente.nome} ${docente.cognome}</a></h5>
-                            <p>
-                                ${docente.specializzazione}
-                            </p>
                         </div>
                     </div>
                     </#list>
