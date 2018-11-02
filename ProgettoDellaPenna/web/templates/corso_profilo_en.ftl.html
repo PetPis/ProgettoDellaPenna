@@ -15,7 +15,7 @@
     <div class="row" id="sub-header-features-2">
         <div class="col-md-4">
             <h2>General informations</h2>
-            <ul class="list_ok">
+            <ul class="lista">
                 <li><strong>SSD:</strong> &nbsp;${corso.SSD}</li>
                 <li><strong>CDL:</strong>&nbsp;<#list corso.CDL as cdl>
                     <#if cdl.abbr_it?trim?has_content>${cdl.abbr_it}<#else>${cdl.abbr_en}</#if><#if cdl?has_next>,&nbsp;</#if>
@@ -45,20 +45,20 @@
             <br>
             <ul class="nav nav-pills nav-stacked">
                 <#list propedeudici as propedeudico>
-                <li><strong>Propedeudic courses:</strong> <strong><a href="DetailsCorso?n=${propedeudico.ID}&lin=it" id="dc"><#if propedeudico.nome_it?trim?has_content>  ${propedeudico.nome_it} <#else> ${propedeudico.nome_en} </#if></a></strong> </li>
+                <li><strong>Propedeudic courses:</strong> <strong><a href="DetailsCorso?n=${propedeudico.ID}&lin=it"><#if propedeudico.nome_it?trim?has_content>  ${propedeudico.nome_it} <#else> ${propedeudico.nome_en} </#if></a></strong> </li>
                 </#list>
 
 
                 <#if mutuati?has_content>
-                <li><strong>Mutuated courses:</strong><#list mutuati as mutua> <strong><a href="DetailsCorso?n=${mutua.ID}&lin=it" id="dc"> <#if mutua.nome_it?trim?has_content>  ${mutua.nome_it} <#if mutua?has_next>,&nbsp</#if> <#else> ${mutua.nome_en} <#if mutua?has_next>,&nbsp</#if></#if></a></strong></#list> </li>
+                <li><strong>Mutuated courses:</strong><#list mutuati as mutua> <strong><a href="DetailsCorso?n=${mutua.ID}&lin=it"> <#if mutua.nome_it?trim?has_content>  ${mutua.nome_it} <#if mutua?has_next>,&nbsp</#if> <#else> ${mutua.nome_en} <#if mutua?has_next>,&nbsp</#if></#if></a></strong></#list> </li>
                 </#if>   
 
                 <#if mutuato??>
-                <li><strong>Derived from:</strong> <strong><a href="DetailsCorso?n=${mutuato.ID}&lin=it" id="dc"><#if mutuato.nome_it?trim?has_content>  ${mutuato.nome_it} <#else> ${mutuato.nome_en}</#if></a></strong> </#if></li>
+                <li><strong>Derived from:</strong> <strong><a href="DetailsCorso?n=${mutuato.ID}&lin=it"><#if mutuato.nome_it?trim?has_content>  ${mutuato.nome_it} <#else> ${mutuato.nome_en}</#if></a></strong> </#if></li>
 
 
                 <#list moduli as modulo>
-                <li><strong>Form courses:</strong> <a href="DetailsCorso?n=${modulo.ID}&lin=it" id="dc"><#if modulo.nome_it?trim?has_content>  ${modulo.nome_it} <#else> ${modulo.nome_en} </#if></a> </li>
+                <li><strong>Form courses:</strong> <a href="DetailsCorso?n=${modulo.ID}&lin=it"><#if modulo.nome_it?trim?has_content>  ${modulo.nome_it} <#else> ${modulo.nome_en} </#if></a> </li>
                 </#list>
 
 
@@ -164,7 +164,7 @@
                 <section id="space">
                     <h3>Versions Page Course</h3>
                     <#list precedenti?sort_by("anno") as precedenti>
-                    <li><a href="Materiale?n=${precedenti.ID}&lin=it&new=${nn}"> A.A. ${precedenti.anno?c}/${(precedenti.anno+1)?c} </a></li>
+                    <li><a href="#"> A.A. ${precedenti.anno?c}/${(precedenti.anno+1)?c} </a></li>
                     </#list>
                     <#if nn!=corso.ID> <li><a href="DetailsCorso?n=${nn}&lin=it"> Informazioni correnti </a></li> </#if>
                 </section>
@@ -178,12 +178,12 @@
             <aside class="col-md-4"> <!--tabelle destra-->
 
                 <div class="box_style_1">
-                    <h4><a href="Materiale?k=${corso.ID}&lin=it">Material</a></h4><br>
+                    <h4><a href="#">Material</a></h4><br>
                     <h4>Teachers</h4>
                     <#list docenti as docente>
                     <div class="media">
                         <div class="pull-right">
-                            <img id="img-piccola" src="${docente.immagine}" class="img-circle" alt="">
+                            <img id="img-docente" src="${docente.immagine}" class="img-doc img img-rounded">
                         </div>
                         <div class="media-body">
                             <h5 class="media-heading"><a href="DettagliDocente?k=${docente.IDDocente}&lin=it">${docente.nome} ${docente.cognome}</a></h5>
@@ -199,7 +199,7 @@
 
                 <div class="box_style_1">
                     <h4>Textbooks</h4>
-                    <ul class="legend_course">
+                    <ul>
                         <#list libri as libro>
                         <li><#if libro.link??><a href="${libro.link}"></#if>${libro.titolo}</a>,<#if libro.volume!=0> Vol.${libro.volume},</#if> ${libro.anno?c}, ${libro.autore}, ${libro.editore} </li>
                         </#list>
@@ -212,7 +212,7 @@
 
                 <div class="box_style_1">
                     <h4>External links</h4>
-                    <ul class="list_1">
+                    <ul>
                         <#if descrizione_it.homepage?trim?has_content><li><a href="${descrizione_it.homepage}">Homepage</a></li><#elseif descrizione_en.homepage?trim?has_content><li><a href="${descrizione_en.homepage}">Homepage</a></li></#if>
                         <#if descrizione_it.forum?trim?has_content><li><a href="${descrizione_it.forum}">Forum</a></li><#elseif descrizione_en.forum?trim?has_content><li><a href="${descrizione_en.forum}">Forum</a></li></#if>
                         <#if descrizione_it.risorse_Ext?trim?has_content><li><a href="${descrizione_it.risorse_Ext}">Risorse Esterne</a></li><#elseif descrizione_en.risorse_Ext?trim?has_content><li><a href="${descrizione_en.risorse_Ext}">Risorse Esterne</a></li></#if>

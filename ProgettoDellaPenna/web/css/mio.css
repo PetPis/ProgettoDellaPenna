@@ -265,19 +265,19 @@ a.button_profile:hover {
 
 
 
-ul.list_ok {
+ul.lista {
     list-style: none;
     margin: 0;
     padding: 0
 }
 
-ul.list_ok li {
+ul.lista li {
     margin-bottom: 0;
     position: relative;
     padding-left: 20px
 }
 
-ul.list_ok li:before {
+ul.lista li:before {
     font-family: fontello;
     content: "\e81a";
     position: absolute;

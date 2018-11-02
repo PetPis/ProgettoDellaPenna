@@ -95,9 +95,6 @@
                             <h5>CFU del Corso</h5>
                             <div class="form-group">
                                 <input type="number" class="form-control" value="${corso.cfu}" name="cfu" min=1>
-                                <span class="input-icon">
-                                    <i class="#"></i>
-                                </span>
                             </div>
                         </div>
                     </div>
@@ -163,7 +160,7 @@
                         </div>
                         <div class="col-md-6">
                             <h4>Modifica il cdl corso</h4>
-                            <select  name="cdl" required  onchange="CheckSelect(document.getElementsByName('cdl')[0])">
+                            <select  name="cdl" required>
                                 <#list cdl1?sort_by( "nome_it") as cdl1>
                                 <option value="${cdl1.IDCDL}" <#if seq?seq_contains(cdl1.IDCDL)>selected</#if>>
                                         <#if cdl1.nome_it?trim?has_content>${cdl1.nome_it}

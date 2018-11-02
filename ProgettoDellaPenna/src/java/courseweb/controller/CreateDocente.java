@@ -71,6 +71,10 @@ public class CreateDocente extends BaseController {
                     fileName=nome+cognome;
                     imgPath=Upload.Up(context,immagine,"imgDocenti",fileName,null);
                 }
+                else{
+                    
+                    imgPath="imgDocenti\\default.jpg";
+                }
                 
                 //String immagine= request.getParameter("immagine");
                 String email= request.getParameter("email");

@@ -61,11 +61,11 @@ public class CreateAdmin extends BaseController {
      
      
      
-    private void action_default(HttpServletRequest request, HttpServletResponse response,String lingua) throws IOException, ServletException, TemplateManagerException {
+    private void action_default(HttpServletRequest request, HttpServletResponse response,String lingua) throws IOException, ServletException, TemplateManagerException, DataLayerException {
         TemplateResult res = new TemplateResult(getServletContext());
         request.setAttribute("servlet","Profile?");
             if(lingua.equals("it")||lingua.equals("")){
-            try {
+            
                 request.setAttribute("lingua","it");
                 request.setAttribute("page_title", "Profilo");
                 
@@ -81,9 +81,7 @@ public class CreateAdmin extends BaseController {
                 request.setAttribute("utente", ((IgwDataLayer)request.getAttribute("datalayer")).getUtente(id));
                 
                 res.activate("createadmin.ftl.html", request, response);
-            } catch (DataLayerException ex) {
-                Logger.getLogger(Profile.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            
        
 
     }
@@ -94,7 +92,7 @@ public class CreateAdmin extends BaseController {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException {
         String lin;
-        try{
+       
             HttpSession s = SecurityLayer.checkSession(request);
             String username=(String)s.getAttribute("username");
             try {
@@ -119,14 +117,17 @@ public class CreateAdmin extends BaseController {
                 SecurityLayer.disposeSession(request);
                     response.sendRedirect("Login?referrer=" + URLEncoder.encode(request.getRequestURI(), "UTF-8"));
             }
-            } catch (DataLayerException ex) {
-                Logger.getLogger(Profile.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            
         } catch (IOException ex) {
             request.setAttribute("exception", ex);
             action_error(request, response);
-        }
+        }   catch (DataLayerException ex) {
+                Logger.getLogger(CreateAdmin.class.getName()).log(Level.SEVERE, null, ex);
+            }
     }
+    
+
+
 
     /**
      * Returns a short description of the servlet.

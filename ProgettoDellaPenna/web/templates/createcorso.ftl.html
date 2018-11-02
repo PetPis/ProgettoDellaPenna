@@ -130,7 +130,7 @@
                                 <h4>Associa i cdl al corso</h4>
                                 <div>
 
-                                    <select name="cdl" onchange="CheckSelect(document.getElementsByName('cdl')[0])" required>
+                                    <select name="cdl" required>
                                         <#list cdl?sort_by( "nome_it") as cdl>
                                         <option value="${cdl.IDCDL}">${cdl.nome_it}</option>
                                         </#list>
@@ -217,14 +217,14 @@
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <h5>Prerequisiti Del Corso</h5>
-                                                    <textarea rows="5" id="mytextarea" name="prerequisiti" class="form-control" placeholder="Inserisci qui i prerequisiti del corso"
+                                                    <textarea rows="5" name="prerequisiti" class="form-control" placeholder="Inserisci qui i prerequisiti del corso"
                                                               style="height:150px;"></textarea>
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <h5>Obiettivi Del Corso</h5>
                                                 <div class="form-group">
-                                                    <textarea rows="5" id="mytextarea" name="obiettivi" class="form-control" placeholder="Inserisci qui gli obiettivi del corso"
+                                                    <textarea rows="5" name="obiettivi" class="form-control" placeholder="Inserisci qui gli obiettivi del corso"
                                                               style="height:150px;"></textarea>
                                                 </div>
                                             </div>
@@ -234,7 +234,7 @@
                                             <div class="col-md-6">
                                                 <h5>Modalit&#224 D'Esame Del Corso</h5>
                                                 <div class="form-group">
-                                                    <textarea rows="5" id="mytextarea" name="modesa" class="form-control" placeholder="Inserisci qui le modalit&#224 di esame del corso"
+                                                    <textarea rows="5" name="modesa" class="form-control" placeholder="Inserisci qui le modalit&#224 di esame del corso"
                                                               style="height:150px;"></textarea>
 
                                                 </div>
@@ -242,7 +242,7 @@
                                             <div class="col-md-6">
                                                 <h5>Modalit&#224 Di Insegnamento Del Corso</h5>
                                                 <div class="form-group">
-                                                    <textarea rows="5" id="mytextarea" name="modins" class="form-control" placeholder="Inserisci qui le modalit&#224 di insegnamento del corso"
+                                                    <textarea rows="5" name="modins" class="form-control" placeholder="Inserisci qui le modalit&#224 di insegnamento del corso"
                                                               style="height:150px;"></textarea>
                                                 </div>
                                             </div>
@@ -252,14 +252,14 @@
                                             <div class="col-md-6 col-sm-6">
                                                 <h5>Sillabo</h5>
                                                 <div class="form-group">
-                                                    <textarea rows="5" id="mytextarea" name="sillabo" class="form-control" placeholder="Inserisci qui il sillabo del corso"
+                                                    <textarea rows="5" name="sillabo" class="form-control" placeholder="Inserisci qui il sillabo del corso"
                                                               style="height:150px;"></textarea>
                                                 </div>
                                             </div>
                                             <div class="col-md-6 col-sm-6">
                                                 <h5>Note extra</h5>
                                                 <div class="form-group">
-                                                    <textarea rows="5" id="mytextarea" name="note" class="form-control" placeholder="Inserisci qui altre informazioni utili del corso"
+                                                    <textarea rows="5" name="note" class="form-control" placeholder="Inserisci qui altre informazioni utili del corso"
                                                               style="height:150px;"></textarea>
                                                 </div>
                                             </div>
@@ -318,7 +318,7 @@
                                                 <h5>Prerequisiti Del Corso EN</h5>
                                                 <div class="form-group">
                                                     <div class="form-group">
-                                                        <textarea rows="5" id="mytextarea" name="prerequisitien" class="form-control" placeholder="Write here course's prerequisites"
+                                                        <textarea rows="5" name="prerequisitien" class="form-control" placeholder="Write here course's prerequisites"
                                                                   style="height:150px;"></textarea>
                                                     </div>
                                                 </div>
@@ -326,7 +326,7 @@
                                             <div class="col-md-6">
                                                 <h5>Obiettivi Del Corso EN</h5>
                                                 <div class="form-group">
-                                                    <textarea rows="5" id="mytextarea" name="obiettivien" class="form-control" placeholder="Write here course's targets"
+                                                    <textarea rows="5" name="obiettivien" class="form-control" placeholder="Write here course's targets"
                                                               style="height:150px;"></textarea>
                                                 </div>
                                             </div>
@@ -339,7 +339,7 @@
                                             <div class="col-md-6">
                                                 <h5>Modalit&#224 D'Esame Del Corso EN</h5>
                                                 <div class="form-group">
-                                                    <textarea rows="5" id="mytextarea" name="modesaen" class="form-control" placeholder="Write here course's exam modes"
+                                                    <textarea rows="5" name="modesaen" class="form-control" placeholder="Write here course's exam modes"
                                                               style="height:150px;"></textarea>
 
                                                 </div>
@@ -348,7 +348,7 @@
                                             <div class="col-md-6">
                                                 <h5>Modalit&#224 Di Insegnamento Del Corso EN</h5>
                                                 <div class="form-group">
-                                                    <textarea rows="5" id="mytextarea" name="modinsen" class="form-control" placeholder="Write here course's teaching methods"
+                                                    <textarea rows="5"  name="modinsen" class="form-control" placeholder="Write here course's teaching methods"
                                                               style="height:150px;"></textarea>
 
                                                 </div>
@@ -362,7 +362,7 @@
                                             <div class="col-md-6">
                                                 <h5>Sillabo EN</h5>
                                                 <div class="form-group">
-                                                    <textarea rows="5" id="mytextarea" name="sillaboen" class="form-control" placeholder="Write here course's sillabus"
+                                                    <textarea rows="5" name="sillaboen" class="form-control" placeholder="Write here course's sillabus"
                                                               style="height:150px;"></textarea>
                                                 </div>
                                             </div>
@@ -370,7 +370,7 @@
                                             <div class="col-md-6">
                                                 <h5>Note extra EN</h5>
                                                 <div class="form-group">
-                                                    <textarea rows="5" id="mytextarea" name="noteen" class="form-control" placeholder="Write here other information about the course"
+                                                    <textarea rows="5" name="noteen" class="form-control" placeholder="Write here other information about the course"
                                                               style="height:150px;"></textarea>
                                                 </div>
                                             </div>
