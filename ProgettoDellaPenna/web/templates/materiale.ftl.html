@@ -10,95 +10,92 @@
             </div>
         </div><!-- End row -->
     </div><!-- End container -->
-    <div class="divider_top"></div>
-    </section><!-- End sub-header -->
-    
-    
-    <section id="main_content" >
-    	<div class="container">
-        
+</section><!-- End sub-header -->
+
+
+<section id="main_content" >
+    <div class="container">
+
         <ol class="breadcrumb">
-          <#if lingua=="it">
+            <#if lingua=="it">
             <li><a href="Home">Home</a></li>
             <li><a href="Corsi">Lista Corsi</a></li>
             <li><a href="DettagliCorso?n=${corso.ID}"><#if corso.nome_it?trim?has_content>${corso.nome_it}<#else>${corso.nome_en}</#if></a></li>
             <li class="active">Materiale</li>
-          <#else>
+            <#else>
             <li><a href="Home?lin=en">Home</a></li>
             <li><a href="Corsi?lin=en">Courses List</a></li>
             <li><a href="DettagliCorso?n=${corso.ID}&lin=en"><#if corso.nome_en?trim?has_content>${corso.nome_en}<#else>${corso.nome_it}</#if></a></li>
             <li class="active">Materiale</li>
-          </#if>
+            </#if>
         </ol>
 
-       
+
         <div class="row">
-                <div class="col-md-12">
-       
-            <#if lingua="it">
+            <div class="col-md-12">
+
+                <#if lingua="it">
                 <h3>Materiale</h3>
-            <#else>
+                <#else>
                 <h3>Material</h3>
-            </#if>
-            
-            
-            <#if lingua="it">
-            <table class="table table-striped">
-                        <thead>
-                                
-                                        <tr>
-                                          <th>Nome</th>
-                                          <th>Descrizione</th>
-                                          <th>Dimensioni</th>
-                                          <th>Download</th>
-                                        </tr>
-                                      </thead>
-                                      <tbody>
-                                            <#list materiale as materiale,peso>
-                                        <tr>
-                                                <#noautoesc>
-                                                <th scope="row"> ${materiale.nome}</th>
-                                                 <td> <#if materiale.descrizione_it?trim?has_content> ${materiale.descrizione_it} <#else> ${materiale.descrizione_en} </#if></td>
-                                                <td> ${peso} KB</td>
-                                                <td class="glyphicon glyphicon-download-alt"><a href="download?k=${materiale.link}"> Scarica Ora</a></td>
-                                        </tr>
-                                       </#noautoesc>
-                           </#list>
-        
-                        </tbody>
-                </table>
-               
-                
-            <#else>
-            <table class="table table-striped">
+                </#if>
+
+
+                <#if lingua="it">
+                <table class="table table-striped">
                     <thead>
-                            
-                                    <tr>
-                                      <th>Nome</th>
-                                      <th>Descrizione</th>
-                                      <th>Dimensioni</th>
-                                      <th>Download</th>
-                                    </tr>
-                                  </thead>
-                                  <tbody>
-                                        <#list materiale as materiale,peso>
-                                        <#noautoesc>
-                                        <tr>
-                                    <td>${materiale.nome}</td>
-                                            <td><#if materiale.descrizione_en?trim?has_content> ${materiale.descrizione_en} <#else> ${materiale.descrizione_it}</#if></td>
-                                            <td>${peso} KB</td>
-                                            <td class="glyphicon glyphicon-download-alt"><a href="download?k=${materiale.link}">Download Now</a></td>
-                                        </tr>
-                                        </#noautoesc>
-                                       </#list>
+
+                        <tr>
+                            <th>Nome</th>
+                            <th>Descrizione</th>
+                            <th>Dimensioni</th>
+                            <th>Download</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <#list materiale as materiale,peso>
+                        <#noautoesc>
+                        <tr>
+                            <td>${materiale.nome}</td>
+                            <td> <#if materiale.descrizione_it?trim?has_content> ${materiale.descrizione_it} <#else> ${materiale.descrizione_en} </#if></td>
+                            <td> ${peso} KB</td>
+                            <td class="glyphicon glyphicon-download-alt"><a href="download?k=${materiale.link}">Scarica</a></td>
+                        </tr>
+                        </#noautoesc>
+                        </#list>
+
                     </tbody>
-            </table>
-                        
-            </#if>
-      
- 
-        </div><!-- End col-->                        
+                </table>
+
+
+                <#else>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Description</th>
+                            <th>Dimensions</th>
+                            <th>Download</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <#list materiale as materiale,peso>
+                        <#noautoesc>
+                        <tr>
+                            <td>${materiale.nome}</td>
+                            <td><#if materiale.descrizione_en?trim?has_content> ${materiale.descrizione_en} <#else> ${materiale.descrizione_it}</#if></td>
+                            <td>${peso} KB</td>
+                            <td class="glyphicon glyphicon-download-alt"><a href="download?k=${materiale.link}"> Download</a></td>
+                        </tr>
+                        </#noautoesc>
+                        </#list>
+                    </tbody>
+                </table>
+                </#if>
+
+
+            </div><!-- End col-->                        
         </div><!-- End row -->
-        </div><!-- End container -->
-    </section><!-- End main_content -->
+    </div><!-- End container -->
+</section><!-- End main_content -->
 
