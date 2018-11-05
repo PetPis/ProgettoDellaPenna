@@ -81,7 +81,9 @@ public class CreateCorso extends BaseController {
             String tipologia = request.getParameter("tipologia");
 
             int precedente = 0;
-            precedente = Integer.parseInt(request.getParameter("old"));
+            if (request.getParameter("old").length() != 0) {
+                precedente = Integer.parseInt(request.getParameter("old"));
+            }
 
             String[] docente = request.getParameterValues("docenti");
             List<Docente> docenti = new ArrayList();
@@ -135,6 +137,7 @@ public class CreateCorso extends BaseController {
             corso.setSemestre(semestre);
             corso.setCfu(cfu);
             corso.setTipologia(tipologia.charAt(0));
+
             corso.setOldID(precedente);
 
             corso.setDocenti(docenti);
