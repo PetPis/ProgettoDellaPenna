@@ -33,7 +33,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <#list docenti as docente>
+                        <#list docenti?sort_by("cognome") as docente>
                         <tr>
                             <td><strong>${docente.cognome}</strong></td>
                             <td><strong>${docente.nome}</strong></td>

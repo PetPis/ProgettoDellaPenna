@@ -15,7 +15,7 @@
     <div class="row" id="sub-header-features-2">
         <div class="col-md-4">
             <h2>Informazioni generali</h2>
-            <ul class="lista">
+            <ul class="nav nav-pills nav-stacked">
                 <li><strong>SSD:</strong> &nbsp;${corso.SSD}</li>
                 <li><strong>CDL:</strong>&nbsp;<#list corso.CDL as cdl>
                     <#if cdl.abbr_it?trim?has_content>${cdl.abbr_it}<#else>${cdl.abbr_en}</#if><#if cdl?has_next>,&nbsp;</#if>
@@ -195,7 +195,7 @@
                     <h4>Libri di Testo</h4>
                     <ul>
                         <#list libri as libro>
-                        <li><#if libro.link??><a href="${libro.link}"></#if>${libro.titolo}</a>,<#if libro.volume!=0> Vol.${libro.volume},</#if> ${libro.anno?c}, ${libro.autore}, ${libro.editore} </li>
+                        <li>${libro.titolo}<#if libro.volume!=0> Vol.${libro.volume},</#if> ${libro.anno?c}, ${libro.autore}, ${libro.editore} </li>
                         </#list>
                     </ul>
                 </div>
