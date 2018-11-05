@@ -15,36 +15,45 @@
             <li><a href="Home?lin=it">Home</a></li>
             <li class="active">Lista Docenti</li>
         </ol>
+        <!--inizio!-->
+        <div class="row" >
+            <div class="col-md-12">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><strong>Docenti</strong></h3>
 
-        
-        <div id="table" class="row">
+                </div>
+                <table class="table table-responsive table-striped table-bordered">
+                    <thead>  
+                        <tr>
+                            <th>Cognome</th>
+                            <th>Nome</th>
+                            <th>Link</th>
+                            <th>Profilo</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <#list docenti as docente>
+                        <tr>
+                            <td><strong>${docente.cognome}</strong></td>
+                            <td><strong>${docente.nome}</strong></td>
+                            <td>
+                                <ul class="social_team">
+                                    <li><a href="https://www.facebook.com"><img id="social" src="img/Facebook.png"/></a></li>
+                                    <li><a href="https://www.twitter.com"><img id="social" src="img/Twitter.png"/></a></li>
+                                    <li><a href="https://www.google.com/gmail/"><img id="social" src="img/Gmail.png"/></a></li>
 
-            <#list docenti as docente>
+                                </ul>
+                            </td>
+                            <td>
+                                <a href="DettagliDocente?k=${docente.IDDocente}&lin=it" class="button_profile">Visita</a>
+                            </td>
 
-            <div class="col-md-6 col-sm-6">
-                
-                    <p><img id="img-docente" src="${docente.immagine}" alt="Teacher" class="img-doc img img-rounded"></p>
-                    <h4 class="p-title">${docente.nome} ${docente.cognome} <br> <small>${docente.specializzazione}</small></h4>
-                    <p></p>
+                        </tr>
+                        </#list>
 
+                    </tbody>
+                </table>
+            </div><!-- End filterable -->
 
-                    
-                        <ul class="social_team">
-                            <li><a href="https://www.facebook.com"><img id="social" src="img/Facebook.png"/></a></li>
-                            <li><a href="https://www.twitter.com"><img id="social" src="img/Twitter.png"/></a></li>
-                            <li><a href="https://www.google.com/gmail/"><img id="social" src="img/Gmail.png"/></a></li>
-
-                        </ul>    
-                        <br>
-                        <a href="DettagliDocente?k=${docente.IDDocente}&lin=it" class="button_profile">Profilo</a>           
-                    
-                
-            </div>
-            
-        </#list>    
-
-
-
-    </div><!-- End row -->    
-</div><!-- End container -->
+        </div><!-- End container -->
 </section><!-- End main_content-->
