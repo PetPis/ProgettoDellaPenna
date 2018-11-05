@@ -189,5 +189,7 @@ public interface IgwDataLayer extends DataLayer {
     public void deleteMateriale(Materiale materiale) throws DataLayerException;
 
     public void deleteLibro(Libro libro) throws DataLayerException,SQLException;
+    
+    public List<Corso> getCorsiByGivenAnno() throws DataLayerException,SQLException;
   
 }

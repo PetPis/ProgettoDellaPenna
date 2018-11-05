@@ -135,7 +135,7 @@ public class IgwDataLayerMysqlImpl extends DataLayerMysqlImpl implements IgwData
             uUtente =  connection.prepareStatement("UPDATE Utente Set Username=?,Password=? WHERE IDUtente=?");
             dUtente=connection.prepareStatement("DELETE FROM Utente WHERE IDUtente=?");
             
-            iCorso=connection.prepareStatement("INSERT INTO Corso (Nome_it,Nome_en,SSD,Lingua,Semestre,CFU,Anno,Tipologia) VALUES (?,?,?,?,?,?,?,?)",Statement.RETURN_GENERATED_KEYS);
+            iCorso=connection.prepareStatement("INSERT INTO Corso (Nome_it,Nome_en,SSD,Lingua,Semestre,CFU,Anno,Tipologia,OldID) VALUES (?,?,?,?,?,?,?,?,?)",Statement.RETURN_GENERATED_KEYS);
             uCorso=connection.prepareStatement("UPDATE Corso SET Nome_it=?,Nome_en=?,SSD=?,Lingua=?,Semestre=?,CFU=?,Tipologia=? WHERE IDCorso=?");
             iDocentiCorso=connection.prepareStatement("REPLACE INTO Docenti_Corso(Corso,Docente) VALUES (?,?)");
             iCDLCorso=connection.prepareStatement("REPLACE INTO Corsi_CDL(Corso,CDL) VALUES(?,?)");
@@ -982,6 +982,24 @@ public class IgwDataLayerMysqlImpl extends DataLayerMysqlImpl implements IgwData
         }
         return result;
     }
+    
+    @Override
+    public List<Corso> getCorsiByGivenAnno() throws DataLayerException {
+        List<Corso> result = new ArrayList();
+        LocalDate date=LocalDate.now();
+        int year = date.getYear();
+        year=year-1;
+        try{
+            sCorsiByAnno.setInt(1, year);
+            try (ResultSet rs=sCorsiByAnno.executeQuery()){
+                while(rs.next())
+                    result.add(getCorso(rs.getInt("IDCorso")));
+            }
+        }catch (SQLException ex){
+            throw new DataLayerException("Unable to load sCorsoByAnno",ex);
+        }
+        return result;
+    }
 
     @Override
     public List<Docente> getDocente() throws DataLayerException {
@@ -1414,6 +1432,8 @@ public class IgwDataLayerMysqlImpl extends DataLayerMysqlImpl implements IgwData
                 iCorso.setString(4,corso.getLingua());
                 iCorso.setInt(5, corso.getSemestre());
                 iCorso.setInt(6, corso.getCfu());
+                iCorso.setInt(9,corso.getOldID());
+                
                 LocalDate date=LocalDate.now();
                 int month=date.getMonthValue();
                 int year=date.getYear();
