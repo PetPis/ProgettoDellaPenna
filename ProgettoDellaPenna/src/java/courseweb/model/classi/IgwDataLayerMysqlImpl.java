@@ -1418,8 +1418,8 @@ public class IgwDataLayerMysqlImpl extends DataLayerMysqlImpl implements IgwData
                 int month=date.getMonthValue();
                 int year=date.getYear();
                 if(month>=9||month<=1)
-                    if(corso.getSemestre()!=1)
-                        year=year-1;
+                    if(corso.getSemestre()==2)
+                        year=year+1;
                 iCorso.setInt(7, year);
                 if(!String.valueOf(corso.getTipologia()).equals("n"))
                     iCorso.setString(8, String.valueOf(corso.getTipologia()));

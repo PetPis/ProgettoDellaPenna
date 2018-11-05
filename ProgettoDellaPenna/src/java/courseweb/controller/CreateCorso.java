@@ -144,9 +144,13 @@ public class CreateCorso extends BaseController {
                 String mod_insegnamento= request.getParameter("modins");
                 String sillabo= request.getParameter("sillabo");
                 String note= request.getParameter("note");
+                if(note==null) note=" ";
                 String homepage= request.getParameter("homepage");
+                if(homepage==null) homepage=" ";
                 String forum= request.getParameter("forum");
+                if(forum==null) forum=" ";
                 String risorse_ext= request.getParameter("risorse");
+                if(risorse_ext==null) risorse_ext=" ";
  
                 Descrizione_it descrizioneit=((IgwDataLayer)request.getAttribute("datalayer")).createDescrizione_it();
                         
@@ -170,9 +174,21 @@ public class CreateCorso extends BaseController {
                 String mod_insegnamentoen= request.getParameter("modinsen");
                 String sillaboen= request.getParameter("sillaboen");
                 String noteen= request.getParameter("noteen");
+                if(noteen==null){
+                    noteen=" ";
+                }
                 String homepageen= request.getParameter("homepageen");
+                if(homepageen==null){
+                    homepageen=" ";
+                }
                 String forumen= request.getParameter("forumen");
+                if(forumen==null){
+                    forumen=" ";
+                }
                 String risorse_exten= request.getParameter("risorseen");
+                if(risorse_exten==null){
+                    risorse_exten=" ";
+                }
  
                 Descrizione_en descrizioneen=((IgwDataLayer)request.getAttribute("datalayer")).createDescrizione_en();
                         

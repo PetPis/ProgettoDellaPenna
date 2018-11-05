@@ -3,8 +3,8 @@
     <section id="main_content">
         <div class="container">
             <ol class="breadcrumb">
-                <li><a href="Backoffice?lin=it">Backoffice</a></li>
-                <li class="active"> Crea Corso</li>
+                <li><a href="BackofficeD?lin=it">BackofficeD</a></li>
+                <li class="active"> Modifica Corso</li>
             </ol>
     </section>
 
@@ -14,61 +14,49 @@
                 <br>
 
                 <div class="sidemenu sfondoGrigio">
-                        <ul class="nav nav-pills nav-stacked">
-                            <li><a href="Log">Visualizza Log</a></li>
-                        </ul>
-                        <h3>CREA</h3>
-                        <ul class="nav nav-pills nav-stacked">
-                            <li><a href="CreateCorso">Crea Corso</a></li>
-                            <li><a href="CreateCDL">Crea CDL</a></li>
-                            <li><a href="CreateDocente">Crea Docente</a></li>
-                            <li><a href="CreateAdmin">Crea Amministratore</a></li>
-                            <li><a href="CreateMateriale">Nuovo Materiale</a></li>
-                            <li><a href="CreateLibro">Nuovo Libro</a></li>
-                        </ul>
-                        <br>
-                        <h3>MODIFICA</h3>
-                        <ul class="nav nav-pills nav-stacked">
-                            <li><a href="AllCorsi">Modifica Corso</a></li>
-                            <li><a href="ModificaCDL">Modifica CDL</a></li>
-                            <li><a href="ModificaDocente">Modifica Docente</a></li>
-                            <li><a href="UpdateMateriale">Aggiorna Materiale</a></li>
-                            <li><a href="UpdateLibro">Aggiorna Libro</a></li>
-                        </ul>
-                    </div>
+                    <ul class="nav nav-pills nav-stacked">
+                        <li><a href="BackofficeD?lin=it">I miei corsi</a></li>
+                    </ul>
+                    <h3>CREA</h3>
+                    <ul class="nav nav-pills nav-stacked">
+                        <li><a href="CreateMaterialeD">Nuovo Materiale</a></li>
+                        <li><a href="CreateLibroD">Nuovo Libro</a></li>
+                    </ul>
+                    <br>
+                    <h3>MODIFICA</h3>
+                    <ul class="nav nav-pills nav-stacked">
+                        <li><a href="UpdateMaterialeD">Aggiorna Materiale</a></li>
+                        <li><a href="UpdateLibroD">Aggiorna Libro</a></li>
+                    </ul>
+                </div>
             </div>
             <div class="col-md-10">
-
-                <form method="post" action="CreateCorso">
-                    
+                <form method="post" action="CreateCorsoD">
                     <div class="row">
                         <div class="col-md-6">
                             <h5>Nome Del Corso</h5>
                             <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Nome Corso" name="nome" autofocus required>
+                                <input type="text" class="form-control" value="${corso.nome_it}" name="nome" required>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <h5>Nome Del Corso EN</h5>
                             <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Nome Corso EN" name="nome_en" required>
+                                <input type="text" class="form-control" value="${corso.nome_en}" name="nome_en" required>
                             </div>
                         </div>
                     </div>
-
-
-
                     <div class="row">
                         <div class="col-md-6">
                             <h5>SSD</h5>
                             <div class="form-group">
-                                <input type="text" class="form-control" placeholder="SSD" name="ssd">
+                                <input type="text" class="form-control" value="${corso.SSD}" name="ssd">
                             </div>
                         </div>
-                        <div class="col-md-6">
-                            <h5>Lingua</h5>
+                        <div class="col-md-6 col-sm-6">
+                            <h5>Lingua Del Corso</h5>
                             <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Lingua" name="linguac">
+                                <input type="text" class="form-control" value="${corso.lingua}" name="linguac">
                             </div>
                         </div>
                     </div>
@@ -78,18 +66,26 @@
                     <div class="row">
                         <div class="col-md-6">
                             <h5>Semestre</h5>
-                            <div class="form-group">                               
+                            <div class="form-group">
                                 <select class="form-control" name="semestre">
+                                    <#if corso.semestre==1>
+                                    <option value="1" selected>Primo Semestre</option>
+                                    <option value="2">Secondo Semestre</option>
+                                    <#elseif corso.semestre==2>
+                                    <option value="1">Primo Semestre</option>
+                                    <option value="2" selected>Secondo Semestre</option>
+                                    <#else>
                                     <option value="" selected>Seleziona semestre corso...</option>
                                     <option value="1">Primo Semestre</option>
-                                    <option value="2">Secondo Semestre</option>
-                                </select>                         
+                                    <option value="2" selected>Secondo Semestre</option>
+                                    </#if>
+                                </select>
                             </div>
                         </div>
                         <div class="col-md-6">
-                            <h5>CFU Del Corso</h5>
+                            <h5>CFU del Corso</h5>
                             <div class="form-group">
-                                <input type="number" class="form-control" placeholder="CFU" name="cfu" min=1>                                
+                                <input type="number" class="form-control" value="${corso.cfu}" name="cfu" min=1>
                             </div>
                         </div>
                     </div>
@@ -97,102 +93,29 @@
 
                     <div class="row">
                         <div class="col-md-6">
-                            <h5>Tipologia CFU </h5>
+                            <h5>Tipologia Dei Crediti</h5>
                             <div class="form-group">
+
                                 <select class="form-control" name="tipologia">
+                                    <#if corso.tipologia=='A'>
+                                    <option value="A" selected>A</option>
+                                    <option value="B">B</option>
+                                    <#elseif corso.tipologia=='B'>
+                                    <option value="A">A</option>
+                                    <option value="B" selected>B</option>
+                                    <#else>
                                     <option value="n" selected>Seleziona tipologia cfu...</option>
                                     <option value="A">A</option>
                                     <option value="B">B</option>
-                                </select>                               
+                                    </#if>
+                                </select>
+
                             </div>
                         </div>
 
                     </div>
 
-                    <hr>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div>
-                                <h4>Associa i docenti al corso</h4>
-                                <div>
-                                    <select  name="docenti">
-                                        <#list docenti?sort_by( "nome") as docente>
-                                        <option value="${docente.IDDocente}">${docente.nome} ${docente.cognome}</option>
-                                        </#list>
 
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-md-6">
-                            <div>
-                                <h4>Associa i cdl al corso</h4>
-                                <div>
-
-                                    <select name="cdl" required>
-                                        <#list cdl?sort_by( "nome_it") as cdl>
-                                        <option value="${cdl.IDCDL}">${cdl.nome_it}</option>
-                                        </#list>
-
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <hr>
-
-                    <div class="row">
-                        <div class="col-md-4">
-                            <div>
-                                <h4>Corsi mutuati</h4>
-                                <div>
-                                    <select name="mutuati" multiple>
-                                        
-                                        <#list corsi as corsi>
-                                        <option value="${corsi.ID}">${corsi.nome_it}</option>
-                                        </#list>
-
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-md-4">
-                            <div>
-                                <h4>Corsi Propedeudici</h4>
-                                <div>
-                                    
-                                    <select name="propedeudici" multiple>
-                                        
-                                        <#list corsi as corsi>
-                                        <option value="${corsi.ID}">${corsi.nome_it}</option>
-                                        </#list>
-
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-md-4">
-                            <div>
-                                
-                                <h4>Corsi Modulo</h4>
-                                <div >
-                                    <select name="modulo" multiple>
-                                        
-                                         <#list corsi as corsi>
-                                        <option value="${corsi.ID}">${corsi.nome_it}</option>
-                                        </#list>
-
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-
-
-                    </div>
-                    <hr>
 
 
 
@@ -206,7 +129,6 @@
                                 <div class="panel-heading">
                                     <h4 class="panel-title">
                                         <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapse1">Informazioni supplementari corso - Optional
-
                                         </a>
                                     </h4>
                                 </div>
@@ -215,52 +137,58 @@
                                         <h4>Descrizione del corso</h4>
                                         <div class="row">
                                             <div class="col-md-6">
+                                                <h5>Prerequisiti Del Corso</h5>
                                                 <div class="form-group">
-                                                    <h5>Prerequisiti Del Corso</h5>
-                                                    <textarea rows="5" name="prerequisiti" class="form-control" placeholder="Inserisci qui i prerequisiti del corso"
-                                                              style="height:150px;"></textarea>
+                                                    <div class="form-group">
+                                                        <textarea rows="5" class="form-control" name="prerequisiti" >${descrizioneit.prerequisiti}</textarea>
+                                                    </div>
                                                 </div>
                                             </div>
+
                                             <div class="col-md-6">
                                                 <h5>Obiettivi Del Corso</h5>
                                                 <div class="form-group">
-                                                    <textarea rows="5" name="obiettivi" class="form-control" placeholder="Inserisci qui gli obiettivi del corso"
-                                                              style="height:150px;"></textarea>
+                                                    <textarea rows="5" name="obiettivi" class="form-control">${descrizioneit.obiettivi}</textarea>
                                                 </div>
                                             </div>
                                         </div>
+
+
+
 
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <h5>Modalit&#224 D'Esame Del Corso</h5>
                                                 <div class="form-group">
-                                                    <textarea rows="5" name="modesa" class="form-control" placeholder="Inserisci qui le modalit&#224 di esame del corso"
-                                                              style="height:150px;"></textarea>
+                                                    <textarea rows="5" name="modesa" class="form-control">${descrizioneit.mod_Esame}</textarea>
 
                                                 </div>
                                             </div>
+
                                             <div class="col-md-6">
                                                 <h5>Modalit&#224 Di Insegnamento Del Corso</h5>
                                                 <div class="form-group">
-                                                    <textarea rows="5" name="modins" class="form-control" placeholder="Inserisci qui le modalit&#224 di insegnamento del corso"
-                                                              style="height:150px;"></textarea>
+                                                    <textarea rows="5" name="modins" class="form-control">${descrizioneit.mod_Insegnamento}</textarea>
+
                                                 </div>
                                             </div>
                                         </div>
 
+
+
+
                                         <div class="row">
-                                            <div class="col-md-6 col-sm-6">
+                                            <div class="col-md-6">
                                                 <h5>Sillabo</h5>
                                                 <div class="form-group">
-                                                    <textarea rows="5" name="sillabo" class="form-control" placeholder="Inserisci qui il sillabo del corso"
-                                                              style="height:150px;"></textarea>
+                                                    <textarea rows="5" name="sillabo" class="form-control">${descrizioneit.sillabo}</textarea>
                                                 </div>
                                             </div>
-                                            <div class="col-md-6 col-sm-6">
+
+                                            <div class="col-md-6">
                                                 <h5>Note extra</h5>
                                                 <div class="form-group">
-                                                    <textarea rows="5" name="note" class="form-control" placeholder="Inserisci qui altre informazioni utili del corso"
-                                                              style="height:150px;"></textarea>
+                                                    <textarea rows="5" name="note" class="form-control">${descrizioneit.note}</textarea>
                                                 </div>
                                             </div>
                                         </div>
@@ -269,22 +197,24 @@
                                             <div class="col-md-12">
                                                 <h4>Link esterni</h4>
                                             </div>
-                                            <div class="col-md-4 col-sm-4">
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-4">
                                                 <h5>Homepage</h5>
                                                 <div class="form-group">
-                                                    <input type="text" class="form-control" placeholder="Link Homepage" name="homepage">
+                                                    <input type="text" value="${descrizioneit.homepage}" class="form-control" placeholder="Link Homepage" name="homepage">
                                                 </div>
                                             </div>
-                                            <div class="col-md-4 col-sm-4">
+                                            <div class="col-md-4">
                                                 <h5>Forum</h5>
                                                 <div class="form-group">
-                                                    <input type="text" class="form-control" placeholder="Link Forum" name="forum">
+                                                    <input type="text" value="${descrizioneit.forum}" class="form-control" placeholder="Link Forum" name="forum">
                                                 </div>
                                             </div>
-                                            <div class="col-md-4 col-sm-4">
+                                            <div class="col-md-4">
                                                 <h5>Risorse esterne</h5>
                                                 <div class="form-group">
-                                                    <input type="text" class="form-control" placeholder="Link Risorse esterne" name="risorse">
+                                                    <input type="text" value="${descrizioneit.risorse_Ext}" class="form-control" placeholder="Link Risorse esterne" name="risorse">
                                                 </div>
                                             </div>
                                         </div>
@@ -307,6 +237,7 @@
                                 <div class="panel-heading">
                                     <h4 class="panel-title">
                                         <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapse2">Informazioni supplementari corso (EN Version) - Optional
+
                                         </a>
                                     </h4>
                                 </div>
@@ -318,16 +249,14 @@
                                                 <h5>Prerequisiti Del Corso EN</h5>
                                                 <div class="form-group">
                                                     <div class="form-group">
-                                                        <textarea rows="5" name="prerequisitien" class="form-control" placeholder="Write here course's prerequisites"
-                                                                  style="height:150px;"></textarea>
+                                                        <textarea rows="5" name="prerequisitien" class="form-control">${descrizioneen.prerequisiti}</textarea>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <h5>Obiettivi Del Corso EN</h5>
                                                 <div class="form-group">
-                                                    <textarea rows="5" name="obiettivien" class="form-control" placeholder="Write here course's targets"
-                                                              style="height:150px;"></textarea>
+                                                    <textarea rows="5" name="obiettivien" class="form-control">${descrizioneen.obiettivi}</textarea>
                                                 </div>
                                             </div>
                                         </div>
@@ -339,8 +268,7 @@
                                             <div class="col-md-6">
                                                 <h5>Modalit&#224 D'Esame Del Corso EN</h5>
                                                 <div class="form-group">
-                                                    <textarea rows="5" name="modesaen" class="form-control" placeholder="Write here course's exam modes"
-                                                              style="height:150px;"></textarea>
+                                                    <textarea rows="5" name="modesaen" class="form-control">${descrizioneen.mod_Esame}</textarea>
 
                                                 </div>
                                             </div>
@@ -348,8 +276,7 @@
                                             <div class="col-md-6">
                                                 <h5>Modalit&#224 Di Insegnamento Del Corso EN</h5>
                                                 <div class="form-group">
-                                                    <textarea rows="5"  name="modinsen" class="form-control" placeholder="Write here course's teaching methods"
-                                                              style="height:150px;"></textarea>
+                                                    <textarea rows="5" name="modinsen" class="form-control">${descrizioneen.mod_Insegnamento}</textarea>
 
                                                 </div>
                                             </div>
@@ -362,40 +289,40 @@
                                             <div class="col-md-6">
                                                 <h5>Sillabo EN</h5>
                                                 <div class="form-group">
-                                                    <textarea rows="5" name="sillaboen" class="form-control" placeholder="Write here course's sillabus"
-                                                              style="height:150px;"></textarea>
+                                                    <textarea rows="5" name="sillaboen" class="form-control">${descrizioneen.sillabo}</textarea>
                                                 </div>
                                             </div>
 
                                             <div class="col-md-6">
                                                 <h5>Note extra EN</h5>
                                                 <div class="form-group">
-                                                    <textarea rows="5" name="noteen" class="form-control" placeholder="Write here other information about the course"
-                                                              style="height:150px;"></textarea>
+                                                    <textarea rows="5" name="noteen" class="form-control">${descrizioneen.note}</textarea>
                                                 </div>
                                             </div>
                                         </div>
-
                                         <div class="row">
                                             <div class="col-md-12">
                                                 <h4>Link esterni</h4>
                                             </div>
+                                        </div>
+                                        <div class="row">
                                             <div class="col-md-4">
                                                 <h5>Homepage</h5>
                                                 <div class="form-group">
-                                                    <input type="text" class="form-control" placeholder="Link Homepage" name="homepageen">
+                                                    <input type="text" value="${descrizioneen.homepage}" class="form-control" placeholder="Link Homepage" name="homepageen">
                                                 </div>
                                             </div>
                                             <div class="col-md-4">
                                                 <h5>Forum</h5>
                                                 <div class="form-group">
-                                                    <input type="text" class="form-control" placeholder="Link Forum" name="forumen">
+                                                    <input type="text" value="${descrizioneen.forum}" class="form-control" placeholder="Link Forum" name="forumen">
+
                                                 </div>
                                             </div>
                                             <div class="col-md-4">
                                                 <h5>Risorse esterne</h5>
                                                 <div class="form-group">
-                                                    <input type="text" class="form-control" placeholder="Link Risorse esterne" name="risorseen">
+                                                    <input type="text" value="${descrizioneen.risorse_Ext}" class="form-control" placeholder="Link Risorse esterne" name="risorseen">
                                                 </div>
                                             </div>
                                         </div>
@@ -411,36 +338,33 @@
 
 
 
-
                     <div class="row">
                         <!--SILLABO IT-->
-
                         <div class="panel-group" id="accordion">
 
                             <div class="panel panel-default">
                                 <div class="panel-heading">
                                     <h4 class="panel-title">
-                                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapse4">Dublino - Optional
+                                        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapse4">Descrittori di dublino - Optional
+
                                         </a>
                                     </h4>
                                 </div>
                                 <div id="collapse4" class="panel-collapse collapse">
                                     <div class="panel-body">
-                                        <h4></h4>
+
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <h5>Knowledge</h5>
                                                 <div class="form-group">
-                                                    <textarea rows="5" name="knowledge" placeholder="Quali conoscenze sono acquisite durante il corso?"
-                                                              class="form-control" style="height:150px;"></textarea>
+                                                    <textarea rows="5" name="knowledge" class="form-control">${dublinoit.knowledge}</textarea>
                                                 </div>
                                             </div>
 
                                             <div class="col-md-6">
                                                 <h5>Application</h5>
                                                 <div class="form-group">
-                                                    <textarea rows="5"  name="application" placeholder="come e dove sono applicabili le conoscenze derivanti dal corso?"
-                                                              class="form-control" style="height:150px;"></textarea>
+                                                    <textarea rows="5" name="application" class="form-control">${dublinoit.application}</textarea>
                                                 </div>
                                             </div>
                                         </div>
@@ -451,16 +375,14 @@
                                             <div class="col-md-6">
                                                 <h5>Evaluation</h5>
                                                 <div class="form-group">
-                                                    <textarea rows="5" name="evaluation" placeholder="se e in che modo le conoscenze acquisite possono aiutare nel valutare,comparare,giudicare ...?"
-                                                              class="form-control" style="height:150px;"></textarea>
+                                                    <textarea rows="5" name="evaluation" class="form-control">${dublinoit.evaluation}</textarea>
                                                 </div>
                                             </div>
 
-                                            <div class="col-md-6 col-sm-6">
+                                            <div class="col-md-6">
                                                 <h5>Communication</h5>
                                                 <div class="form-group">
-                                                    <textarea rows="5" name="communication"placeholder="se e in che modo gli studenti possono trasmettere le conscenze acquisite?"
-                                                              class="form-control" style="height:150px;"></textarea>
+                                                    <textarea rows="5" name="communication" class="form-control">${dublinoit.communication}</textarea>
                                                 </div>
                                             </div>
                                         </div>
@@ -470,8 +392,7 @@
                                             <div class="col-md-6">
                                                 <h5>Lifelong</h5>
                                                 <div class="form-group">
-                                                        <textarea rows="5" name="lifelong" placeholder="il corso fornisce strumenti per continuare ad apprendere determinati argomenti?"
-                                                                  class="form-control" style="height:150px;"></textarea>
+                                                    <textarea rows="5" name="lifelong" class="form-control">${dublinoit.lifelong}</textarea>
                                                 </div>
                                             </div>
                                         </div>
@@ -493,7 +414,7 @@
                         <div class="panel panel-default">
                             <div class="panel-heading">
                                 <h4 class="panel-title">
-                                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapse5">Dublino EN - Optional
+                                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapse5">Descrittori di dublino EN - Optional
                                     </a>
                                 </h4>
                             </div>
@@ -504,16 +425,14 @@
                                         <div class="col-md-6">
                                             <h5>Knowledge EN</h5>
                                             <div class="form-group">
-                                                <textarea rows="5" name="knowledgeen" placeholder=""
-                                                          class="form-control" style="height:150px;"></textarea>
+                                                <textarea rows="5" name="knowledgeen" class="form-control">${dublinoen.knowledge}</textarea>
                                             </div>
                                         </div>
-                                   
+
                                         <div class="col-md-6">
                                             <h5>Application EN</h5>
                                             <div class="form-group">
-                                                <textarea rows="5" name="applicationen" placeholder=""
-                                                          class="form-control" style="height:150px;"></textarea>
+                                                <textarea rows="5" name="applicationen" class="form-control">${dublinoen.application}</textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -524,15 +443,14 @@
                                         <div class="col-md-6">
                                             <h5>Evaluation EN</h5>
                                             <div class="form-group">
-                                                <textarea rows="5" name="evaluationen" placeholder=""
-                                                          class="form-control" style="height:150px;"></textarea>
+                                                <textarea rows="5" name="evaluationen" class="form-control">${dublinoen.evaluation}</textarea>
                                             </div>
                                         </div>
+
                                         <div class="col-md-6">
                                             <h5>Communication EN</h5>
                                             <div class="form-group">
-                                                <textarea rows="5" name="communicationen" placeholder=""
-                                                          class="form-control" style="height:150px;"></textarea>
+                                                <textarea rows="5" name="communicationen" class="form-control">${dublinoen.communication}</textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -542,8 +460,7 @@
                                         <div class="col-md-6">
                                             <h5>Lifelong EN</h5>
                                             <div class="form-group">
-                                                <textarea rows="5" name="lifelongen" placeholder=""
-                                                          class="form-control" style="height:150px;"></textarea>
+                                                <textarea rows="5" name="lifelongen" class="form-control">${dublinoen.lifelong}</textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -556,9 +473,11 @@
                     </div>
 
                     <hr>
-                    <input type="submit" name="crea" value="Crea Corso" class="btn btn-primary">
 
+                    <input type='hidden' name='key' value='${corso.ID}'>
+                    <input type="submit" name="modifica" value="Aggiorna Corso" class="btn btn-primary">
                 </form>
+
             </div>
         </div>
     </div>
