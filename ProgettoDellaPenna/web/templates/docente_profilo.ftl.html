@@ -86,7 +86,7 @@
 
                                     <#list docentecorsi as docentecorsi>
                                     <tr>
-                                        <td><a href="DetailsCorso?n=${docentecorsi.ID}&lin=it"><#if docentecorsi.nome_it?trim?has_content> ${docentecorsi.nome_it} <#else> ${docentecorso.nome_en} </#if></a></td>
+                                        <td><a href="DettagliCorso?n=${docentecorsi.ID}&lin=it"><#if docentecorsi.nome_it?trim?has_content> ${docentecorsi.nome_it} <#else> ${docentecorso.nome_en} </#if></a></td>
 
                                         <td>${docentecorsi.SSD}</td>
                                         <td>${docentecorsi.cfu}</td>

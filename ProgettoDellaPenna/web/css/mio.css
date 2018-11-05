@@ -215,6 +215,7 @@ a.button_profile {
     -webkit-transition-duration: 0.4s; /* Durata Safari */
     transition-duration: 0.4s; /* Durata */
     cursor: pointer;
+    
 }
 
 .button_profile,
