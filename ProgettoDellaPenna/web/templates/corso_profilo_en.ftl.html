@@ -164,9 +164,9 @@
                 <section id="space">
                     <h3>Versions Page Course</h3>
                     <#list precedenti?sort_by("anno") as precedenti>
-                    <li><a href="#"> A.A. ${precedenti.anno?c}/${(precedenti.anno+1)?c} </a></li>
+                    <li><a href="DettagliCorso?n=${precedenti.ID}&lin=it&new=${nn}"> A.A. ${precedenti.anno?c}/${(precedenti.anno+1)?c} </a></li>
                     </#list>
-                    <#if nn!=corso.ID> <li><a href="DetailsCorso?n=${nn}&lin=it"> Informazioni correnti </a></li> </#if>
+                    <#if nn!=corso.ID> <li><a href="DettagliCorso?n=${nn}&lin=it"> Informazioni correnti </a></li> </#if>
                 </section>
                 </#if>
             </div><!-- End col-md-8-->   	

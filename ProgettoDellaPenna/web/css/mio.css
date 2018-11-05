@@ -209,6 +209,7 @@ a.button_profile {
     text-decoration: none;
     display: inline-block;
     font-weight: 700;
+    
     text-transform: uppercase; /*maiuscolo*/
     margin-bottom: 20px;
     margin: 4px 2px;
