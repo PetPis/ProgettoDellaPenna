@@ -5,8 +5,8 @@
 
     <div class="row">
         <div class="col-md-12 text-center">
-            <h1>Dettagli Del Corso</h1>
-            <p class="lead"></p>
+            <h1>${corso.nome_it}</h1>
+            <p class="lead">Dettagli Del Corso</p>
         </div>
     </div><!-- End row -->
 </section>
@@ -195,7 +195,7 @@
                     <h4>Libri di Testo</h4>
                     <ul>
                         <#list libri as libro>
-                        <li>${libro.titolo}<#if libro.volume!=0> Vol.${libro.volume},</#if> ${libro.anno?c}, ${libro.autore}, ${libro.editore} </li>
+                        <li><#if libro.link??><a href="${libro.link}"></#if>${libro.titolo}</a>,<#if libro.volume!=0> Vol.${libro.volume},</#if> ${libro.anno?c}, ${libro.autore}, ${libro.editore} </li>
                         </#list>
                     </ul>
                 </div>

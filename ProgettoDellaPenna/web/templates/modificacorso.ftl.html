@@ -216,7 +216,7 @@
                             
                                 <select name="modulo" multiple>
                                     <#assign seq=[]>
-                                    <#list modulo as corsi>
+                                    <#list moduli as corsi>
                                     <#assign seq=seq+[corsi.ID]>
                                     </#list>
                                     <#list corsicdl as id,nome>
@@ -275,7 +275,7 @@
                                         <div class="col-md-6">
                                             <h5>Modalit&#224 D'Esame Del Corso</h5>
                                             <div class="form-group">
-                                                <textarea rows="5" name="modesa" class="form-control">${descrizioneit.mod_esame}</textarea>
+                                                <textarea rows="5" name="modesa" class="form-control">${descrizioneit.mod_Esame}</textarea>
 
                                             </div>
                                         </div>
@@ -283,7 +283,7 @@
                                         <div class="col-md-6">
                                             <h5>Modalit&#224 Di Insegnamento Del Corso</h5>
                                             <div class="form-group">
-                                                <textarea rows="5" name="modins" class="form-control">${descrizioneit.mod_insegnamento}</textarea>
+                                                <textarea rows="5" name="modins" class="form-control">${descrizioneit.mod_Insegnamento}</textarea>
 
                                             </div>
                                         </div>
@@ -329,7 +329,7 @@
                                         <div class="col-md-4">
                                             <h5>Risorse esterne</h5>
                                             <div class="form-group">
-                                                <input type="text" class="form-control" placeholder="Link Risorse esterne" value="${descrizioneit.risorse_ext}" name="risorse">
+                                                <input type="text" class="form-control" placeholder="Link Risorse esterne" value="${descrizioneit.risorse_Ext}" name="risorse">
                                             </div>
                                         </div>
                                     </div>
@@ -383,7 +383,7 @@
                                         <div class="col-md-6">
                                             <h5>Modalit&#224 D'Esame Del Corso EN</h5>
                                             <div class="form-group">
-                                                <textarea rows="5" name="modesaen" class="form-control">${descrizioneen.mod_esame}</textarea>
+                                                <textarea rows="5" name="modesaen" class="form-control">${descrizioneen.mod_Esame}</textarea>
 
                                             </div>
                                         </div>
@@ -391,7 +391,7 @@
                                         <div class="col-md-6">
                                             <h5>Modalit&#224 Di Insegnamento Del Corso EN</h5>
                                             <div class="form-group">
-                                                <textarea rows="5" name="modinsen" class="form-control">${descrizioneen.mod_insegnamento}</textarea>
+                                                <textarea rows="5" name="modinsen" class="form-control">${descrizioneen.mod_Insegnamento}</textarea>
 
                                             </div>
                                         </div>
@@ -437,7 +437,7 @@
                                         <div class="col-md-4">
                                             <h5>Risorse esterne</h5>
                                             <div class="form-group">
-                                                <input type="text" value="${descrizioneen.risorse_ext}" class="form-control" placeholder="Link Risorse esterne" name="risorseen">
+                                                <input type="text" value="${descrizioneen.risorse_Ext}" class="form-control" placeholder="Link Risorse esterne" name="risorseen">
                                             </div>
                                         </div>
                                     </div>

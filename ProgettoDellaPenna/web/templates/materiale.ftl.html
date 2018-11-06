@@ -2,11 +2,13 @@
     <div class="container">
         <div class="row">
             <div class="col-md-10 col-md-offset-1 text-center">
-                <h1>Inside Learn</h1>
-                <p class="lead boxed ">Ex utamur fierent tacimates duis choro an</p>
-                <p class="lead">
-                    Lorem ipsum dolor sit amet, ius minim gubergren ad. At mei sumo sonet audiam, ad mutat elitr platonem vix. Ne nisl idque fierent vix. 
-                </p>
+                <#if lingua=="it">
+                <h1>Lista Materiale</h1>
+                <p class="lead boxed ">Qui potete trovare la lista materiale del corso desiderato</p>
+                <#else>
+                <h1>Material List</h1>
+                <p class="lead boxed ">Here you can find the material of the course</p>
+                </#if>
             </div>
         </div><!-- End row -->
     </div><!-- End container -->

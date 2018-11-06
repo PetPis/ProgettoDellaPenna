@@ -1982,7 +1982,7 @@ public class IgwDataLayerMysqlImpl extends DataLayerMysqlImpl implements IgwData
                         }
                     }
                 }
-            }
+            
             //restituiamo l'oggetto appena inserito RICARICATO
             //dal database tramite le API del modello. In tal
             //modo terremo conto di ogni modifica apportata
@@ -1991,7 +1991,7 @@ public class IgwDataLayerMysqlImpl extends DataLayerMysqlImpl implements IgwData
             //database through our API. In this way, the resulting
             //object will ambed any data correction performed by
             //the DBMS
-            if (key > 0) {
+            
                 iLibri_Corso.setInt(1, corso);
                 iLibri_Corso.setInt(2, key);
                 iLibri_Corso.executeUpdate();
