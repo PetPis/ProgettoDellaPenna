@@ -48,10 +48,6 @@ footer{
     color: #000;
 }
 
-.img{
-    height: 400px;
-    width: 90%;
-}
 a#logo {
     width: 200px;
     height: 100px;
@@ -309,3 +305,9 @@ ul.lista li:before {
 #space {
   margin-bottom: 40px;
 }
+
+/*
+.img{
+    height: 400px;
+    width: 90%;
+}*/
