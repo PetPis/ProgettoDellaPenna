@@ -18,7 +18,7 @@
             <ul class="nav nav-pills nav-stacked">
                 <li><strong>SSD:</strong> &nbsp;${corso.SSD}</li>
                 <li><strong>CDL:</strong>&nbsp;<#list corso.CDL as cdl>
-                    <#if cdl.abbr_it?trim?has_content>${cdl.abbr_it}<#else>${cdl.abbr_en}</#if><#if cdl?has_next>,&nbsp;</#if>
+                    <#if cdl.abbr_en?trim?has_content>${cdl.abbr_it}<#else>${cdl.abbr_it}</#if><#if cdl?has_next>,&nbsp;</#if>
                     </#list></li>
                 <li><strong>Language:</strong>&nbsp;  ${corso.lingua}</li>
                 <li><strong>Semester:</strong>&nbsp;  ${corso.semestre}</li>
@@ -30,12 +30,12 @@
 
         <div class="col-md-4">
             <h2>Prerequisites</h2>
-            <span><#if descrizione_it.prerequisiti?trim?has_content> ${descrizione_it.prerequisiti} <#else> ${descrizione_en.prerequisiti} </#if></span>
+            <span><#if descrizione_en.prerequisiti?trim?has_content> ${descrizione_en.prerequisiti} <#else> ${descrizione_it.prerequisiti} </#if></span>
         </div>
 
         <div class="col-md-4">
             <h2>Objective</h2>
-            <span><#if descrizione_it.obiettivi?trim?has_content> ${descrizione_it.obiettivi} <#else> ${descrizione_en.obiettivi} </#if></span>
+            <span><#if descrizione_en.obiettivi?trim?has_content> ${descrizione_en.obiettivi} <#else> ${descrizione_it.obiettivi} </#if></span>
         </div>
     </div><!-- End row --> 
     
@@ -45,20 +45,20 @@
             <br>
             <ul class="nav nav-pills nav-stacked">
                 <#list propedeudici as propedeudico>
-                <li><strong>Propedeudic courses:</strong> <strong><a href="DetailsCorso?n=${propedeudico.ID}&lin=it"><#if propedeudico.nome_it?trim?has_content>  ${propedeudico.nome_it} <#else> ${propedeudico.nome_en} </#if></a></strong> </li>
+                <li><strong>Propedeudic courses:</strong> <strong><a href="DetailsCorso?n=${propedeudico.ID}&lin=it"><#if propedeudico.nome_en?trim?has_content>  ${propedeudico.nome_en} <#else> ${propedeudico.nome_it} </#if></a></strong> </li>
                 </#list>
 
 
                 <#if mutuati?has_content>
-                <li><strong>Mutuated courses:</strong><#list mutuati as mutua> <strong><a href="DetailsCorso?n=${mutua.ID}&lin=it"> <#if mutua.nome_it?trim?has_content>  ${mutua.nome_it} <#if mutua?has_next>,&nbsp</#if> <#else> ${mutua.nome_en} <#if mutua?has_next>,&nbsp</#if></#if></a></strong></#list> </li>
+                <li><strong>Mutuated courses:</strong><#list mutuati as mutua> <strong><a href="DetailsCorso?n=${mutua.ID}&lin=it"> <#if mutua.nome_en?trim?has_content>  ${mutua.nome_en} <#if mutua?has_next>,&nbsp</#if> <#else> ${mutua.nome_it} <#if mutua?has_next>,&nbsp</#if></#if></a></strong></#list> </li>
                 </#if>   
 
                 <#if mutuato??>
-                <li><strong>Derived from:</strong> <strong><a href="DetailsCorso?n=${mutuato.ID}&lin=it"><#if mutuato.nome_it?trim?has_content>  ${mutuato.nome_it} <#else> ${mutuato.nome_en}</#if></a></strong> </#if></li>
+                <li><strong>Derived from:</strong> <strong><a href="DetailsCorso?n=${mutuato.ID}&lin=it"><#if mutuato.nome_en?trim?has_content>  ${mutuato.nome_en} <#else> ${mutuato.nome_it}</#if></a></strong> </#if></li>
 
 
                 <#list moduli as modulo>
-                <li><strong>Form courses:</strong> <a href="DetailsCorso?n=${modulo.ID}&lin=it"><#if modulo.nome_it?trim?has_content>  ${modulo.nome_it} <#else> ${modulo.nome_en} </#if></a> </li>
+                <li><strong>Form courses:</strong> <a href="DetailsCorso?n=${modulo.ID}&lin=it"><#if modulo.nome_en?trim?has_content>  ${modulo.nome_en} <#else> ${modulo.nome_it} </#if></a> </li>
                 </#list>
 
 
@@ -79,7 +79,7 @@
         <ol class="breadcrumb">
             <li><a href="Home?lin=it">Home</a></li>
             <li><a href="Corsi?lin=it">Courses List</a></li>
-            <li class="active"><#if corso.nome_it?trim?has_content> ${corso.nome_it} <#else> ${corso.nome_en} </#if></li>
+            <li class="active"><#if corso.nome_en?trim?has_content> ${corso.nome_en} <#else> ${corso.nome_it} </#if></li>
         </ol>
 
 
@@ -90,7 +90,7 @@
 
                 <section id="space">
                     <h3>Syllabus</h3>
-                    <#if descrizione_it.sillabo?trim?has_content> ${descrizione_it.sillabo} <#else> ${descrizione_en.sillabo} </#if>
+                    <#if descrizione_en.sillabo?trim?has_content> ${descrizione_en.sillabo} <#else> ${descrizione_it.sillabo} </#if>
                 </section>
 
 
@@ -109,27 +109,27 @@
                     <div class="tab-content">
                     <div id="tab4" class="tab-pane fade in active">
                         <#noautoesc>
-                        <#if dublino_it.knowledge?trim?has_content> ${dublino_it.knowledge} <#else> ${dublino_en.knowledge} </#if>
+                        <#if dublino_en.knowledge?trim?has_content> ${dublino_en.knowledge} <#else> ${dublino_it.knowledge} </#if>
                         </#noautoesc>
                     </div>
                     <div id="tab5" class="tab-pane fade">
                         <#noautoesc>
-                        <#if dublino_it.application?trim?has_content> ${dublino_it.application} <#else> ${dublino_en.application} </#if>              
+                        <#if dublino_en.application?trim?has_content> ${dublino_en.application} <#else> ${dublino_it.application} </#if>              
                         </#noautoesc>
                     </div>
                     <div id="tab6" class="tab-pane fade">
                         <#noautoesc>
-                        <#if dublino_it.evaluation?trim?has_content> ${dublino_it.evaluation} <#else> ${dublino_en.evaluation} </#if>
+                        <#if dublino_en.evaluation?trim?has_content> ${dublino_en.evaluation} <#else> ${dublino_it.evaluation} </#if>
                         </#noautoesc>
                     </div> 
                     <div id="tab7" class="tab-pane fade">
                         <#noautoesc>
-                        <#if dublino_it.communication?trim?has_content> ${dublino_it.communication} <#else> ${dublino_en.communication} </#if>
+                        <#if dublino_en.communication?trim?has_content> ${dublino_en.communication} <#else> ${dublino_it.communication} </#if>
                         </#noautoesc>
                     </div>    
                     <div id="tab8" class="tab-pane fade">
                         <#noautoesc>
-                        <#if dublino_it.lifelong?trim?has_content> ${dublino_it.lifelong} <#else> ${dublino_en.lifelong} </#if>
+                        <#if dublino_en.lifelong?trim?has_content> ${dublino_en.lifelong} <#else> ${dublino_it.lifelong} </#if>
                         </#noautoesc>
                     </div>
                     </div>
@@ -141,21 +141,21 @@
                 <section id="space">
                     <h3>Examination Procedure</h3>
 
-                    <#if descrizione_it.mod_Esame?trim?has_content> ${descrizione_it.mod_Esame} <#else> ${descrizione_en.mod_Esame} </#if>
+                    <#if descrizione_en.mod_Esame?trim?has_content> ${descrizione_en.mod_Esame} <#else> ${descrizione_it.mod_Esame} </#if>
 
                 </section>
 
                 <section id="space">
                     <h3>Teaching methods:</h3>
 
-                    <#if descrizione_it.mod_Insegnamento?trim?has_content> ${descrizione_it.mod_Insegnamento} <#else> ${descrizione_en.mod_Insegnamento} </#if>
+                    <#if descrizione_en.mod_Insegnamento?trim?has_content> ${descrizione_en.mod_Insegnamento} <#else> ${descrizione_it.mod_Insegnamento} </#if>
 
                 </section>
 
                 <section id="space">
                     <h3>Note</h3>
 
-                    <#if descrizione_it.note?trim?has_content> ${descrizione_it.note} <#else> ${descrizione_en.note} </#if>
+                    <#if descrizione_en.note?trim?has_content> ${descrizione_en.note} <#else> ${descrizione_it.note} </#if>
 
                 </section>
 
@@ -182,14 +182,10 @@
                     <h4>Teachers</h4>
                     <#list docenti as docente>
                     <div class="media">
-                        <div class="pull-right">
-                            <img id="img-docente" src="${docente.immagine}" class="img-doc img img-rounded">
-                        </div>
+                        
                         <div class="media-body">
                             <h5 class="media-heading"><a href="DettagliDocente?k=${docente.IDDocente}&lin=it">${docente.nome} ${docente.cognome}</a></h5>
-                            <p>
-                                ${docente.specializzazione}
-                            </p>
+                           
                         </div>
                     </div>
                     </#list>
@@ -213,9 +209,9 @@
                 <div class="box_style_1">
                     <h4>External links</h4>
                     <ul>
-                        <#if descrizione_it.homepage?trim?has_content><li><a href="${descrizione_it.homepage}">Homepage</a></li><#elseif descrizione_en.homepage?trim?has_content><li><a href="${descrizione_en.homepage}">Homepage</a></li></#if>
-                        <#if descrizione_it.forum?trim?has_content><li><a href="${descrizione_it.forum}">Forum</a></li><#elseif descrizione_en.forum?trim?has_content><li><a href="${descrizione_en.forum}">Forum</a></li></#if>
-                        <#if descrizione_it.risorse_Ext?trim?has_content><li><a href="${descrizione_it.risorse_Ext}">Risorse Esterne</a></li><#elseif descrizione_en.risorse_Ext?trim?has_content><li><a href="${descrizione_en.risorse_Ext}">Risorse Esterne</a></li></#if>
+                        <#if descrizione_en.homepage?trim?has_content><li><a href="${descrizione_en.homepage}">Homepage</a></li><#elseif descrizione_it.homepage?trim?has_content><li><a href="${descrizione_it.homepage}">Homepage</a></li></#if>
+                        <#if descrizione_en.forum?trim?has_content><li><a href="${descrizione_en.forum}">Forum</a></li><#elseif descrizione_it.forum?trim?has_content><li><a href="${descrizione_it.forum}">Forum</a></li></#if>
+                        <#if descrizione_en.risorse_Ext?trim?has_content><li><a href="${descrizione_en.risorse_Ext}">Risorse Esterne</a></li><#elseif descrizione_it.risorse_Ext?trim?has_content><li><a href="${descrizione_it.risorse_Ext}">Risorse Esterne</a></li></#if>
                     </ul>
                 </div>
 

@@ -90,6 +90,7 @@ public class CreateMateriale extends BaseController {
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
         log.setData(timestamp);
         ((IgwDataLayer)request.getAttribute("datalayer")).storeLog(log);
+        response.sendRedirect("Backoffice");
         
     }
      
